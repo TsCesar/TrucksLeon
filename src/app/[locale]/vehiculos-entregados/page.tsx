@@ -25,7 +25,7 @@ export default async function VehiculosEntregadosPage({ params }: Props) {
         <Container>
           <Reveal>
             <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">
-              Entregados
+              {t('nav.delivered')}
             </span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-off-white mb-6">{t('delivered.title')}</h1>
             <p className="text-steel text-xl max-w-2xl">{t('delivered.subtitle')}</p>

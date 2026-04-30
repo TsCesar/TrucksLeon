@@ -17,7 +17,7 @@ export function ServicesPreview() {
     <Section dark id="servicios">
       <Container>
         <SectionHeader
-          badge="Servicios"
+          badge={t('nav.services')}
           title={t('services.title')}
           subtitle={t('services.subtitle')}
         />

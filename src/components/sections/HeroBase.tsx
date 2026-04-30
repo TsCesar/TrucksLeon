@@ -84,14 +84,14 @@ export function HeroBase() {
 
           {/* Stats */}
           <motion.div {...fadeUp(0.65)} className="mt-16 flex flex-wrap gap-8">
-            {[
-              { value: '+15', label: 'países europeos' },
-              { value: '24/7', label: 'disponibilidad' },
-              { value: '100%', label: 'gestión integral' },
-            ].map((stat) => (
-              <div key={stat.label} className="text-center">
+            {([
+              { value: '+15', labelKey: 'hero.stats.countries' },
+              { value: '24/7', labelKey: 'hero.stats.availability' },
+              { value: '100%', labelKey: 'hero.stats.integral' },
+            ] as const).map((stat) => (
+              <div key={stat.labelKey} className="text-center">
                 <div className="text-3xl font-heading font-bold text-red-accent font-mono">{stat.value}</div>
-                <div className="text-xs text-steel uppercase tracking-wider mt-1">{stat.label}</div>
+                <div className="text-xs text-steel uppercase tracking-wider mt-1">{t(stat.labelKey)}</div>
               </div>
             ))}
           </motion.div>

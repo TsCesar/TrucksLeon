@@ -16,7 +16,12 @@
     "subclaim": "Compra, venta, importación, exportación, documentación, transporte y asesoramiento especializado para profesionales del sector.",
     "ctaPrimary": "Hablar con un asesor",
     "ctaSecondary": "Ver vehículos entregados",
-    "badge": "Especialistas en Europa"
+    "badge": "Especialistas en Europa",
+    "stats": {
+      "countries": "países europeos",
+      "availability": "disponibilidad",
+      "integral": "gestión integral"
+    }
   },
   "services": {
     "title": "Nuestros Servicios",
@@ -222,5 +227,15 @@
     "loading": "Cargando...",
     "error": "Ha ocurrido un error",
     "comingSoon": "Próximamente"
+  },
+  "aria": {
+    "logoLink": "TrucksLeón International - Inicio",
+    "mainNav": "Navegación principal",
+    "openMenu": "Abrir menú",
+    "closeMenu": "Cerrar menú",
+    "mobileMenuTitle": "Menú",
+    "mobileMenuNav": "Menú de navegación",
+    "changeLanguage": "Cambiar idioma",
+    "selectLanguage": "Seleccionar idioma"
   }
 }

@@ -14,7 +14,7 @@ export function VehicleCategoriesPreview() {
     <Section id="categorias">
       <Container>
         <SectionHeader
-          badge="Vehículos"
+          badge={t('nav.vehicles')}
           title={t('categories.title')}
           subtitle={t('categories.subtitle')}
         />

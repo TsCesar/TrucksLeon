@@ -20,7 +20,7 @@ export default async function NovedadesPage({ params }: Props) {
       <div className="py-20 md:py-28 bg-graphite border-b border-white/8">
         <Container>
           <Reveal>
-            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">Novedades</span>
+            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">{t('nav.news')}</span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-off-white mb-6">{t('nav.news')}</h1>
           </Reveal>
         </Container>

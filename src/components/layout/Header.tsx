@@ -45,7 +45,7 @@ export function Header() {
             <Link
               href={`/${locale}`}
               className="flex items-center gap-3 flex-shrink-0 focus-visible:ring-2 focus-visible:ring-red-accent rounded-lg"
-              aria-label="TrucksLeón International - Inicio"
+              aria-label={t('aria.logoLink')}
             >
               <Image
                 src="/images/brand/logo-trucksleon.png"
@@ -58,7 +58,7 @@ export function Header() {
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label="Navegación principal">
+            <nav className="hidden lg:flex items-center gap-1" aria-label={t('aria.mainNav')}>
               {navItems.slice(0, -1).map((item) => {
                 const href = `/${locale}${item.href === '/' ? '' : item.href}`
                 const isActive = pathname === href || (item.href !== '/' && pathname.startsWith(href))
@@ -88,7 +88,7 @@ export function Header() {
               <button
                 onClick={() => setMobileOpen(true)}
                 className="lg:hidden p-2 rounded-lg text-steel hover:text-off-white hover:bg-white/5 transition-colors"
-                aria-label="Abrir menú"
+                aria-label={t('aria.openMenu')}
                 aria-expanded={mobileOpen}
               >
                 <Menu size={22} aria-hidden />

@@ -1,6 +1,6 @@
 'use client'
 
-import { useLocale } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
@@ -9,6 +9,7 @@ import { locales, localeNames, localeFlags, type Locale } from '@/config/locales
 import { cn } from '@/lib/utils'
 
 export function LanguageSwitcher() {
+  const t = useTranslations('aria')
   const locale = useLocale() as Locale
   const router = useRouter()
   const pathname = usePathname()
@@ -40,7 +41,7 @@ export function LanguageSwitcher() {
         className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-steel hover:text-off-white transition-colors focus-visible:ring-2 focus-visible:ring-red-accent"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Cambiar idioma"
+        aria-label={t('changeLanguage')}
       >
         <span>{localeFlags[locale]}</span>
         <span className="hidden sm:inline font-medium">{localeNames[locale]}</span>
@@ -55,7 +56,7 @@ export function LanguageSwitcher() {
         {open && (
           <motion.ul
             role="listbox"
-            aria-label="Seleccionar idioma"
+            aria-label={t('selectLanguage')}
             initial={prefersReducedMotion ? {} : { opacity: 0, y: -8, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={prefersReducedMotion ? {} : { opacity: 0, y: -8, scale: 0.97 }}

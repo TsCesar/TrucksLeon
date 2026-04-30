@@ -21,7 +21,7 @@ export default async function ProcesoPage({ params }: Props) {
       <div className="py-20 md:py-28 bg-graphite border-b border-white/8">
         <Container>
           <Reveal>
-            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">Proceso</span>
+            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">{t('nav.process')}</span>
             <h1 className="text-4xl md:text-6xl font-heading font-bold text-off-white mb-6">{t('process.title')}</h1>
             <p className="text-steel text-xl max-w-2xl">{t('process.subtitle')}</p>
           </Reveal>

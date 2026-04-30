@@ -49,16 +49,16 @@ export function MobileMenu({ open, onClose, locale }: MobileMenuProps) {
             exit={prefersReducedMotion ? {} : { x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
             className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-graphite border-l border-white/10 z-50 flex flex-col"
-            aria-label="Menú de navegación"
+            aria-label={t('aria.mobileMenuNav')}
             role="dialog"
             aria-modal="true"
           >
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-              <span className="font-heading font-bold text-off-white">Menu</span>
+              <span className="font-heading font-bold text-off-white">{t('aria.mobileMenuTitle')}</span>
               <button
                 onClick={onClose}
                 className="p-2 rounded-lg text-steel hover:text-off-white hover:bg-white/5 transition-colors"
-                aria-label="Cerrar menú"
+                aria-label={t('aria.closeMenu')}
               >
                 <X size={20} aria-hidden />
               </button>

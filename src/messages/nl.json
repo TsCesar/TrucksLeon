@@ -16,7 +16,12 @@
     "subclaim": "Koop, verkoop, import, export, documentatie, transport en gespecialiseerd advies voor professionals in de sector.",
     "ctaPrimary": "Praat met een adviseur",
     "ctaSecondary": "Bekijk geleverde voertuigen",
-    "badge": "Europese Specialisten"
+    "badge": "Europese Specialisten",
+    "stats": {
+      "countries": "Europese landen",
+      "availability": "beschikbaarheid",
+      "integral": "integraal beheer"
+    }
   },
   "services": {
     "title": "Onze Diensten",
@@ -115,5 +120,15 @@
     "message": { "min": "Bericht moet minimaal 10 tekens bevatten", "max": "Bericht mag niet meer dan 2000 tekens bevatten" },
     "consent": { "required": "U moet het privacybeleid accepteren" }
   },
-  "common": { "learnMore": "Meer informatie", "seeAll": "Alles bekijken", "back": "Terug", "loading": "Laden...", "error": "Er is een fout opgetreden", "comingSoon": "Binnenkort beschikbaar" }
+  "common": { "learnMore": "Meer informatie", "seeAll": "Alles bekijken", "back": "Terug", "loading": "Laden...", "error": "Er is een fout opgetreden", "comingSoon": "Binnenkort beschikbaar" },
+  "aria": {
+    "logoLink": "TrucksLeón International - Home",
+    "mainNav": "Hoofdnavigatie",
+    "openMenu": "Menu openen",
+    "closeMenu": "Menu sluiten",
+    "mobileMenuTitle": "Menu",
+    "mobileMenuNav": "Navigatiemenu",
+    "changeLanguage": "Taal wijzigen",
+    "selectLanguage": "Taal selecteren"
+  }
 }

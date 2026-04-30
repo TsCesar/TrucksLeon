@@ -12,7 +12,7 @@ import { Button } from '@/components/ui/Button'
 
 export function ContactForm() {
   const t = useTranslations()
-  const locale = useLocale()
+  const locale = useLocale() as ContactFormData['locale']
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const {
@@ -22,7 +22,7 @@ export function ContactForm() {
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { honeypot: '' },
+    defaultValues: { honeypot: '', locale },
   })
 
   async function onSubmit(data: ContactFormData) {
@@ -30,7 +30,7 @@ export function ContactForm() {
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept-Language': locale },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
       })
       if (res.ok) {
@@ -67,14 +67,11 @@ export function ContactForm() {
       {/* Honeypot — hidden from real users, bots fill it in */}
       <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
         <label htmlFor="website">Website</label>
-        <input
-          id="website"
-          type="text"
-          autoComplete="off"
-          tabIndex={-1}
-          {...register('honeypot')}
-        />
+        <input id="website" type="text" autoComplete="off" tabIndex={-1} {...register('honeypot')} />
       </div>
+
+      {/* Locale — sent in body, not exposed as visible UI */}
+      <input type="hidden" {...register('locale')} />
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <Input
@@ -147,12 +144,7 @@ export function ContactForm() {
         </div>
       )}
 
-      <Button
-        type="submit"
-        loading={isSubmitting}
-        size="lg"
-        className="w-full"
-      >
+      <Button type="submit" loading={isSubmitting} size="lg" className="w-full">
         {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
       </Button>
     </form>

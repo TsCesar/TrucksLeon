@@ -16,7 +16,12 @@
     "subclaim": "Kauf, Verkauf, Import, Export, Dokumentation, Transport und spezialisierte Beratung für Fachleute der Branche.",
     "ctaPrimary": "Mit einem Berater sprechen",
     "ctaSecondary": "Gelieferte Fahrzeuge ansehen",
-    "badge": "Europäische Spezialisten"
+    "badge": "Europäische Spezialisten",
+    "stats": {
+      "countries": "europäische Länder",
+      "availability": "Verfügbarkeit",
+      "integral": "Komplettmanagement"
+    }
   },
   "services": {
     "title": "Unsere Leistungen",
@@ -115,5 +120,15 @@
     "message": { "min": "Nachricht muss mindestens 10 Zeichen haben", "max": "Nachricht darf nicht mehr als 2000 Zeichen haben" },
     "consent": { "required": "Sie müssen die Datenschutzrichtlinie akzeptieren" }
   },
-  "common": { "learnMore": "Mehr erfahren", "seeAll": "Alle ansehen", "back": "Zurück", "loading": "Laden...", "error": "Ein Fehler ist aufgetreten", "comingSoon": "Demnächst verfügbar" }
+  "common": { "learnMore": "Mehr erfahren", "seeAll": "Alle ansehen", "back": "Zurück", "loading": "Laden...", "error": "Ein Fehler ist aufgetreten", "comingSoon": "Demnächst verfügbar" },
+  "aria": {
+    "logoLink": "TrucksLeón International - Startseite",
+    "mainNav": "Hauptnavigation",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schließen",
+    "mobileMenuTitle": "Menü",
+    "mobileMenuNav": "Navigationsmenü",
+    "changeLanguage": "Sprache wechseln",
+    "selectLanguage": "Sprache auswählen"
+  }
 }

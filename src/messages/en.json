@@ -16,7 +16,12 @@
     "subclaim": "Buying, selling, importing, exporting, documentation, transport and specialised advisory for industry professionals.",
     "ctaPrimary": "Talk to an advisor",
     "ctaSecondary": "View delivered vehicles",
-    "badge": "European Specialists"
+    "badge": "European Specialists",
+    "stats": {
+      "countries": "European countries",
+      "availability": "availability",
+      "integral": "end-to-end management"
+    }
   },
   "services": {
     "title": "Our Services",
@@ -129,5 +134,15 @@
     "message": { "min": "Message must have at least 10 characters", "max": "Message cannot exceed 2000 characters" },
     "consent": { "required": "You must accept the privacy policy" }
   },
-  "common": { "learnMore": "Learn more", "seeAll": "See all", "back": "Back", "loading": "Loading...", "error": "An error occurred", "comingSoon": "Coming soon" }
+  "common": { "learnMore": "Learn more", "seeAll": "See all", "back": "Back", "loading": "Loading...", "error": "An error occurred", "comingSoon": "Coming soon" },
+  "aria": {
+    "logoLink": "TrucksLeón International - Home",
+    "mainNav": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "mobileMenuTitle": "Menu",
+    "mobileMenuNav": "Navigation menu",
+    "changeLanguage": "Change language",
+    "selectLanguage": "Select language"
+  }
 }

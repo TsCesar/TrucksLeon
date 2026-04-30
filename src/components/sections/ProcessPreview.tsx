@@ -12,7 +12,7 @@ export function ProcessPreview() {
     <Section id="proceso">
       <Container>
         <SectionHeader
-          badge="Proceso"
+          badge={t('nav.process')}
           title={t('process.title')}
           subtitle={t('process.subtitle')}
         />

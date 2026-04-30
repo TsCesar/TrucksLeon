@@ -39,7 +39,7 @@ export default async function ContactoPage({ params }: Props) {
         <Container narrow>
           <Reveal>
             <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">
-              Contacto
+              {t('nav.contact')}
             </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-off-white mb-4">
               {t('contact.title')}

@@ -27,6 +27,7 @@ export const contactSchema = z.object({
     .boolean()
     .refine((val) => val === true, { message: 'validation.consent.required' }),
   honeypot: z.string().max(0, { message: 'Bot detected' }).optional(),
+  locale: z.enum(['es', 'en', 'nl', 'de', 'fr']),
 })
 
 export type ContactFormData = z.infer<typeof contactSchema>

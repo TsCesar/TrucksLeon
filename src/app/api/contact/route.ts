@@ -12,7 +12,6 @@ function getIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest) {
-  // Rate limiting
   const ip = getIp(req)
   const { allowed } = rateLimit(ip)
   if (!allowed) {
@@ -22,7 +21,6 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  // Parse body
   let body: unknown
   try {
     body = await req.json()
@@ -30,10 +28,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid request body.' }, { status: 400 })
   }
 
-  // Validate with Zod (includes honeypot)
   const result = contactSchema.safeParse(body)
   if (!result.success) {
-    // Honeypot triggered — return 200 to not reveal bot detection
     const firstIssue = result.error.issues[0]
     if (firstIssue.path.includes('honeypot')) {
       return NextResponse.json({ ok: true })
