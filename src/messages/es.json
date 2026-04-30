@@ -1,0 +1,226 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "about": "Quiénes Somos",
+    "services": "Servicios",
+    "vehicles": "Vehículos",
+    "delivered": "Entregados",
+    "process": "Proceso",
+    "europe": "Europa",
+    "news": "Novedades",
+    "contact": "Contacto",
+    "contactCta": "Hablar con un asesor"
+  },
+  "hero": {
+    "claim": "Gestión integral de vehículos industriales en Europa",
+    "subclaim": "Compra, venta, importación, exportación, documentación, transporte y asesoramiento especializado para profesionales del sector.",
+    "ctaPrimary": "Hablar con un asesor",
+    "ctaSecondary": "Ver vehículos entregados",
+    "badge": "Especialistas en Europa"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "Gestión integral para todo tipo de operaciones con vehículos industriales en Europa",
+    "advisory": {
+      "title": "Asesoramiento",
+      "description": "Orientación especializada en la compra, venta e importación de vehículos industriales en el mercado europeo."
+    },
+    "management": {
+      "title": "Gestión",
+      "description": "Gestión completa de todas las operaciones relacionadas con vehículos industriales, desde la búsqueda hasta la entrega."
+    },
+    "documentation": {
+      "title": "Documentación",
+      "description": "Tramitación y gestión de toda la documentación necesaria para operaciones nacionales e internacionales."
+    },
+    "buySell": {
+      "title": "Compra y Venta",
+      "description": "Intermediación profesional en la compra y venta de todo tipo de vehículos industriales en Europa."
+    },
+    "import": {
+      "title": "Importación",
+      "description": "Gestión completa de procesos de importación de vehículos desde cualquier país europeo."
+    },
+    "export": {
+      "title": "Exportación",
+      "description": "Exportación de vehículos industriales a cualquier destino europeo con toda la documentación en regla."
+    },
+    "customs": {
+      "title": "Trámites Aduaneros",
+      "description": "Gestión experta de todos los trámites aduaneros para operaciones internacionales."
+    },
+    "transport": {
+      "title": "Transporte",
+      "description": "Soluciones de transporte especializadas para el traslado de vehículos industriales en Europa."
+    },
+    "logistics": {
+      "title": "Logística",
+      "description": "Planificación y gestión logística completa para la distribución de vehículos en Europa."
+    },
+    "homologation": {
+      "title": "Homologaciones",
+      "description": "Tramitación de homologaciones y legalizaciones de vehículos para circular en España y Europa."
+    },
+    "certificates": {
+      "title": "Certificados",
+      "description": "Obtención y gestión de certificados técnicos necesarios para la operación de vehículos industriales."
+    },
+    "appraisal": {
+      "title": "Peritajes y Valoraciones",
+      "description": "Informes técnicos, peritajes y valoraciones profesionales de vehículos industriales."
+    }
+  },
+  "categories": {
+    "title": "Categorías de Vehículos",
+    "subtitle": "Trabajamos con todo tipo de vehículos industriales en el mercado europeo",
+    "tractorHeads": "Cabezas Tractoras",
+    "rigidTrucks": "Camiones Rígidos",
+    "vans": "Furgonetas",
+    "livestockTrucks": "Camiones Ganaderos",
+    "boxTrucks": "Camiones Caja Cerrada",
+    "craneTrucks": "Camiones Grúa",
+    "concreteMixers": "Hormigoneras",
+    "refrigerated": "Camiones Frigoríficos",
+    "carCarriers": "Portacoches",
+    "extendableTrailers": "Semirremolques Extensibles",
+    "livestockTrailers": "Semirremolques Ganaderos"
+  },
+  "delivered": {
+    "title": "Vehículos Entregados",
+    "subtitle": "Una muestra de las operaciones realizadas con éxito en Europa",
+    "cta": "Ver todos los entregados",
+    "badge": "Entregado"
+  },
+  "europe": {
+    "title": "Presencia Europea",
+    "subtitle": "Operamos en todo el mercado europeo con experiencia y conexiones en los principales países",
+    "description": "Nuestra red de contactos y experiencia en el mercado europeo nos permite gestionar operaciones en más de 15 países, facilitando compras, ventas, importaciones y exportaciones con total garantía."
+  },
+  "process": {
+    "title": "Proceso de Trabajo",
+    "subtitle": "Un proceso claro, profesional y transparente de principio a fin",
+    "steps": {
+      "contact": {
+        "number": "01",
+        "title": "Contacto inicial",
+        "description": "Nos explicas tu necesidad y analizamos juntos la mejor solución para tu operación."
+      },
+      "search": {
+        "number": "02",
+        "title": "Búsqueda y selección",
+        "description": "Localizamos el vehículo o el comprador ideal en nuestra red europea de contactos."
+      },
+      "management": {
+        "number": "03",
+        "title": "Gestión integral",
+        "description": "Nos encargamos de toda la documentación, trámites y logística de la operación."
+      },
+      "delivery": {
+        "number": "04",
+        "title": "Entrega garantizada",
+        "description": "El vehículo llega a su destino con toda la documentación en regla y en perfecto estado."
+      }
+    }
+  },
+  "contact": {
+    "title": "Contacto",
+    "subtitle": "Estamos disponibles 24/7 para atender tu consulta",
+    "description": "Ponte en contacto con nuestro equipo de expertos. Respondemos en el menor tiempo posible.",
+    "phone": "Teléfono",
+    "email": "Email",
+    "address": "Ubicación",
+    "hours": "Horario",
+    "whatsapp": "WhatsApp",
+    "form": {
+      "title": "Envíanos un mensaje",
+      "name": "Nombre completo",
+      "namePlaceholder": "Tu nombre",
+      "email": "Email",
+      "emailPlaceholder": "tu@email.com",
+      "phone": "Teléfono",
+      "phonePlaceholder": "+34 600 000 000",
+      "company": "Empresa (opcional)",
+      "companyPlaceholder": "Nombre de tu empresa",
+      "message": "Mensaje",
+      "messagePlaceholder": "Cuéntanos en qué podemos ayudarte...",
+      "consent": "Acepto la política de privacidad y el tratamiento de mis datos personales.",
+      "submit": "Enviar mensaje",
+      "sending": "Enviando...",
+      "success": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
+      "error": "Ha ocurrido un error. Por favor, inténtalo de nuevo o contáctanos directamente."
+    }
+  },
+  "trust": {
+    "title": "¿Por qué elegirnos?",
+    "experience": {
+      "title": "Experiencia europea",
+      "description": "Años de experiencia operando en el mercado europeo de vehículos industriales."
+    },
+    "transparency": {
+      "title": "Transparencia total",
+      "description": "Información clara y honesta en cada fase de la operación."
+    },
+    "availability": {
+      "title": "Disponibilidad 24/7",
+      "description": "Equipo disponible todos los días del año para atender tus necesidades."
+    },
+    "network": {
+      "title": "Red europea",
+      "description": "Amplia red de contactos y proveedores en toda Europa."
+    }
+  },
+  "footer": {
+    "description": "Especialistas en gestión integral de vehículos industriales en el mercado europeo.",
+    "links": "Enlaces",
+    "contact": "Contacto",
+    "legal": "Legal",
+    "privacy": "Política de privacidad",
+    "terms": "Aviso legal",
+    "cookies": "Política de cookies",
+    "copyright": "Todos los derechos reservados."
+  },
+  "about": {
+    "title": "Quiénes Somos",
+    "subtitle": "Especialistas en vehículos industriales con presencia en toda Europa",
+    "description": "TrucksLeón International es una empresa especializada en la gestión integral de vehículos industriales en el mercado europeo. Ofrecemos asesoramiento, compra, venta, importación, exportación, documentación y logística para profesionales del sector.",
+    "values": {
+      "experience": "Experiencia",
+      "transparency": "Transparencia",
+      "commitment": "Compromiso",
+      "professionalism": "Profesionalidad"
+    }
+  },
+  "validation": {
+    "name": {
+      "min": "El nombre debe tener al menos 2 caracteres",
+      "max": "El nombre no puede superar 100 caracteres",
+      "invalid": "El nombre solo puede contener letras y espacios"
+    },
+    "email": {
+      "invalid": "Introduce un email válido"
+    },
+    "phone": {
+      "min": "El teléfono debe tener al menos 7 dígitos",
+      "max": "El teléfono no puede superar 20 caracteres",
+      "invalid": "Introduce un teléfono válido"
+    },
+    "company": {
+      "max": "El nombre de empresa no puede superar 150 caracteres"
+    },
+    "message": {
+      "min": "El mensaje debe tener al menos 10 caracteres",
+      "max": "El mensaje no puede superar 2000 caracteres"
+    },
+    "consent": {
+      "required": "Debes aceptar la política de privacidad"
+    }
+  },
+  "common": {
+    "learnMore": "Saber más",
+    "seeAll": "Ver todos",
+    "back": "Volver",
+    "loading": "Cargando...",
+    "error": "Ha ocurrido un error",
+    "comingSoon": "Próximamente"
+  }
+}

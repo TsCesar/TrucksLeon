@@ -1,0 +1,119 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "about": "Über Uns",
+    "services": "Leistungen",
+    "vehicles": "Fahrzeuge",
+    "delivered": "Geliefert",
+    "process": "Prozess",
+    "europe": "Europa",
+    "news": "Neuigkeiten",
+    "contact": "Kontakt",
+    "contactCta": "Mit einem Berater sprechen"
+  },
+  "hero": {
+    "claim": "Umfassendes Management für Industriefahrzeuge in Europa",
+    "subclaim": "Kauf, Verkauf, Import, Export, Dokumentation, Transport und spezialisierte Beratung für Fachleute der Branche.",
+    "ctaPrimary": "Mit einem Berater sprechen",
+    "ctaSecondary": "Gelieferte Fahrzeuge ansehen",
+    "badge": "Europäische Spezialisten"
+  },
+  "services": {
+    "title": "Unsere Leistungen",
+    "subtitle": "Umfassendes Management für alle Arten von Industriefahrzeug-Operationen in Europa",
+    "advisory": { "title": "Beratung", "description": "Spezialisierte Beratung beim Kauf, Verkauf und Import von Industriefahrzeugen auf dem europäischen Markt." },
+    "management": { "title": "Management", "description": "Vollständiges Management aller Operationen rund um Industriefahrzeuge." },
+    "documentation": { "title": "Dokumentation", "description": "Bearbeitung und Verwaltung aller notwendigen Dokumente für nationale und internationale Operationen." },
+    "buySell": { "title": "Kauf & Verkauf", "description": "Professionelle Vermittlung beim Kauf und Verkauf aller Arten von Industriefahrzeugen in Europa." },
+    "import": { "title": "Import", "description": "Vollständiges Management von Importprozessen für Fahrzeuge aus allen europäischen Ländern." },
+    "export": { "title": "Export", "description": "Export von Industriefahrzeugen in alle europäischen Ziele mit vollständiger Dokumentation." },
+    "customs": { "title": "Zollabwicklung", "description": "Fachkundiges Management aller Zollverfahren für internationale Operationen." },
+    "transport": { "title": "Transport", "description": "Spezialisierte Transportlösungen für die Beförderung von Industriefahrzeugen in Europa." },
+    "logistics": { "title": "Logistik", "description": "Vollständige Logistikplanung und -verwaltung für die Fahrzeugverteilung in Europa." },
+    "homologation": { "title": "Homologierung", "description": "Bearbeitung von Fahrzeughomologierungen und -legalisierungen." },
+    "certificates": { "title": "Zertifikate", "description": "Beschaffung und Verwaltung technischer Zertifikate für Industriefahrzeuge." },
+    "appraisal": { "title": "Gutachten & Bewertungen", "description": "Technische Berichte, Gutachten und professionelle Bewertungen von Industriefahrzeugen." }
+  },
+  "categories": {
+    "title": "Fahrzeugkategorien",
+    "subtitle": "Wir arbeiten mit allen Arten von Industriefahrzeugen auf dem europäischen Markt",
+    "tractorHeads": "Sattelzugmaschinen",
+    "rigidTrucks": "Starr-LKW",
+    "vans": "Transporter",
+    "livestockTrucks": "Viehtransporter",
+    "boxTrucks": "Kofferfahrzeuge",
+    "craneTrucks": "Kranfahrzeuge",
+    "concreteMixers": "Betonmischer",
+    "refrigerated": "Kühltransporter",
+    "carCarriers": "Autotransporter",
+    "extendableTrailers": "Ausziehbare Auflieger",
+    "livestockTrailers": "Viehtransport-Auflieger"
+  },
+  "delivered": {
+    "title": "Gelieferte Fahrzeuge",
+    "subtitle": "Eine Auswahl erfolgreich abgeschlossener Operationen in Europa",
+    "cta": "Alle gelieferten Fahrzeuge ansehen",
+    "badge": "Geliefert"
+  },
+  "europe": {
+    "title": "Europäische Präsenz",
+    "subtitle": "Wir operieren auf dem gesamten europäischen Markt",
+    "description": "Unser Netzwerk aus Kontakten und Erfahrung auf dem europäischen Markt ermöglicht es uns, Operationen in mehr als 15 Ländern zu verwalten."
+  },
+  "process": {
+    "title": "Unser Prozess",
+    "subtitle": "Ein klarer, professioneller und transparenter Prozess von Anfang bis Ende",
+    "steps": {
+      "contact": { "number": "01", "title": "Erstkontakt", "description": "Sie erklären Ihren Bedarf und wir analysieren gemeinsam die beste Lösung." },
+      "search": { "number": "02", "title": "Suche & Auswahl", "description": "Wir finden das ideale Fahrzeug oder den idealen Käufer in unserem europäischen Netzwerk." },
+      "management": { "number": "03", "title": "Vollständiges Management", "description": "Wir kümmern uns um alle Dokumente, Verfahren und Logistik." },
+      "delivery": { "number": "04", "title": "Garantierte Lieferung", "description": "Das Fahrzeug kommt mit allen erforderlichen Dokumenten am Zielort an." }
+    }
+  },
+  "contact": {
+    "title": "Kontakt",
+    "subtitle": "Wir sind 24/7 für Ihre Anfrage verfügbar",
+    "description": "Nehmen Sie Kontakt mit unserem Expertenteam auf. Wir antworten so schnell wie möglich.",
+    "phone": "Telefon", "email": "E-Mail", "address": "Standort", "hours": "Öffnungszeiten", "whatsapp": "WhatsApp",
+    "form": {
+      "title": "Senden Sie uns eine Nachricht",
+      "name": "Vollständiger Name", "namePlaceholder": "Ihr Name",
+      "email": "E-Mail", "emailPlaceholder": "sie@email.com",
+      "phone": "Telefon", "phonePlaceholder": "+49 000 0000000",
+      "company": "Unternehmen (optional)", "companyPlaceholder": "Name Ihres Unternehmens",
+      "message": "Nachricht", "messagePlaceholder": "Sagen Sie uns, wie wir Ihnen helfen können...",
+      "consent": "Ich akzeptiere die Datenschutzrichtlinie und die Verarbeitung meiner personenbezogenen Daten.",
+      "submit": "Nachricht senden", "sending": "Wird gesendet...",
+      "success": "Nachricht erfolgreich gesendet. Wir werden uns bald bei Ihnen melden.",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt."
+    }
+  },
+  "trust": {
+    "title": "Warum uns wählen?",
+    "experience": { "title": "Europäische Erfahrung", "description": "Jahre Erfahrung auf dem europäischen Industriefahrzeugmarkt." },
+    "transparency": { "title": "Vollständige Transparenz", "description": "Klare und ehrliche Informationen in jeder Phase der Operation." },
+    "availability": { "title": "24/7 Verfügbarkeit", "description": "Team an jedem Tag des Jahres verfügbar." },
+    "network": { "title": "Europäisches Netzwerk", "description": "Umfangreiches Netzwerk aus Kontakten und Lieferanten in ganz Europa." }
+  },
+  "footer": {
+    "description": "Spezialisten für umfassendes Industriefahrzeug-Management auf dem europäischen Markt.",
+    "links": "Links", "contact": "Kontakt", "legal": "Rechtliches",
+    "privacy": "Datenschutzrichtlinie", "terms": "Rechtlicher Hinweis", "cookies": "Cookie-Richtlinie",
+    "copyright": "Alle Rechte vorbehalten."
+  },
+  "about": {
+    "title": "Über Uns",
+    "subtitle": "Industriefahrzeug-Spezialisten mit Präsenz in ganz Europa",
+    "description": "TrucksLeón International ist auf das umfassende Management von Industriefahrzeugen auf dem europäischen Markt spezialisiert.",
+    "values": { "experience": "Erfahrung", "transparency": "Transparenz", "commitment": "Engagement", "professionalism": "Professionalität" }
+  },
+  "validation": {
+    "name": { "min": "Name muss mindestens 2 Zeichen haben", "max": "Name darf nicht mehr als 100 Zeichen haben", "invalid": "Name darf nur Buchstaben und Leerzeichen enthalten" },
+    "email": { "invalid": "Bitte geben Sie eine gültige E-Mail-Adresse ein" },
+    "phone": { "min": "Telefonnummer muss mindestens 7 Ziffern haben", "max": "Telefonnummer darf nicht mehr als 20 Zeichen haben", "invalid": "Bitte geben Sie eine gültige Telefonnummer ein" },
+    "company": { "max": "Unternehmensname darf nicht mehr als 150 Zeichen haben" },
+    "message": { "min": "Nachricht muss mindestens 10 Zeichen haben", "max": "Nachricht darf nicht mehr als 2000 Zeichen haben" },
+    "consent": { "required": "Sie müssen die Datenschutzrichtlinie akzeptieren" }
+  },
+  "common": { "learnMore": "Mehr erfahren", "seeAll": "Alle ansehen", "back": "Zurück", "loading": "Laden...", "error": "Ein Fehler ist aufgetreten", "comingSoon": "Demnächst verfügbar" }
+}
