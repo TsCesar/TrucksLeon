@@ -123,12 +123,25 @@
   "common": { "learnMore": "Meer informatie", "seeAll": "Alles bekijken", "back": "Terug", "loading": "Laden...", "error": "Er is een fout opgetreden", "comingSoon": "Binnenkort beschikbaar" },
   "aria": {
     "logoLink": "TrucksLeón International - Home",
+    "logoAlt": "TrucksLeón International",
     "mainNav": "Hoofdnavigatie",
     "openMenu": "Menu openen",
     "closeMenu": "Menu sluiten",
     "mobileMenuTitle": "Menu",
     "mobileMenuNav": "Navigatiemenu",
     "changeLanguage": "Taal wijzigen",
-    "selectLanguage": "Taal selecteren"
+    "selectLanguage": "Taal selecteren",
+    "facebook": "Facebook",
+    "whatsapp": "WhatsApp"
+  },
+  "privacy": {
+    "title": "Privacybeleid",
+    "badge": "Juridisch",
+    "placeholder": "Dit document is in voorbereiding. Voor vragen over de verwerking van uw persoonsgegevens kunt u contact met ons opnemen via info@trucksleon.com."
+  },
+  "legal": {
+    "title": "Juridische Kennisgeving",
+    "badge": "Juridisch",
+    "placeholder": "Dit document is in voorbereiding. Voor juridische vragen kunt u contact met ons opnemen via info@trucksleon.com."
   }
 }

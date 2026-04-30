@@ -89,7 +89,7 @@ La web soporta 5 idiomas con prefijo de locale obligatorio en la URL:
 
 Las traducciones están en `src/messages/{locale}.json`. Todo el texto visible de la web está en esos archivos — no hay texto hardcodeado en los componentes.
 
-El idioma por defecto es `es`. La redirección desde `/` a `/es` la gestiona el middleware de next-intl en `src/middleware.ts`.
+El idioma por defecto es `es`. La redirección desde `/` a `/es` la gestiona el middleware de next-intl en `middleware.ts` (en la raíz del proyecto).
 
 ---
 

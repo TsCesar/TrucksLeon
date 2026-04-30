@@ -49,7 +49,7 @@ export function Header() {
             >
               <Image
                 src="/images/brand/logo-trucksleon.png"
-                alt="TrucksLeón International"
+                alt={t('aria.logoAlt')}
                 width={160}
                 height={48}
                 className="h-10 w-auto object-contain"

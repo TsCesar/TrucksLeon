@@ -123,12 +123,25 @@
   "common": { "learnMore": "Mehr erfahren", "seeAll": "Alle ansehen", "back": "Zurück", "loading": "Laden...", "error": "Ein Fehler ist aufgetreten", "comingSoon": "Demnächst verfügbar" },
   "aria": {
     "logoLink": "TrucksLeón International - Startseite",
+    "logoAlt": "TrucksLeón International",
     "mainNav": "Hauptnavigation",
     "openMenu": "Menü öffnen",
     "closeMenu": "Menü schließen",
     "mobileMenuTitle": "Menü",
     "mobileMenuNav": "Navigationsmenü",
     "changeLanguage": "Sprache wechseln",
-    "selectLanguage": "Sprache auswählen"
+    "selectLanguage": "Sprache auswählen",
+    "facebook": "Facebook",
+    "whatsapp": "WhatsApp"
+  },
+  "privacy": {
+    "title": "Datenschutzrichtlinie",
+    "badge": "Rechtliches",
+    "placeholder": "Dieses Dokument ist in Vorbereitung. Bei Fragen zur Verarbeitung Ihrer personenbezogenen Daten kontaktieren Sie uns bitte unter info@trucksleon.com."
+  },
+  "legal": {
+    "title": "Rechtlicher Hinweis",
+    "badge": "Rechtliches",
+    "placeholder": "Dieses Dokument ist in Vorbereitung. Bei rechtlichen Anfragen kontaktieren Sie uns bitte unter info@trucksleon.com."
   }
 }

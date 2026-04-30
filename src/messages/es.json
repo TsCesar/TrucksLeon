@@ -230,12 +230,25 @@
   },
   "aria": {
     "logoLink": "TrucksLeón International - Inicio",
+    "logoAlt": "TrucksLeón International",
     "mainNav": "Navegación principal",
     "openMenu": "Abrir menú",
     "closeMenu": "Cerrar menú",
     "mobileMenuTitle": "Menú",
     "mobileMenuNav": "Menú de navegación",
     "changeLanguage": "Cambiar idioma",
-    "selectLanguage": "Seleccionar idioma"
+    "selectLanguage": "Seleccionar idioma",
+    "facebook": "Facebook",
+    "whatsapp": "WhatsApp"
+  },
+  "privacy": {
+    "title": "Política de Privacidad",
+    "badge": "Legal",
+    "placeholder": "Este documento está en preparación. Para cualquier consulta sobre el tratamiento de sus datos personales, contacte con nosotros en info@trucksleon.com."
+  },
+  "legal": {
+    "title": "Aviso Legal",
+    "badge": "Legal",
+    "placeholder": "Este documento está en preparación. Para cualquier consulta legal, contacte con nosotros en info@trucksleon.com."
   }
 }
