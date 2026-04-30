@@ -3,7 +3,7 @@ import { Globe } from 'lucide-react'
 import { Section } from '@/components/ui/Section'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/animations/Reveal'
-import { europeanCountries } from '@/data/countries'
+import { EuropeRouteMap } from '@/components/animations/EuropeRouteMap'
 
 export function EuropePreview() {
   const t = useTranslations()
@@ -27,7 +27,6 @@ export function EuropePreview() {
               <p className="text-steel leading-relaxed mb-8">
                 {t('europe.description')}
               </p>
-              {/* Countries counter */}
               <div className="inline-flex items-center gap-4 px-5 py-4 rounded-xl bg-graphite/60 border border-white/5">
                 <span className="font-mono text-3xl font-bold text-red-accent leading-none">+15</span>
                 <span className="text-sm text-steel leading-tight">{t('hero.stats.countries')}</span>
@@ -35,16 +34,8 @@ export function EuropePreview() {
             </div>
           </Reveal>
           <Reveal direction="right" delay={0.2}>
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-              {europeanCountries.map((country) => (
-                <div
-                  key={country.code}
-                  className="flex flex-col items-center gap-2 p-3 rounded-xl bg-graphite border border-white/5 hover:border-white/20 hover:bg-white/5 transition-all duration-200 cursor-default"
-                >
-                  <span className="text-2xl" role="img" aria-label={country.name}>{country.flag}</span>
-                  <span className="text-xs text-steel text-center leading-tight">{country.name}</span>
-                </div>
-              ))}
+            <div className="p-6 rounded-2xl bg-graphite/40 border border-white/5">
+              <EuropeRouteMap />
             </div>
           </Reveal>
         </div>

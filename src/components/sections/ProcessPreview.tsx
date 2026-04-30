@@ -23,7 +23,7 @@ export function ProcessPreview() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {steps.map((step, i) => (
               <Reveal key={step} direction="up" delay={i * 0.12}>
-                <div className="relative p-6 rounded-xl bg-graphite border border-white/5 h-full overflow-hidden">
+                <div className="group relative p-6 rounded-xl bg-graphite border border-white/5 h-full overflow-hidden hover:-translate-y-1 hover:border-red-accent/20 hover:shadow-[0_8px_32px_rgba(215,25,32,0.08)] transition-all duration-300">
                   {/* Large ghost number */}
                   <span
                     className="absolute -bottom-3 -right-1 font-mono font-bold text-off-white/[0.04] leading-none select-none pointer-events-none"

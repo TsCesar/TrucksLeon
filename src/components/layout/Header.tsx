@@ -33,10 +33,10 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-[100] transition-all duration-300',
+          'fixed top-0 left-0 right-0 z-[100] transition-all duration-500',
           scrolled
-            ? 'bg-carbon/95 backdrop-blur-md border-b border-white/8 shadow-2xl'
-            : 'bg-gradient-to-b from-black/60 to-transparent'
+            ? 'bg-carbon/96 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_0_rgba(215,25,32,0.12),0_4px_32px_rgba(0,0,0,0.5)]'
+            : 'bg-gradient-to-b from-black/70 to-transparent'
         )}
       >
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,7 +52,7 @@ export function Header() {
                 alt={t('aria.logoAlt')}
                 width={160}
                 height={48}
-                className="h-10 w-auto object-contain"
+                className="h-10 lg:h-11 w-auto object-contain"
                 priority
               />
             </Link>
@@ -67,10 +67,10 @@ export function Header() {
                     key={item.href}
                     href={href}
                     className={cn(
-                      'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                      'px-3 py-2 rounded-lg text-[13px] font-medium transition-colors duration-200',
                       isActive
                         ? 'text-red-accent'
-                        : 'text-steel hover:text-off-white'
+                        : 'text-steel/80 hover:text-off-white'
                     )}
                   >
                     {t(item.labelKey)}
