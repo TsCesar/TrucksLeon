@@ -40,7 +40,8 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  const { consent: _consent, honeypot: _honeypot, ...emailData } = result.data
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { consent: _, honeypot: __, ...emailData } = result.data
 
   const { ok } = await sendContactEmail(emailData)
   if (!ok) {

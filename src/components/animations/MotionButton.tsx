@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion } from 'motion/react'
 import type { ReactNode, ButtonHTMLAttributes } from 'react'
-import { cn } from '@/lib/utils'
 
 type MotionButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   children: ReactNode

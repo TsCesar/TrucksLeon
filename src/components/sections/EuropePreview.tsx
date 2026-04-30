@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl'
-import { Section, SectionHeader } from '@/components/ui/Section'
+import { Section } from '@/components/ui/Section'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/animations/Reveal'
 import { europeanCountries } from '@/data/countries'

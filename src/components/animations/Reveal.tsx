@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useReducedMotion } from 'motion/react'
+import { motion, useReducedMotion, type Variants } from 'motion/react'
 import type { ReactNode } from 'react'
 
 type Direction = 'up' | 'down' | 'left' | 'right' | 'none'
@@ -14,7 +14,7 @@ type RevealProps = {
   once?: boolean
 }
 
-const directionVariants: Record<Direction, { hidden: object; visible: object }> = {
+const directionVariants: Record<Direction, Variants> = {
   up:    { hidden: { opacity: 0, y: 30 },  visible: { opacity: 1, y: 0 } },
   down:  { hidden: { opacity: 0, y: -30 }, visible: { opacity: 1, y: 0 } },
   left:  { hidden: { opacity: 0, x: -30 }, visible: { opacity: 1, x: 0 } },
