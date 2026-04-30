@@ -40,10 +40,9 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const { consent: _, honeypot: __, ...emailData } = result.data
+  const { name, email, phone, company, message, locale } = result.data
 
-  const { ok } = await sendContactEmail(emailData)
+  const { ok } = await sendContactEmail({ name, email, phone, company, message, locale })
   if (!ok) {
     return NextResponse.json(
       { error: 'Failed to send email. Please try again later.' },

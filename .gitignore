@@ -27,5 +27,7 @@ pnpm-debug.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# code-review-graph
+# Local Claude Code / MCP tooling (no son parte de la web)
+.mcp.json
+.claude/
 .code-review-graph/
