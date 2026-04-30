@@ -21,7 +21,8 @@
     "embla-carousel-react": "^8.5.1",
     "lenis": "^1.1.14",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^2.6.0"
+    "tailwind-merge": "^2.6.0",
+    "resend": "^4.0.0"
   },
   "devDependencies": {
     "typescript": "^5",

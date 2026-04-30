@@ -3,7 +3,7 @@
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
-import { useTranslations } from 'next-intl'
+import { useTranslations, useLocale } from 'next-intl'
 import { CheckCircle, AlertCircle } from 'lucide-react'
 import { contactSchema, type ContactFormData } from '@/lib/validations'
 import { Input } from '@/components/ui/Input'
@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/Button'
 
 export function ContactForm() {
   const t = useTranslations()
+  const locale = useLocale()
   const [status, setStatus] = useState<'idle' | 'success' | 'error'>('idle')
 
   const {
@@ -21,14 +22,26 @@ export function ContactForm() {
     reset,
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
+    defaultValues: { honeypot: '' },
   })
 
-  async function onSubmit(_data: ContactFormData) {
-    // Endpoint will be connected in a future phase.
-    // Data is validated and ready — do not log sensitive fields in production.
-    await new Promise((resolve) => setTimeout(resolve, 800)) // Simulate network
-    setStatus('success')
-    reset()
+  async function onSubmit(data: ContactFormData) {
+    setStatus('idle')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept-Language': locale },
+        body: JSON.stringify(data),
+      })
+      if (res.ok) {
+        setStatus('success')
+        reset()
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
   function getError(key: keyof ContactFormData): string | undefined {
@@ -51,6 +64,18 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-5">
+      {/* Honeypot — hidden from real users, bots fill it in */}
+      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: '1px', height: '1px', overflow: 'hidden' }}>
+        <label htmlFor="website">Website</label>
+        <input
+          id="website"
+          type="text"
+          autoComplete="off"
+          tabIndex={-1}
+          {...register('honeypot')}
+        />
+      </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <Input
           label={t('contact.form.name')}
