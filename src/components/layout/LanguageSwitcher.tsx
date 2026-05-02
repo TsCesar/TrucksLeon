@@ -3,7 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl'
 import { useRouter, usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Check } from 'lucide-react'
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 import { locales, localeNames, localeFlags, type Locale } from '@/config/locales'
 import { cn } from '@/lib/utils'
@@ -28,9 +28,20 @@ export function LanguageSwitcher() {
   }, [])
 
   function switchLocale(newLocale: Locale) {
+    if (newLocale === locale) { setOpen(false); return }
     const segments = pathname.split('/')
-    segments[1] = newLocale
-    router.push(segments.join('/'))
+    // segments[0] is always '' (before leading slash)
+    if (locales.includes(segments[1] as Locale)) {
+      segments[1] = newLocale
+    } else if (segments[1] === '') {
+      // root path "/"
+      segments.splice(1, 0, newLocale)
+    } else {
+      segments.splice(1, 0, newLocale)
+    }
+    const newPath = segments.join('/') || '/'
+    const query = typeof window !== 'undefined' ? window.location.search : ''
+    router.push(newPath + query)
     setOpen(false)
   }
 
@@ -38,16 +49,22 @@ export function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-sm text-steel hover:text-off-white transition-colors focus-visible:ring-2 focus-visible:ring-red-accent"
+        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-red-accent"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={t('changeLanguage')}
       >
-        <span>{localeFlags[locale]}</span>
-        <span className="hidden sm:inline font-medium">{localeNames[locale]}</span>
+        {/* Code badge */}
+        <span className="font-mono text-[11px] font-bold tracking-widest text-off-white bg-white/[0.08] px-1.5 py-0.5 rounded">
+          {locale.toUpperCase()}
+        </span>
+        {/* Full name — hidden on small screens */}
+        <span className="hidden sm:block text-xs text-steel leading-none">
+          {localeNames[locale]}
+        </span>
         <ChevronDown
-          size={14}
-          className={cn('transition-transform duration-200', open && 'rotate-180')}
+          size={12}
+          className={cn('transition-transform duration-200 text-steel/60 flex-shrink-0', open && 'rotate-180')}
           aria-hidden
         />
       </button>
@@ -57,30 +74,41 @@ export function LanguageSwitcher() {
           <motion.ul
             role="listbox"
             aria-label={t('selectLanguage')}
-            initial={prefersReducedMotion ? {} : { opacity: 0, y: -8, scale: 0.97 }}
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: -6, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={prefersReducedMotion ? {} : { opacity: 0, y: -8, scale: 0.97 }}
+            exit={prefersReducedMotion ? {} : { opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 top-full mt-2 w-40 bg-graphite border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50"
+            className="absolute right-0 top-full mt-2 w-48 bg-graphite border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50"
           >
-            {locales.map((loc) => (
-              <li key={loc}>
-                <button
-                  role="option"
-                  aria-selected={loc === locale}
-                  onClick={() => switchLocale(loc)}
-                  className={cn(
-                    'w-full flex items-center gap-2.5 px-4 py-2.5 text-sm transition-colors',
-                    loc === locale
-                      ? 'text-red-accent bg-red-accent/10'
-                      : 'text-steel hover:text-off-white hover:bg-white/5'
-                  )}
-                >
-                  <span>{localeFlags[loc]}</span>
-                  <span>{localeNames[loc]}</span>
-                </button>
-              </li>
-            ))}
+            {locales.map((loc) => {
+              const isActive = loc === locale
+              return (
+                <li key={loc}>
+                  <button
+                    role="option"
+                    aria-selected={isActive}
+                    onClick={() => switchLocale(loc)}
+                    className={cn(
+                      'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
+                      isActive
+                        ? 'text-red-accent bg-red-accent/10 border-l-2 border-red-accent'
+                        : 'text-steel hover:text-off-white hover:bg-white/5 border-l-2 border-transparent'
+                    )}
+                  >
+                    <span className="text-base leading-none flex-shrink-0" aria-hidden>
+                      {localeFlags[loc]}
+                    </span>
+                    <span className="font-mono text-[11px] font-bold tracking-wide flex-shrink-0">
+                      {loc.toUpperCase()}
+                    </span>
+                    <span className="text-xs flex-1 text-left">{localeNames[loc]}</span>
+                    {isActive && (
+                      <Check size={12} className="text-red-accent flex-shrink-0" aria-hidden />
+                    )}
+                  </button>
+                </li>
+              )
+            })}
           </motion.ul>
         )}
       </AnimatePresence>

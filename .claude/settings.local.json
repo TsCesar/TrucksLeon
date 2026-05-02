@@ -43,11 +43,16 @@
       "Bash(npm show *)",
       "Bash(node -e \"const v=JSON.parse\\(require\\('fs'\\).readFileSync\\('/dev/stdin','utf8'\\)\\); const f=v.filter\\(x=>x.startsWith\\('15.'\\)\\); console.log\\('Latest 15.x:',f[f.length-1]\\)\")",
       "Bash(npm audit *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npx skills *)",
+      "Bash(npx --yes impeccable --version)",
+      "Bash(uipro --version)",
+      "Bash(git clone *)",
+      "Bash(npx impeccable *)"
     ]
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "code-review-graph"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }

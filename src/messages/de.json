@@ -63,12 +63,15 @@
   "europe": {
     "badge": "Europa",
     "title": "Europäische Präsenz",
-    "subtitle": "Wir operieren auf dem gesamten europäischen Markt",
-    "description": "Unser Netzwerk aus Kontakten und Erfahrung auf dem europäischen Markt ermöglicht es uns, Operationen in mehr als 15 Ländern zu verwalten."
+    "subtitle": "Wir operieren auf dem gesamten europäischen Markt mit Erfahrung und Verbindungen in den wichtigsten Ländern",
+    "description": "Unser Netzwerk aus Kontakten und Erfahrung auf dem europäischen Markt ermöglicht es uns, Operationen in mehr als 15 Ländern zu verwalten.",
+    "coverage": "Abdeckung in mehr als 15 europäischen Ländern"
   },
   "process": {
     "title": "Unser Prozess",
     "subtitle": "Ein klarer, professioneller und transparenter Prozess von Anfang bis Ende",
+    "pageBadge": "Wie wir arbeiten",
+    "overview": "Ein Prozess, bei dem Sie sich nur um die Fahrzeugauswahl kümmern müssen. Wir erledigen den Rest.",
     "steps": {
       "contact": { "number": "01", "title": "Erstkontakt", "description": "Sie erklären Ihren Bedarf und wir analysieren gemeinsam die beste Lösung." },
       "search": { "number": "02", "title": "Suche & Auswahl", "description": "Wir finden das ideale Fahrzeug oder den idealen Käufer in unserem europäischen Netzwerk." },
@@ -110,8 +113,49 @@
   "about": {
     "title": "Über Uns",
     "subtitle": "Industriefahrzeug-Spezialisten mit Präsenz in ganz Europa",
-    "description": "TrucksLeón International ist auf das umfassende Management von Industriefahrzeugen auf dem europäischen Markt spezialisiert.",
-    "values": { "experience": "Erfahrung", "transparency": "Transparenz", "commitment": "Engagement", "professionalism": "Professionalität" }
+    "description": "TrucksLeón International ist auf das umfassende Management von Industriefahrzeugen auf dem europäischen Markt spezialisiert. Wir bieten Beratung, Kauf, Verkauf, Import, Export, Dokumentation und Logistik für Fachleute der Branche.",
+    "values": { "experience": "Erfahrung", "transparency": "Transparenz", "commitment": "Engagement", "professionalism": "Professionalität" },
+    "strengths": {
+      "title": "Unsere Stärken",
+      "european": { "title": "Europäische Abdeckung", "description": "Wir operieren in mehr als 15 europäischen Ländern mit einem etablierten Netzwerk aus Kontakten und Lieferanten." },
+      "integral": { "title": "Komplettmanagement", "description": "Wir übernehmen den gesamten Prozess: Suche, Dokumentation, Logistik und Endlieferung." },
+      "documentation": { "title": "Vollständige Dokumentation", "description": "Wir bearbeiten alle nationalen und internationalen Dokumente mit vollständiger Rechtssicherheit." },
+      "network": { "title": "Europäisches Netzwerk", "description": "Umfangreiches Netzwerk aus Käufern, Verkäufern und Logistikoperatoren in ganz Europa." }
+    },
+    "positioning": {
+      "badge": "Unsere Mission",
+      "title": "Wir verwalten die gesamte Operation",
+      "description": "Von der Fahrzeugsuche bis zur Lieferung mit allen erforderlichen Dokumenten. Wir arbeiten mit vollständiger Transparenz in ganz Europa.",
+      "cta": "Mit uns sprechen"
+    }
+  },
+  "vehicles": {
+    "notice": "Wir prüfen die Verfügbarkeit in Echtzeit in ganz Europa. Teilen Sie uns Ihre spezifischen Anforderungen mit.",
+    "consultTitle": "Haben Sie eine spezifische Anforderung?",
+    "consultDescription": "Teilen Sie uns mit, welchen Fahrzeugtyp Sie benötigen, und wir verwalten die Suche in unserem europäischen Netzwerk.",
+    "ctaDelivered": "Gelieferte Fahrzeuge ansehen"
+  },
+  "news": {
+    "title": "Neuigkeiten",
+    "subtitle": "Wir bereiten wertvolle Inhalte für den industriellen Transportsektor vor.",
+    "comingSoonBadge": "Demnächst",
+    "cards": {
+      "delivered": {
+        "title": "Gelieferte Fahrzeuge",
+        "description": "Durchsuchen Sie das Portfolio der erfolgreich auf dem europäischen Markt abgeschlossenen Operationen.",
+        "cta": "Gelieferte ansehen"
+      },
+      "european": {
+        "title": "Europäischer Markt",
+        "description": "Wir operieren in mehr als 15 Ländern. Kontaktieren Sie uns für internationale Kauf- oder Verkaufsoperationen.",
+        "cta": "Kontakt"
+      },
+      "import": {
+        "title": "Import & Export",
+        "description": "Wir verwalten alle Dokumentation und Logistik für internationale Operationen in Europa.",
+        "cta": "Leistungen ansehen"
+      }
+    }
   },
   "validation": {
     "name": { "min": "Name muss mindestens 2 Zeichen haben", "max": "Name darf nicht mehr als 100 Zeichen haben", "invalid": "Name darf nur Buchstaben und Leerzeichen enthalten" },
@@ -121,7 +165,17 @@
     "message": { "min": "Nachricht muss mindestens 10 Zeichen haben", "max": "Nachricht darf nicht mehr als 2000 Zeichen haben" },
     "consent": { "required": "Sie müssen die Datenschutzrichtlinie akzeptieren" }
   },
-  "common": { "learnMore": "Mehr erfahren", "seeAll": "Alle ansehen", "back": "Zurück", "loading": "Laden...", "error": "Ein Fehler ist aufgetreten", "comingSoon": "Demnächst verfügbar" },
+  "common": {
+    "learnMore": "Mehr erfahren",
+    "seeAll": "Alle ansehen",
+    "back": "Zurück",
+    "loading": "Laden...",
+    "error": "Ein Fehler ist aufgetreten",
+    "comingSoon": "Demnächst verfügbar",
+    "contactUs": "Kontaktieren Sie uns",
+    "viewDelivered": "Gelieferte ansehen",
+    "consultAvailability": "Verfügbarkeit prüfen"
+  },
   "aria": {
     "logoLink": "TrucksLeón International - Startseite",
     "logoAlt": "TrucksLeón International",

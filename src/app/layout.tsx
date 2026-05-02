@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  icons: {
+    icon: '/images/brand/logo-trucksleon.png',
+    shortcut: '/images/brand/logo-trucksleon.png',
+    apple: '/images/brand/logo-trucksleon.png',
+  },
 }
 
 export default function RootLayout({

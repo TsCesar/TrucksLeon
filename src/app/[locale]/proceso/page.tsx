@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
+import Link from 'next/link'
+import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
+import { PageHero } from '@/components/ui/PageHero'
+import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/animations/Reveal'
 import { ProcessPreview } from '@/components/sections/ProcessPreview'
 import { buildMetadata } from '@/lib/seo'
@@ -16,18 +20,50 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function ProcesoPage({ params }: Props) {
   const { locale } = await params
   const t = await getTranslations({ locale })
+
   return (
     <div className="pt-20 min-h-screen bg-carbon">
-      <div className="py-20 md:py-28 bg-graphite border-b border-white/8">
+      <PageHero
+        badge={t('process.pageBadge')}
+        title={t('process.title')}
+        subtitle={t('process.subtitle')}
+      />
+
+      {/* Overview banner */}
+      <section className="py-10 bg-graphite border-b border-white/5">
         <Container>
           <Reveal>
-            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">{t('nav.process')}</span>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-off-white mb-6">{t('process.title')}</h1>
-            <p className="text-steel text-xl max-w-2xl">{t('process.subtitle')}</p>
+            <p className="text-steel text-lg leading-relaxed max-w-2xl text-center mx-auto">
+              {t('process.overview')}
+            </p>
           </Reveal>
         </Container>
-      </div>
-      <ProcessPreview />
+      </section>
+
+      {/* Process steps — no header since page already has one */}
+      <ProcessPreview showHeader={false} />
+
+      {/* CTA */}
+      <section className="py-16 md:py-20 bg-graphite border-t border-white/5">
+        <Container narrow>
+          <Reveal>
+            <div className="text-center">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-off-white mb-4">
+                {t('trust.availability.title')}
+              </h2>
+              <p className="text-steel mb-8 max-w-md mx-auto leading-relaxed">
+                {t('trust.availability.description')}
+              </p>
+              <Link href={`/${locale}/contacto`}>
+                <Button size="lg" className="group">
+                  {t('nav.contactCta')}
+                  <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />
+                </Button>
+              </Link>
+            </div>
+          </Reveal>
+        </Container>
+      </section>
     </div>
   )
 }

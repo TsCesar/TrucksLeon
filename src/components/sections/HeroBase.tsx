@@ -34,7 +34,7 @@ export function HeroBase() {
       className="relative min-h-[100dvh] flex items-center overflow-hidden bg-carbon"
       aria-label="Hero"
     >
-      {/* Background image — slow breathing scale gives pseudo-video feel */}
+      {/* Background image */}
       <div className="absolute inset-0 z-0">
         <motion.div
           className="absolute inset-0"
@@ -51,14 +51,12 @@ export function HeroBase() {
             sizes="100vw"
           />
         </motion.div>
-        {/* Multi-layer gradient composition */}
         <div className="absolute inset-0 bg-gradient-to-r from-carbon from-30% via-carbon/80 to-carbon/30" />
         <div className="absolute inset-0 bg-gradient-to-t from-carbon via-transparent to-carbon/75" />
         <div className="absolute inset-0 bg-gradient-to-b from-carbon/20 via-transparent to-transparent" />
       </div>
 
-      {/* Technical overlay */}
-      <TechnicalLines className="z-[1]" lineCount={4} />
+      <TechnicalLines className="z-[1]" lineCount={4} showAccentLine={false} showScanner={false} intensity="subtle" />
 
       {/* Grid lines */}
       <div className="absolute inset-0 z-[1] opacity-[0.04]" aria-hidden>
@@ -72,7 +70,7 @@ export function HeroBase() {
         />
       </div>
 
-      {/* Red radial glow — left content area */}
+      {/* Red radial glow */}
       <div className="absolute inset-0 z-[2] pointer-events-none" aria-hidden>
         <div className="absolute left-[-10%] top-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-red-accent/[0.06] rounded-full blur-[140px]" />
       </div>
@@ -96,7 +94,7 @@ export function HeroBase() {
         aria-hidden
       />
 
-      {/* Animated left accent line */}
+      {/* Left accent line */}
       <motion.div
         className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-red-accent to-transparent z-10"
         aria-hidden
@@ -109,7 +107,6 @@ export function HeroBase() {
       {/* Content */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
         <div className="max-w-3xl">
-          {/* Badge with animated pulse dot */}
           <motion.div {...fadeUp(0.1)}>
             <Badge className="mb-6 gap-2">
               <motion.span
@@ -151,33 +148,45 @@ export function HeroBase() {
             </Link>
           </motion.div>
 
-          {/* Stats — responsive: grid on mobile, dividers on desktop */}
-          <motion.div {...fadeUp(0.65)} className="mt-16">
+          {/* Stats with staggered reveal */}
+          <div className="mt-16">
             <div className="grid grid-cols-3 sm:hidden gap-2">
-              {stats.map((stat) => (
-                <div key={stat.labelKey} className="text-center">
+              {stats.map((stat, i) => (
+                <motion.div
+                  key={stat.labelKey}
+                  className="text-center"
+                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 16, scale: 0.88 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.55, delay: 0.7 + i * 0.13, ease }}
+                >
                   <div className="text-2xl font-heading font-bold text-red-accent font-mono tracking-tight leading-none">
                     {stat.value}
                   </div>
                   <div className="text-[10px] text-steel uppercase tracking-wide mt-1.5 leading-tight">
                     {t(stat.labelKey)}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
             <div className="hidden sm:flex items-start divide-x divide-white/10">
               {stats.map((stat, i) => (
-                <div key={stat.labelKey} className={i === 0 ? 'pr-8' : 'px-8'}>
+                <motion.div
+                  key={stat.labelKey}
+                  className={i === 0 ? 'pr-8' : 'px-8'}
+                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 16, scale: 0.88 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{ duration: 0.55, delay: 0.7 + i * 0.13, ease }}
+                >
                   <div className="text-3xl font-heading font-bold text-red-accent font-mono tracking-tight leading-none">
                     {stat.value}
                   </div>
                   <div className="text-xs text-steel uppercase tracking-wider mt-1.5">
                     {t(stat.labelKey)}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

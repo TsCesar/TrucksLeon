@@ -1,6 +1,6 @@
 import { useTranslations, useLocale } from 'next-intl'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Truck } from 'lucide-react'
 import { Section, SectionHeader } from '@/components/ui/Section'
 import { Container } from '@/components/ui/Container'
 import { Stagger, StaggerItem } from '@/components/animations/Stagger'
@@ -25,16 +25,29 @@ export function VehicleCategoriesPreview() {
               <StaggerItem key={cat.id}>
                 <Link
                   href={`/${locale}/vehiculos?categoria=${cat.slug}`}
-                  className="group relative flex items-center justify-between p-4 rounded-xl bg-graphite border border-white/5 hover:border-red-accent/30 hover:bg-red-accent/5 hover:-translate-y-0.5 transition-all duration-200 min-h-[90px] overflow-hidden"
+                  className="group relative flex items-center gap-3 p-4 rounded-xl bg-graphite border border-white/5 hover:border-red-accent/40 hover:bg-red-accent/5 hover:-translate-y-0.5 hover:shadow-[0_4px_20px_rgba(215,25,32,0.08)] transition-all duration-200 min-h-[80px] overflow-hidden"
                 >
-                  {/* Ghost number */}
-                  <span className="absolute bottom-1 left-3 font-mono text-[3rem] font-bold text-off-white/[0.05] leading-none select-none pointer-events-none" aria-hidden>
+                  <span
+                    className="absolute bottom-0 right-2 font-mono text-[2.5rem] font-bold text-off-white/[0.05] leading-none select-none pointer-events-none"
+                    aria-hidden
+                  >
                     {ghostNum}
                   </span>
-                  <span className="text-sm font-medium text-steel group-hover:text-off-white transition-colors relative z-10">
+                  <div className="w-8 h-8 rounded-lg bg-white/5 group-hover:bg-red-accent/15 flex items-center justify-center flex-shrink-0 transition-colors">
+                    <Truck
+                      size={14}
+                      className="text-steel/50 group-hover:text-red-accent transition-colors"
+                      aria-hidden
+                    />
+                  </div>
+                  <span className="text-sm font-medium text-steel group-hover:text-off-white transition-colors relative z-10 leading-tight flex-1">
                     {t(cat.titleKey)}
                   </span>
-                  <ArrowRight size={14} className="text-red-accent flex-shrink-0 relative z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200" aria-hidden />
+                  <ArrowRight
+                    size={14}
+                    className="text-red-accent flex-shrink-0 relative z-10 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-200"
+                    aria-hidden
+                  />
                 </Link>
               </StaggerItem>
             )

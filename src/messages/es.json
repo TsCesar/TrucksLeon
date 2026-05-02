@@ -26,54 +26,18 @@
   "services": {
     "title": "Nuestros Servicios",
     "subtitle": "Gestión integral para todo tipo de operaciones con vehículos industriales en Europa",
-    "advisory": {
-      "title": "Asesoramiento",
-      "description": "Orientación especializada en la compra, venta e importación de vehículos industriales en el mercado europeo."
-    },
-    "management": {
-      "title": "Gestión",
-      "description": "Gestión completa de todas las operaciones relacionadas con vehículos industriales, desde la búsqueda hasta la entrega."
-    },
-    "documentation": {
-      "title": "Documentación",
-      "description": "Tramitación y gestión de toda la documentación necesaria para operaciones nacionales e internacionales."
-    },
-    "buySell": {
-      "title": "Compra y Venta",
-      "description": "Intermediación profesional en la compra y venta de todo tipo de vehículos industriales en Europa."
-    },
-    "import": {
-      "title": "Importación",
-      "description": "Gestión completa de procesos de importación de vehículos desde cualquier país europeo."
-    },
-    "export": {
-      "title": "Exportación",
-      "description": "Exportación de vehículos industriales a cualquier destino europeo con toda la documentación en regla."
-    },
-    "customs": {
-      "title": "Trámites Aduaneros",
-      "description": "Gestión experta de todos los trámites aduaneros para operaciones internacionales."
-    },
-    "transport": {
-      "title": "Transporte",
-      "description": "Soluciones de transporte especializadas para el traslado de vehículos industriales en Europa."
-    },
-    "logistics": {
-      "title": "Logística",
-      "description": "Planificación y gestión logística completa para la distribución de vehículos en Europa."
-    },
-    "homologation": {
-      "title": "Homologaciones",
-      "description": "Tramitación de homologaciones y legalizaciones de vehículos para circular en España y Europa."
-    },
-    "certificates": {
-      "title": "Certificados",
-      "description": "Obtención y gestión de certificados técnicos necesarios para la operación de vehículos industriales."
-    },
-    "appraisal": {
-      "title": "Peritajes y Valoraciones",
-      "description": "Informes técnicos, peritajes y valoraciones profesionales de vehículos industriales."
-    }
+    "advisory": { "title": "Asesoramiento", "description": "Orientación especializada en la compra, venta e importación de vehículos industriales en el mercado europeo." },
+    "management": { "title": "Gestión", "description": "Gestión completa de todas las operaciones relacionadas con vehículos industriales, desde la búsqueda hasta la entrega." },
+    "documentation": { "title": "Documentación", "description": "Tramitación y gestión de toda la documentación necesaria para operaciones nacionales e internacionales." },
+    "buySell": { "title": "Compra y Venta", "description": "Intermediación profesional en la compra y venta de todo tipo de vehículos industriales en Europa." },
+    "import": { "title": "Importación", "description": "Gestión completa de procesos de importación de vehículos desde cualquier país europeo." },
+    "export": { "title": "Exportación", "description": "Exportación de vehículos industriales a cualquier destino europeo con toda la documentación en regla." },
+    "customs": { "title": "Trámites Aduaneros", "description": "Gestión experta de todos los trámites aduaneros para operaciones internacionales." },
+    "transport": { "title": "Transporte", "description": "Soluciones de transporte especializadas para el traslado de vehículos industriales en Europa." },
+    "logistics": { "title": "Logística", "description": "Planificación y gestión logística completa para la distribución de vehículos en Europa." },
+    "homologation": { "title": "Homologaciones", "description": "Tramitación de homologaciones y legalizaciones de vehículos para circular en España y Europa." },
+    "certificates": { "title": "Certificados", "description": "Obtención y gestión de certificados técnicos necesarios para la operación de vehículos industriales." },
+    "appraisal": { "title": "Peritajes y Valoraciones", "description": "Informes técnicos, peritajes y valoraciones profesionales de vehículos industriales." }
   },
   "categories": {
     "title": "Categorías de Vehículos",
@@ -100,32 +64,19 @@
     "badge": "Europa",
     "title": "Presencia Europea",
     "subtitle": "Operamos en todo el mercado europeo con experiencia y conexiones en los principales países",
-    "description": "Nuestra red de contactos y experiencia en el mercado europeo nos permite gestionar operaciones en más de 15 países, facilitando compras, ventas, importaciones y exportaciones con total garantía."
+    "description": "Nuestra red de contactos y experiencia en el mercado europeo nos permite gestionar operaciones en más de 15 países, facilitando compras, ventas, importaciones y exportaciones con total garantía.",
+    "coverage": "Cobertura en más de 15 países europeos"
   },
   "process": {
     "title": "Proceso de Trabajo",
     "subtitle": "Un proceso claro, profesional y transparente de principio a fin",
+    "pageBadge": "Cómo trabajamos",
+    "overview": "Un proceso diseñado para que solo te preocupes de elegir el vehículo. Nosotros gestionamos el resto.",
     "steps": {
-      "contact": {
-        "number": "01",
-        "title": "Contacto inicial",
-        "description": "Nos explicas tu necesidad y analizamos juntos la mejor solución para tu operación."
-      },
-      "search": {
-        "number": "02",
-        "title": "Búsqueda y selección",
-        "description": "Localizamos el vehículo o el comprador ideal en nuestra red europea de contactos."
-      },
-      "management": {
-        "number": "03",
-        "title": "Gestión integral",
-        "description": "Nos encargamos de toda la documentación, trámites y logística de la operación."
-      },
-      "delivery": {
-        "number": "04",
-        "title": "Entrega garantizada",
-        "description": "El vehículo llega a su destino con toda la documentación en regla y en perfecto estado."
-      }
+      "contact": { "number": "01", "title": "Contacto inicial", "description": "Nos explicas tu necesidad y analizamos juntos la mejor solución para tu operación." },
+      "search": { "number": "02", "title": "Búsqueda y selección", "description": "Localizamos el vehículo o el comprador ideal en nuestra red europea de contactos." },
+      "management": { "number": "03", "title": "Gestión integral", "description": "Nos encargamos de toda la documentación, trámites y logística de la operación." },
+      "delivery": { "number": "04", "title": "Entrega garantizada", "description": "El vehículo llega a su destino con toda la documentación en regla y en perfecto estado." }
     }
   },
   "contact": {
@@ -158,22 +109,10 @@
   },
   "trust": {
     "title": "¿Por qué elegirnos?",
-    "experience": {
-      "title": "Experiencia europea",
-      "description": "Años de experiencia operando en el mercado europeo de vehículos industriales."
-    },
-    "transparency": {
-      "title": "Transparencia total",
-      "description": "Información clara y honesta en cada fase de la operación."
-    },
-    "availability": {
-      "title": "Disponibilidad 24/7",
-      "description": "Equipo disponible todos los días del año para atender tus necesidades."
-    },
-    "network": {
-      "title": "Red europea",
-      "description": "Amplia red de contactos y proveedores en toda Europa."
-    }
+    "experience": { "title": "Experiencia europea", "description": "Años de experiencia operando en el mercado europeo de vehículos industriales." },
+    "transparency": { "title": "Transparencia total", "description": "Información clara y honesta en cada fase de la operación." },
+    "availability": { "title": "Disponibilidad 24/7", "description": "Equipo disponible todos los días del año para atender tus necesidades." },
+    "network": { "title": "Red europea", "description": "Amplia red de contactos y proveedores en toda Europa." }
   },
   "footer": {
     "description": "Especialistas en gestión integral de vehículos industriales en el mercado europeo.",
@@ -194,32 +133,56 @@
       "transparency": "Transparencia",
       "commitment": "Compromiso",
       "professionalism": "Profesionalidad"
+    },
+    "strengths": {
+      "title": "Nuestras fortalezas",
+      "european": { "title": "Cobertura europea", "description": "Operamos en más de 15 países europeos con una red de contactos y proveedores establecida." },
+      "integral": { "title": "Gestión integral", "description": "Nos encargamos de todo el proceso: búsqueda, documentación, logística y entrega final." },
+      "documentation": { "title": "Documentación completa", "description": "Tramitamos toda la documentación nacional e internacional con total seguridad jurídica." },
+      "network": { "title": "Red europea", "description": "Amplia red de compradores, vendedores y operadores logísticos en toda Europa." }
+    },
+    "positioning": {
+      "badge": "Nuestra misión",
+      "title": "Gestionamos la operación completa",
+      "description": "Desde la búsqueda del vehículo hasta la entrega con toda la documentación en regla. Trabajamos con total transparencia en toda Europa.",
+      "cta": "Hablar con nosotros"
+    }
+  },
+  "vehicles": {
+    "notice": "Consultamos disponibilidad en tiempo real en toda Europa. Indíquenos sus requerimientos específicos.",
+    "consultTitle": "¿Tiene algún requerimiento específico?",
+    "consultDescription": "Cuéntenos qué tipo de vehículo necesita y gestionamos la búsqueda en nuestra red europea de contactos.",
+    "ctaDelivered": "Ver vehículos entregados"
+  },
+  "news": {
+    "title": "Novedades",
+    "subtitle": "Estamos preparando contenido de valor para el sector del transporte industrial.",
+    "comingSoonBadge": "Próximamente",
+    "cards": {
+      "delivered": {
+        "title": "Vehículos Entregados",
+        "description": "Consulta la cartera de operaciones completadas con éxito en el mercado europeo.",
+        "cta": "Ver entregados"
+      },
+      "european": {
+        "title": "Mercado Europeo",
+        "description": "Operamos en más de 15 países. Contacta para gestiones internacionales de compra o venta.",
+        "cta": "Contactar"
+      },
+      "import": {
+        "title": "Importación y Exportación",
+        "description": "Gestionamos toda la documentación y logística para operaciones internacionales en Europa.",
+        "cta": "Ver servicios"
+      }
     }
   },
   "validation": {
-    "name": {
-      "min": "El nombre debe tener al menos 2 caracteres",
-      "max": "El nombre no puede superar 100 caracteres",
-      "invalid": "El nombre solo puede contener letras y espacios"
-    },
-    "email": {
-      "invalid": "Introduce un email válido"
-    },
-    "phone": {
-      "min": "El teléfono debe tener al menos 7 dígitos",
-      "max": "El teléfono no puede superar 20 caracteres",
-      "invalid": "Introduce un teléfono válido"
-    },
-    "company": {
-      "max": "El nombre de empresa no puede superar 150 caracteres"
-    },
-    "message": {
-      "min": "El mensaje debe tener al menos 10 caracteres",
-      "max": "El mensaje no puede superar 2000 caracteres"
-    },
-    "consent": {
-      "required": "Debes aceptar la política de privacidad"
-    }
+    "name": { "min": "El nombre debe tener al menos 2 caracteres", "max": "El nombre no puede superar 100 caracteres", "invalid": "El nombre solo puede contener letras y espacios" },
+    "email": { "invalid": "Introduce un email válido" },
+    "phone": { "min": "El teléfono debe tener al menos 7 dígitos", "max": "El teléfono no puede superar 20 caracteres", "invalid": "Introduce un teléfono válido" },
+    "company": { "max": "El nombre de empresa no puede superar 150 caracteres" },
+    "message": { "min": "El mensaje debe tener al menos 10 caracteres", "max": "El mensaje no puede superar 2000 caracteres" },
+    "consent": { "required": "Debes aceptar la política de privacidad" }
   },
   "common": {
     "learnMore": "Saber más",
@@ -227,7 +190,10 @@
     "back": "Volver",
     "loading": "Cargando...",
     "error": "Ha ocurrido un error",
-    "comingSoon": "Próximamente"
+    "comingSoon": "Próximamente",
+    "contactUs": "Contáctanos",
+    "viewDelivered": "Ver entregados",
+    "consultAvailability": "Consultar disponibilidad"
   },
   "aria": {
     "logoLink": "TrucksLeón International - Inicio",

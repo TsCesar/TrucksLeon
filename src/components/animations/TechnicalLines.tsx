@@ -4,21 +4,31 @@ import { motion, useReducedMotion } from 'motion/react'
 
 interface TechnicalLinesProps {
   className?: string
-  /** Number of horizontal lines */
   lineCount?: number
-  /** Accent line colour — defaults to red-accent */
+  showAccentLine?: boolean
+  showScanner?: boolean
+  intensity?: 'subtle' | 'normal'
   accentColor?: string
-  /** Base line colour */
   baseColor?: string
 }
 
 export function TechnicalLines({
   className = '',
   lineCount = 5,
+  showAccentLine = false,
+  showScanner = false,
+  intensity = 'subtle',
   accentColor = '#D71920',
-  baseColor = 'rgba(255,255,255,0.04)',
+  baseColor,
 }: TechnicalLinesProps) {
   const reduced = useReducedMotion()
+
+  const resolvedBase = baseColor ?? (
+    intensity === 'subtle'
+      ? 'rgba(255,255,255,0.03)'
+      : 'rgba(255,255,255,0.06)'
+  )
+  const cornerOpacity = intensity === 'subtle' ? '0.35' : '0.7'
 
   const lines = Array.from({ length: lineCount }, (_, i) => i)
 
@@ -27,15 +37,15 @@ export function TechnicalLines({
       className={`absolute inset-0 pointer-events-none overflow-hidden ${className}`}
       aria-hidden="true"
     >
-      {/* Horizontal scan lines */}
+      {/* Horizontal scan lines — never red unless showAccentLine */}
       {lines.map((i) => {
         const top = `${(100 / (lineCount + 1)) * (i + 1)}%`
-        const isAccent = i === Math.floor(lineCount / 2)
+        const isAccent = showAccentLine && i === Math.floor(lineCount / 2)
         return (
           <motion.div
             key={i}
             className="absolute left-0 right-0 h-px"
-            style={{ top, backgroundColor: isAccent ? accentColor : baseColor }}
+            style={{ top, backgroundColor: isAccent ? accentColor : resolvedBase }}
             initial={{ scaleX: 0, opacity: 0 }}
             animate={reduced ? { scaleX: 1, opacity: 1 } : { scaleX: [0, 1], opacity: [0, 1] }}
             transition={{
@@ -52,7 +62,7 @@ export function TechnicalLines({
         <motion.div
           key={pct}
           className="absolute top-0 bottom-0 w-px"
-          style={{ left: `${pct}%`, backgroundColor: baseColor }}
+          style={{ left: `${pct}%`, backgroundColor: resolvedBase }}
           initial={{ scaleY: 0, opacity: 0 }}
           animate={reduced ? { scaleY: 1, opacity: 1 } : { scaleY: [0, 1], opacity: [0, 0.6] }}
           transition={{
@@ -63,8 +73,8 @@ export function TechnicalLines({
         />
       ))}
 
-      {/* Moving accent line — the "scanner" */}
-      {!reduced && (
+      {/* Scanner — opt-in only */}
+      {showScanner && !reduced && (
         <motion.div
           className="absolute top-0 bottom-0 w-[2px] opacity-30"
           style={{ backgroundColor: accentColor }}
@@ -94,9 +104,9 @@ export function TechnicalLines({
                 !isRight && isBottom  ? 'M0 12 L0 24 L12 24' :
                                         'M12 24 L24 24 L24 12'
               }
-              stroke={accentColor}
+              stroke={resolvedBase}
               strokeWidth="1.5"
-              opacity="0.7"
+              opacity={cornerOpacity}
             />
           </motion.svg>
         )
