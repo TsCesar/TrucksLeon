@@ -39,7 +39,7 @@ export function MobileMenu({ open, onClose, locale }: MobileMenuProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40"
+            className="fixed inset-0 bg-ink/25 backdrop-blur-[3px] z-40"
             onClick={onClose}
             aria-hidden
           />
@@ -48,23 +48,23 @@ export function MobileMenu({ open, onClose, locale }: MobileMenuProps) {
             animate={{ x: 0 }}
             exit={prefersReducedMotion ? {} : { x: '100%' }}
             transition={{ type: 'spring', damping: 28, stiffness: 300 }}
-            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-graphite border-l border-white/10 z-50 flex flex-col"
+            className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-sm bg-surface border-l border-line/10 shadow-float z-50 flex flex-col"
             aria-label={t('aria.mobileMenuNav')}
             role="dialog"
             aria-modal="true"
           >
-            <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
-              <span className="font-heading font-bold text-off-white">{t('aria.mobileMenuTitle')}</span>
+            <div className="flex items-center justify-between px-6 py-5 border-b border-line/[0.08]">
+              <span className="font-heading font-bold text-ink">{t('aria.mobileMenuTitle')}</span>
               <button
                 onClick={onClose}
-                className="p-2 rounded-lg text-steel hover:text-off-white hover:bg-white/5 transition-colors"
+                className="p-2.5 -mr-1 rounded-lg text-steel hover:text-ink hover:bg-line/[0.05] transition-colors"
                 aria-label={t('aria.closeMenu')}
               >
                 <X size={20} aria-hidden />
               </button>
             </div>
 
-            <ul className="flex-1 overflow-y-auto py-4">
+            <ul className="flex-1 overflow-y-auto py-3">
               {navItems.map((item, i) => {
                 const href = `/${locale}${item.href === '/' ? '' : item.href}`
                 const isActive = pathname === href || (item.href !== '/' && pathname.startsWith(href))
@@ -78,11 +78,12 @@ export function MobileMenu({ open, onClose, locale }: MobileMenuProps) {
                     <Link
                       href={href}
                       onClick={onClose}
+                      aria-current={isActive ? 'page' : undefined}
                       className={cn(
-                        'flex items-center px-6 py-4 text-base font-medium transition-colors border-l-2',
+                        'flex items-center px-6 py-4 text-base font-medium transition-colors border-l-[3px]',
                         isActive
-                          ? 'text-red-accent border-red-accent bg-red-accent/5'
-                          : 'text-steel hover:text-off-white border-transparent hover:border-white/20'
+                          ? 'text-red-text border-red-accent bg-red-accent/[0.05]'
+                          : 'text-steel border-transparent hover:text-ink hover:bg-line/[0.035] hover:border-line/15'
                       )}
                     >
                       {t(item.labelKey)}
@@ -92,7 +93,7 @@ export function MobileMenu({ open, onClose, locale }: MobileMenuProps) {
               })}
             </ul>
 
-            <div className="p-6 border-t border-white/10">
+            <div className="p-6 border-t border-line/[0.08] bg-canvas">
               <Link href={`/${locale}/contacto`} onClick={onClose}>
                 <Button className="w-full">{t('nav.contactCta')}</Button>
               </Link>

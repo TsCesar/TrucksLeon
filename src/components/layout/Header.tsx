@@ -22,6 +22,7 @@ export function Header() {
 
   useEffect(() => {
     function onScroll() { setScrolled(window.scrollY > 20) }
+    onScroll()
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -33,32 +34,42 @@ export function Header() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.25, 0.1, 0.25, 1] }}
         className={cn(
-          'fixed top-0 left-0 right-0 z-[100] transition-all duration-500',
+          'fixed top-0 left-0 right-0 z-[100] transition-[background-color,box-shadow,border-color] duration-300',
+          'bg-surface/80 backdrop-blur-xl backdrop-saturate-150 border-b',
           scrolled
-            ? 'bg-carbon/96 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_1px_0_rgba(215,25,32,0.12),0_4px_32px_rgba(0,0,0,0.5)]'
-            : 'bg-gradient-to-b from-black/70 to-transparent'
+            ? 'border-line/10 shadow-header'
+            : 'border-transparent'
         )}
       >
+        {/* Hairline of brand red that fades in with scroll */}
+        <div
+          className={cn(
+            'absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-red-accent/45 to-transparent transition-opacity duration-300',
+            scrolled ? 'opacity-100' : 'opacity-0'
+          )}
+          aria-hidden
+        />
+
         <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 lg:h-20">
-            {/* Logo */}
+          <div className="flex items-center justify-between h-16 lg:h-20 gap-3">
+            {/* Logo — dark lettering reads directly on the white header */}
             <Link
               href={`/${locale}`}
-              className="flex items-center gap-3 flex-shrink-0 focus-visible:ring-2 focus-visible:ring-red-accent rounded-lg"
+              className="group flex-shrink-0 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-accent focus-visible:ring-offset-4 focus-visible:ring-offset-surface"
               aria-label={t('aria.logoLink')}
             >
               <Image
                 src="/images/brand/logo-trucksleon.png"
                 alt={t('aria.logoAlt')}
-                width={160}
-                height={48}
-                className="h-10 lg:h-11 w-auto object-contain"
+                width={180}
+                height={54}
+                className="h-12 lg:h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                 priority
               />
             </Link>
 
             {/* Desktop nav */}
-            <nav className="hidden lg:flex items-center gap-1" aria-label={t('aria.mainNav')}>
+            <nav className="hidden lg:flex items-center gap-0.5" aria-label={t('aria.mainNav')}>
               {navItems.slice(0, -1).map((item) => {
                 const href = `/${locale}${item.href === '/' ? '' : item.href}`
                 const isActive = pathname === href || (item.href !== '/' && pathname.startsWith(href))
@@ -66,28 +77,36 @@ export function Header() {
                   <Link
                     key={item.href}
                     href={href}
+                    aria-current={isActive ? 'page' : undefined}
                     className={cn(
-                      'px-3 py-2 rounded-lg text-[13px] font-medium transition-colors duration-200',
+                      'relative px-3 py-2.5 rounded-lg text-[13px] font-medium transition-colors duration-200',
                       isActive
-                        ? 'text-red-accent'
-                        : 'text-steel/80 hover:text-off-white'
+                        ? 'text-red-text'
+                        : 'text-steel hover:text-ink hover:bg-line/[0.035]'
                     )}
                   >
                     {t(item.labelKey)}
+                    <span
+                      className={cn(
+                        'absolute left-3 right-3 -bottom-px h-[2px] rounded-full bg-red-accent origin-center transition-transform duration-300 ease-out-expo',
+                        isActive ? 'scale-x-100' : 'scale-x-0'
+                      )}
+                      aria-hidden
+                    />
                   </Link>
                 )
               })}
             </nav>
 
             {/* Right actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5">
               <LanguageSwitcher />
               <Link href={`/${locale}/contacto`} className="hidden lg:block">
                 <Button size="sm">{t('nav.contactCta')}</Button>
               </Link>
               <button
                 onClick={() => setMobileOpen(true)}
-                className="lg:hidden p-2 rounded-lg text-steel hover:text-off-white hover:bg-white/5 transition-colors"
+                className="lg:hidden p-2.5 -mr-1 rounded-lg text-steel hover:text-ink hover:bg-line/[0.05] transition-colors"
                 aria-label={t('aria.openMenu')}
                 aria-expanded={mobileOpen}
               >

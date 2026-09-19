@@ -26,18 +26,54 @@
   "services": {
     "title": "Onze Diensten",
     "subtitle": "Integraal beheer voor alle soorten operaties met industriële voertuigen in Europa",
-    "advisory": { "title": "Advies", "description": "Gespecialiseerde begeleiding bij aankoop, verkoop en import van industriële voertuigen op de Europese markt." },
-    "management": { "title": "Beheer", "description": "Volledig beheer van alle operaties met betrekking tot industriële voertuigen." },
-    "documentation": { "title": "Documentatie", "description": "Verwerking en beheer van alle benodigde documentatie voor nationale en internationale operaties." },
-    "buySell": { "title": "Koop & Verkoop", "description": "Professionele bemiddeling bij de aan- en verkoop van alle soorten industriële voertuigen in Europa." },
-    "import": { "title": "Import", "description": "Volledig beheer van importprocessen van voertuigen vanuit elk Europees land." },
-    "export": { "title": "Export", "description": "Export van industriële voertuigen naar elke Europese bestemming met alle documentatie in orde." },
-    "customs": { "title": "Douaneformaliteiten", "description": "Deskundig beheer van alle douaneformaliteiten voor internationale operaties." },
-    "transport": { "title": "Transport", "description": "Gespecialiseerde transportoplossingen voor het verplaatsen van industriële voertuigen in Europa." },
-    "logistics": { "title": "Logistiek", "description": "Volledige logistieke planning en beheer voor de distributie van voertuigen in Europa." },
-    "homologation": { "title": "Homologatie", "description": "Behandeling van homologaties en legaliseringen voor voertuigen." },
-    "certificates": { "title": "Certificaten", "description": "Verkrijging en beheer van technische certificaten voor industriële voertuigen." },
-    "appraisal": { "title": "Taxaties & Waarderingen", "description": "Technische rapporten, taxaties en professionele waarderingen van industriële voertuigen." }
+    "advisory": {
+      "title": "Advies",
+      "description": "Gespecialiseerde begeleiding bij aankoop, verkoop en import van industriële voertuigen op de Europese markt."
+    },
+    "management": {
+      "title": "Beheer",
+      "description": "Volledig beheer van alle operaties met betrekking tot industriële voertuigen."
+    },
+    "documentation": {
+      "title": "Documentatie",
+      "description": "Verwerking en beheer van alle benodigde documentatie voor nationale en internationale operaties."
+    },
+    "buySell": {
+      "title": "Koop & Verkoop",
+      "description": "Professionele bemiddeling bij de aan- en verkoop van alle soorten industriële voertuigen in Europa."
+    },
+    "import": {
+      "title": "Import",
+      "description": "Volledig beheer van importprocessen van voertuigen vanuit elk Europees land."
+    },
+    "export": {
+      "title": "Export",
+      "description": "Export van industriële voertuigen naar elke Europese bestemming met alle documentatie in orde."
+    },
+    "customs": {
+      "title": "Douaneformaliteiten",
+      "description": "Deskundig beheer van alle douaneformaliteiten voor internationale operaties."
+    },
+    "transport": {
+      "title": "Transport",
+      "description": "Gespecialiseerde transportoplossingen voor het verplaatsen van industriële voertuigen in Europa."
+    },
+    "logistics": {
+      "title": "Logistiek",
+      "description": "Volledige logistieke planning en beheer voor de distributie van voertuigen in Europa."
+    },
+    "homologation": {
+      "title": "Homologatie",
+      "description": "Behandeling van homologaties en legaliseringen voor voertuigen."
+    },
+    "certificates": {
+      "title": "Certificaten",
+      "description": "Verkrijging en beheer van technische certificaten voor industriële voertuigen."
+    },
+    "appraisal": {
+      "title": "Taxaties & Waarderingen",
+      "description": "Technische rapporten, taxaties en professionele waarderingen van industriële voertuigen."
+    }
   },
   "categories": {
     "title": "Voertuigcategorieën",
@@ -52,13 +88,18 @@
     "refrigerated": "Koelopleggers",
     "carCarriers": "Autotransporters",
     "extendableTrailers": "Uitschuifbare opleggers",
-    "livestockTrailers": "Veetrailers"
+    "livestockTrailers": "Veetrailers",
+    "cars": "Personenwagens op aanvraag"
   },
   "delivered": {
     "title": "Geleverde Voertuigen",
     "subtitle": "Een selectie van succesvol afgeronde operaties in Europa",
     "cta": "Alle geleverde voertuigen bekijken",
-    "badge": "Geleverd"
+    "badge": "Geleverd",
+    "statsCount": "geleverde voertuigen",
+    "statsCountries": "Europese landen",
+    "statsDoc": "documentatie conform",
+    "statsSupport": "beschikbaarheid"
   },
   "europe": {
     "badge": "Europa",
@@ -73,54 +114,113 @@
     "pageBadge": "Hoe wij werken",
     "overview": "Een proces ontworpen zodat u alleen het voertuig hoeft te kiezen. Wij regelen de rest.",
     "steps": {
-      "contact": { "number": "01", "title": "Eerste contact", "description": "U legt uw behoefte uit en wij analyseren samen de beste oplossing." },
-      "search": { "number": "02", "title": "Zoeken & selecteren", "description": "Wij vinden het ideale voertuig of de ideale koper in ons Europese netwerk." },
-      "management": { "number": "03", "title": "Volledig beheer", "description": "Wij zorgen voor alle documentatie, procedures en logistiek." },
-      "delivery": { "number": "04", "title": "Gegarandeerde levering", "description": "Het voertuig arriveert op bestemming met alle documentatie in orde." }
+      "contact": {
+        "number": "01",
+        "title": "Eerste contact",
+        "description": "U legt uw behoefte uit en wij analyseren samen de beste oplossing."
+      },
+      "search": {
+        "number": "02",
+        "title": "Zoeken & selecteren",
+        "description": "Wij vinden het ideale voertuig of de ideale koper in ons Europese netwerk."
+      },
+      "management": {
+        "number": "03",
+        "title": "Volledig beheer",
+        "description": "Wij zorgen voor alle documentatie, procedures en logistiek."
+      },
+      "delivery": {
+        "number": "04",
+        "title": "Gegarandeerde levering",
+        "description": "Het voertuig arriveert op bestemming met alle documentatie in orde."
+      }
     }
   },
   "contact": {
     "title": "Contact",
     "subtitle": "Wij zijn 24/7 beschikbaar voor uw aanvraag",
     "description": "Neem contact op met ons team van experts. Wij reageren zo snel mogelijk.",
-    "phone": "Telefoon", "email": "E-mail", "address": "Locatie", "hours": "Openingstijden", "whatsapp": "WhatsApp",
+    "phone": "Telefoon",
+    "email": "E-mail",
+    "address": "Locatie",
+    "hours": "Openingstijden",
+    "whatsapp": "WhatsApp",
     "form": {
       "title": "Stuur ons een bericht",
-      "name": "Volledige naam", "namePlaceholder": "Uw naam",
-      "email": "E-mail", "emailPlaceholder": "u@email.com",
-      "phone": "Telefoon", "phonePlaceholder": "+31 6 00 000 000",
-      "company": "Bedrijf (optioneel)", "companyPlaceholder": "Naam van uw bedrijf",
-      "message": "Bericht", "messagePlaceholder": "Vertel ons hoe wij u kunnen helpen...",
+      "name": "Volledige naam",
+      "namePlaceholder": "Uw naam",
+      "email": "E-mail",
+      "emailPlaceholder": "u@email.com",
+      "phone": "Telefoon",
+      "phonePlaceholder": "+31 6 00 000 000",
+      "company": "Bedrijf (optioneel)",
+      "companyPlaceholder": "Naam van uw bedrijf",
+      "message": "Bericht",
+      "messagePlaceholder": "Vertel ons hoe wij u kunnen helpen...",
       "consent": "Ik accepteer het privacybeleid en de verwerking van mijn persoonsgegevens.",
-      "submit": "Bericht versturen", "sending": "Verzenden...",
+      "submit": "Bericht versturen",
+      "sending": "Verzenden...",
       "success": "Bericht succesvol verzonden. Wij nemen binnenkort contact met u op.",
       "error": "Er is een fout opgetreden. Probeer het opnieuw of neem direct contact met ons op."
     }
   },
   "trust": {
     "title": "Waarom voor ons kiezen?",
-    "experience": { "title": "Europese ervaring", "description": "Jaren ervaring op de Europese markt voor industriële voertuigen." },
-    "transparency": { "title": "Volledige transparantie", "description": "Duidelijke en eerlijke informatie in elke fase van de operatie." },
-    "availability": { "title": "24/7 beschikbaar", "description": "Team beschikbaar elke dag van het jaar." },
-    "network": { "title": "Europees netwerk", "description": "Uitgebreid netwerk van contacten en leveranciers in heel Europa." }
+    "experience": {
+      "title": "Europese ervaring",
+      "description": "Jaren ervaring op de Europese markt voor industriële voertuigen."
+    },
+    "transparency": {
+      "title": "Volledige transparantie",
+      "description": "Duidelijke en eerlijke informatie in elke fase van de operatie."
+    },
+    "availability": {
+      "title": "24/7 beschikbaar",
+      "description": "Team beschikbaar elke dag van het jaar."
+    },
+    "network": {
+      "title": "Europees netwerk",
+      "description": "Uitgebreid netwerk van contacten en leveranciers in heel Europa."
+    }
   },
   "footer": {
     "description": "Specialisten in integraal beheer van industriële voertuigen op de Europese markt.",
-    "links": "Links", "contact": "Contact", "legal": "Juridisch",
-    "privacy": "Privacybeleid", "terms": "Juridische kennisgeving", "cookies": "Cookiebeleid",
+    "links": "Links",
+    "contact": "Contact",
+    "legal": "Juridisch",
+    "privacy": "Privacybeleid",
+    "terms": "Juridische kennisgeving",
+    "cookies": "Cookiebeleid",
     "copyright": "Alle rechten voorbehouden."
   },
   "about": {
     "title": "Over Ons",
     "subtitle": "Specialisten in industriële voertuigen met aanwezigheid in heel Europa",
     "description": "TrucksLeón International is gespecialiseerd in het integraal beheer van industriële voertuigen op de Europese markt. Wij bieden advies, koop, verkoop, import, export, documentatie en logistiek voor professionals in de sector.",
-    "values": { "experience": "Ervaring", "transparency": "Transparantie", "commitment": "Toewijding", "professionalism": "Professionaliteit" },
+    "values": {
+      "experience": "Ervaring",
+      "transparency": "Transparantie",
+      "commitment": "Toewijding",
+      "professionalism": "Professionaliteit"
+    },
     "strengths": {
       "title": "Onze sterke punten",
-      "european": { "title": "Europese dekking", "description": "Wij opereren in meer dan 15 Europese landen met een gevestigd netwerk van contacten en leveranciers." },
-      "integral": { "title": "Integraal beheer", "description": "Wij verzorgen het hele proces: zoeken, documentatie, logistiek en definitieve levering." },
-      "documentation": { "title": "Volledige documentatie", "description": "Wij verwerken alle nationale en internationale documentatie met volledige rechtszekerheid." },
-      "network": { "title": "Europees netwerk", "description": "Uitgebreid netwerk van kopers, verkopers en logistieke operators in heel Europa." }
+      "european": {
+        "title": "Europese dekking",
+        "description": "Wij opereren in meer dan 15 Europese landen met een gevestigd netwerk van contacten en leveranciers."
+      },
+      "integral": {
+        "title": "Integraal beheer",
+        "description": "Wij verzorgen het hele proces: zoeken, documentatie, logistiek en definitieve levering."
+      },
+      "documentation": {
+        "title": "Volledige documentatie",
+        "description": "Wij verwerken alle nationale en internationale documentatie met volledige rechtszekerheid."
+      },
+      "network": {
+        "title": "Europees netwerk",
+        "description": "Uitgebreid netwerk van kopers, verkopers en logistieke operators in heel Europa."
+      }
     },
     "positioning": {
       "badge": "Onze missie",
@@ -158,12 +258,29 @@
     }
   },
   "validation": {
-    "name": { "min": "Naam moet minimaal 2 tekens bevatten", "max": "Naam mag niet meer dan 100 tekens bevatten", "invalid": "Naam mag alleen letters en spaties bevatten" },
-    "email": { "invalid": "Voer een geldig e-mailadres in" },
-    "phone": { "min": "Telefoonnummer moet minimaal 7 cijfers bevatten", "max": "Telefoonnummer mag niet meer dan 20 tekens bevatten", "invalid": "Voer een geldig telefoonnummer in" },
-    "company": { "max": "Bedrijfsnaam mag niet meer dan 150 tekens bevatten" },
-    "message": { "min": "Bericht moet minimaal 10 tekens bevatten", "max": "Bericht mag niet meer dan 2000 tekens bevatten" },
-    "consent": { "required": "U moet het privacybeleid accepteren" }
+    "name": {
+      "min": "Naam moet minimaal 2 tekens bevatten",
+      "max": "Naam mag niet meer dan 100 tekens bevatten",
+      "invalid": "Naam mag alleen letters en spaties bevatten"
+    },
+    "email": {
+      "invalid": "Voer een geldig e-mailadres in"
+    },
+    "phone": {
+      "min": "Telefoonnummer moet minimaal 7 cijfers bevatten",
+      "max": "Telefoonnummer mag niet meer dan 20 tekens bevatten",
+      "invalid": "Voer een geldig telefoonnummer in"
+    },
+    "company": {
+      "max": "Bedrijfsnaam mag niet meer dan 150 tekens bevatten"
+    },
+    "message": {
+      "min": "Bericht moet minimaal 10 tekens bevatten",
+      "max": "Bericht mag niet meer dan 2000 tekens bevatten"
+    },
+    "consent": {
+      "required": "U moet het privacybeleid accepteren"
+    }
   },
   "common": {
     "learnMore": "Meer informatie",
@@ -187,7 +304,10 @@
     "changeLanguage": "Taal wijzigen",
     "selectLanguage": "Taal selecteren",
     "facebook": "Facebook",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "toggleTheme": "Thema wisselen",
+    "themeDark": "Donker thema",
+    "themeLight": "Licht thema"
   },
   "privacy": {
     "title": "Privacybeleid",

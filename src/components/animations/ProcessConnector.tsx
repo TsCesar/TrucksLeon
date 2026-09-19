@@ -14,7 +14,7 @@ export function ProcessConnector() {
       className="hidden lg:block absolute top-[2.25rem] left-[calc(12.5%+1.125rem)] right-[calc(12.5%+1.125rem)] h-px overflow-visible"
       aria-hidden
     >
-      <div className="absolute inset-0 bg-white/5" />
+      <div className="absolute inset-0 bg-line/[0.08]" />
       {!reduced && (
         <motion.div
           className="absolute inset-0 bg-gradient-to-r from-red-accent/60 via-red-accent/30 to-transparent origin-left"

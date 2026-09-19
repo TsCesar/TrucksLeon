@@ -27,21 +27,23 @@ export default async function ContactoPage({ params }: Props) {
   ]
 
   return (
-    <div className="pt-20 min-h-screen bg-carbon">
+    <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
       {/* Hero */}
-      <div className="relative py-20 md:py-28 bg-gradient-to-b from-graphite to-carbon border-b border-white/8">
-        <div className="absolute inset-0 opacity-5" aria-hidden>
-          <div className="h-full w-full" style={{
-            backgroundImage: 'linear-gradient(rgba(248,250,252,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,252,0.3) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
-          }} />
-        </div>
-        <Container narrow>
+      <div className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-surface via-surface to-canvas border-b border-line/[0.07]">
+        <div className="absolute inset-0 tech-grid opacity-70" aria-hidden />
+        <div
+          className="absolute -top-24 -left-24 w-[620px] h-[400px] rounded-full blur-[130px] pointer-events-none"
+          style={{ background: 'rgb(215 25 32 / 0.055)' }}
+          aria-hidden
+        />
+        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-red-accent/70 to-transparent" aria-hidden />
+        <Container narrow className="relative">
           <Reveal>
-            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">
+            <span className="inline-flex items-center gap-2 text-red-text font-mono text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+              <span className="w-5 h-px bg-red-accent/60" aria-hidden />
               {t('nav.contact')}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-off-white mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-ink mb-4 tracking-tight text-balance">
               {t('contact.title')}
             </h1>
             <p className="text-steel text-lg max-w-xl">
@@ -58,23 +60,23 @@ export default async function ContactoPage({ params }: Props) {
           {/* Contact info */}
           <Reveal direction="left">
             <div>
-              <h2 className="text-2xl font-heading font-bold text-off-white mb-8">
+              <h2 className="text-2xl font-heading font-bold text-ink mb-8 tracking-tight">
                 {t('contact.subtitle')}
               </h2>
               <ul className="space-y-6 mb-10">
                 {contactItems.map(({ icon: Icon, label, value, href }) => (
                   <li key={label} className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-lg bg-red-accent/10 flex items-center justify-center flex-shrink-0">
+                    <div className="w-11 h-11 rounded-lg bg-red-accent/[0.08] ring-1 ring-red-accent/12 flex items-center justify-center flex-shrink-0">
                       <Icon size={18} className="text-red-accent" aria-hidden />
                     </div>
                     <div>
                       <p className="text-xs text-steel uppercase tracking-wider font-mono mb-1">{label}</p>
                       {href ? (
-                        <a href={href} className="text-off-white hover:text-red-accent transition-colors font-medium">
+                        <a href={href} className="inline-flex items-center min-h-[26px] text-ink hover:text-red-text transition-colors font-medium">
                           {value}
                         </a>
                       ) : (
-                        <p className="text-off-white font-medium">{value}</p>
+                        <p className="text-ink font-medium">{value}</p>
                       )}
                     </div>
                   </li>
@@ -86,7 +88,7 @@ export default async function ContactoPage({ params }: Props) {
                 href={siteConfig.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-[#25D366]/10 border border-[#25D366]/20 text-[#25D366] hover:bg-[#25D366]/20 transition-colors font-medium"
+                className="inline-flex items-center gap-3 px-6 py-4 rounded-xl bg-[#25D366]/[0.08] border border-[#25D366]/35 text-[#128C4B] shadow-card hover:bg-[#25D366]/[0.14] hover:border-[#25D366]/55 hover:-translate-y-0.5 hover:shadow-lift transition-all duration-300 font-semibold"
               >
                 <MessageCircle size={20} aria-hidden />
                 {t('contact.whatsapp')}
@@ -96,8 +98,9 @@ export default async function ContactoPage({ params }: Props) {
 
           {/* Form */}
           <Reveal direction="right" delay={0.15}>
-            <div className="p-8 rounded-2xl bg-graphite border border-white/8">
-              <h2 className="text-xl font-heading font-bold text-off-white mb-6">{t('contact.form.title')}</h2>
+            <div className="relative p-6 sm:p-8 rounded-2xl bg-surface border border-line/[0.09] shadow-float overflow-hidden">
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-red-accent to-transparent" aria-hidden />
+              <h2 className="text-xl font-heading font-bold text-ink mb-6 tracking-tight">{t('contact.form.title')}</h2>
               <ContactForm />
             </div>
           </Reveal>

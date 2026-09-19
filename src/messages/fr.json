@@ -26,18 +26,54 @@
   "services": {
     "title": "Nos Services",
     "subtitle": "Gestion intégrale pour tous types d'opérations avec des véhicules industriels en Europe",
-    "advisory": { "title": "Conseil", "description": "Accompagnement spécialisé dans l'achat, la vente et l'importation de véhicules industriels sur le marché européen." },
-    "management": { "title": "Gestion", "description": "Gestion complète de toutes les opérations liées aux véhicules industriels." },
-    "documentation": { "title": "Documentation", "description": "Traitement et gestion de tous les documents nécessaires pour les opérations nationales et internationales." },
-    "buySell": { "title": "Achat & Vente", "description": "Intermédiation professionnelle dans l'achat et la vente de tous types de véhicules industriels en Europe." },
-    "import": { "title": "Importation", "description": "Gestion complète des processus d'importation de véhicules depuis n'importe quel pays européen." },
-    "export": { "title": "Exportation", "description": "Exportation de véhicules industriels vers toute destination européenne avec toute la documentation en ordre." },
-    "customs": { "title": "Formalités douanières", "description": "Gestion experte de toutes les formalités douanières pour les opérations internationales." },
-    "transport": { "title": "Transport", "description": "Solutions de transport spécialisées pour le déplacement de véhicules industriels en Europe." },
-    "logistics": { "title": "Logistique", "description": "Planification et gestion logistique complète pour la distribution de véhicules en Europe." },
-    "homologation": { "title": "Homologation", "description": "Traitement des homologations et légalisations de véhicules." },
-    "certificates": { "title": "Certificats", "description": "Obtention et gestion des certificats techniques nécessaires pour les véhicules industriels." },
-    "appraisal": { "title": "Expertises & Évaluations", "description": "Rapports techniques, expertises et évaluations professionnelles de véhicules industriels." }
+    "advisory": {
+      "title": "Conseil",
+      "description": "Accompagnement spécialisé dans l'achat, la vente et l'importation de véhicules industriels sur le marché européen."
+    },
+    "management": {
+      "title": "Gestion",
+      "description": "Gestion complète de toutes les opérations liées aux véhicules industriels."
+    },
+    "documentation": {
+      "title": "Documentation",
+      "description": "Traitement et gestion de tous les documents nécessaires pour les opérations nationales et internationales."
+    },
+    "buySell": {
+      "title": "Achat & Vente",
+      "description": "Intermédiation professionnelle dans l'achat et la vente de tous types de véhicules industriels en Europe."
+    },
+    "import": {
+      "title": "Importation",
+      "description": "Gestion complète des processus d'importation de véhicules depuis n'importe quel pays européen."
+    },
+    "export": {
+      "title": "Exportation",
+      "description": "Exportation de véhicules industriels vers toute destination européenne avec toute la documentation en ordre."
+    },
+    "customs": {
+      "title": "Formalités douanières",
+      "description": "Gestion experte de toutes les formalités douanières pour les opérations internationales."
+    },
+    "transport": {
+      "title": "Transport",
+      "description": "Solutions de transport spécialisées pour le déplacement de véhicules industriels en Europe."
+    },
+    "logistics": {
+      "title": "Logistique",
+      "description": "Planification et gestion logistique complète pour la distribution de véhicules en Europe."
+    },
+    "homologation": {
+      "title": "Homologation",
+      "description": "Traitement des homologations et légalisations de véhicules."
+    },
+    "certificates": {
+      "title": "Certificats",
+      "description": "Obtention et gestion des certificats techniques nécessaires pour les véhicules industriels."
+    },
+    "appraisal": {
+      "title": "Expertises & Évaluations",
+      "description": "Rapports techniques, expertises et évaluations professionnelles de véhicules industriels."
+    }
   },
   "categories": {
     "title": "Catégories de Véhicules",
@@ -52,13 +88,18 @@
     "refrigerated": "Camions frigorifiques",
     "carCarriers": "Porte-voitures",
     "extendableTrailers": "Semi-remorques extensibles",
-    "livestockTrailers": "Semi-remorques bétaillères"
+    "livestockTrailers": "Semi-remorques bétaillères",
+    "cars": "Voitures sur demande"
   },
   "delivered": {
     "title": "Véhicules Livrés",
     "subtitle": "Une sélection d'opérations menées avec succès en Europe",
     "cta": "Voir tous les véhicules livrés",
-    "badge": "Livré"
+    "badge": "Livré",
+    "statsCount": "véhicules livrés",
+    "statsCountries": "pays européens",
+    "statsDoc": "documentation conforme",
+    "statsSupport": "disponibilité"
   },
   "europe": {
     "badge": "Europe",
@@ -73,54 +114,113 @@
     "pageBadge": "Comment nous travaillons",
     "overview": "Un processus conçu pour que vous n'ayez qu'à choisir le véhicule. Nous nous occupons du reste.",
     "steps": {
-      "contact": { "number": "01", "title": "Premier contact", "description": "Vous expliquez votre besoin et nous analysons ensemble la meilleure solution." },
-      "search": { "number": "02", "title": "Recherche & Sélection", "description": "Nous localisons le véhicule ou l'acheteur idéal dans notre réseau européen." },
-      "management": { "number": "03", "title": "Gestion complète", "description": "Nous nous occupons de toute la documentation, des démarches et de la logistique." },
-      "delivery": { "number": "04", "title": "Livraison garantie", "description": "Le véhicule arrive à destination avec toute la documentation en ordre." }
+      "contact": {
+        "number": "01",
+        "title": "Premier contact",
+        "description": "Vous expliquez votre besoin et nous analysons ensemble la meilleure solution."
+      },
+      "search": {
+        "number": "02",
+        "title": "Recherche & Sélection",
+        "description": "Nous localisons le véhicule ou l'acheteur idéal dans notre réseau européen."
+      },
+      "management": {
+        "number": "03",
+        "title": "Gestion complète",
+        "description": "Nous nous occupons de toute la documentation, des démarches et de la logistique."
+      },
+      "delivery": {
+        "number": "04",
+        "title": "Livraison garantie",
+        "description": "Le véhicule arrive à destination avec toute la documentation en ordre."
+      }
     }
   },
   "contact": {
     "title": "Contact",
     "subtitle": "Nous sommes disponibles 24h/24 et 7j/7 pour votre demande",
     "description": "Contactez notre équipe d'experts. Nous répondons dans les plus brefs délais.",
-    "phone": "Téléphone", "email": "E-mail", "address": "Localisation", "hours": "Horaires", "whatsapp": "WhatsApp",
+    "phone": "Téléphone",
+    "email": "E-mail",
+    "address": "Localisation",
+    "hours": "Horaires",
+    "whatsapp": "WhatsApp",
     "form": {
       "title": "Envoyez-nous un message",
-      "name": "Nom complet", "namePlaceholder": "Votre nom",
-      "email": "E-mail", "emailPlaceholder": "vous@email.com",
-      "phone": "Téléphone", "phonePlaceholder": "+33 6 00 00 00 00",
-      "company": "Entreprise (optionnel)", "companyPlaceholder": "Nom de votre entreprise",
-      "message": "Message", "messagePlaceholder": "Dites-nous comment nous pouvons vous aider...",
+      "name": "Nom complet",
+      "namePlaceholder": "Votre nom",
+      "email": "E-mail",
+      "emailPlaceholder": "vous@email.com",
+      "phone": "Téléphone",
+      "phonePlaceholder": "+33 6 00 00 00 00",
+      "company": "Entreprise (optionnel)",
+      "companyPlaceholder": "Nom de votre entreprise",
+      "message": "Message",
+      "messagePlaceholder": "Dites-nous comment nous pouvons vous aider...",
       "consent": "J'accepte la politique de confidentialité et le traitement de mes données personnelles.",
-      "submit": "Envoyer le message", "sending": "Envoi en cours...",
+      "submit": "Envoyer le message",
+      "sending": "Envoi en cours...",
       "success": "Message envoyé avec succès. Nous vous contacterons bientôt.",
       "error": "Une erreur s'est produite. Veuillez réessayer ou nous contacter directement."
     }
   },
   "trust": {
     "title": "Pourquoi nous choisir ?",
-    "experience": { "title": "Expérience européenne", "description": "Des années d'expérience sur le marché européen des véhicules industriels." },
-    "transparency": { "title": "Transparence totale", "description": "Des informations claires et honnêtes à chaque étape de l'opération." },
-    "availability": { "title": "Disponibilité 24h/24", "description": "Équipe disponible tous les jours de l'année." },
-    "network": { "title": "Réseau européen", "description": "Vaste réseau de contacts et de fournisseurs dans toute l'Europe." }
+    "experience": {
+      "title": "Expérience européenne",
+      "description": "Des années d'expérience sur le marché européen des véhicules industriels."
+    },
+    "transparency": {
+      "title": "Transparence totale",
+      "description": "Des informations claires et honnêtes à chaque étape de l'opération."
+    },
+    "availability": {
+      "title": "Disponibilité 24h/24",
+      "description": "Équipe disponible tous les jours de l'année."
+    },
+    "network": {
+      "title": "Réseau européen",
+      "description": "Vaste réseau de contacts et de fournisseurs dans toute l'Europe."
+    }
   },
   "footer": {
     "description": "Spécialistes en gestion intégrale des véhicules industriels sur le marché européen.",
-    "links": "Liens", "contact": "Contact", "legal": "Mentions légales",
-    "privacy": "Politique de confidentialité", "terms": "Mentions légales", "cookies": "Politique de cookies",
+    "links": "Liens",
+    "contact": "Contact",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "terms": "Mentions légales",
+    "cookies": "Politique de cookies",
     "copyright": "Tous droits réservés."
   },
   "about": {
     "title": "Qui Sommes-Nous",
     "subtitle": "Spécialistes en véhicules industriels avec une présence dans toute l'Europe",
     "description": "TrucksLeón International est une entreprise spécialisée dans la gestion intégrale des véhicules industriels sur le marché européen. Nous proposons conseil, achat, vente, importation, exportation, documentation et logistique pour les professionnels du secteur.",
-    "values": { "experience": "Expérience", "transparency": "Transparence", "commitment": "Engagement", "professionalism": "Professionnalisme" },
+    "values": {
+      "experience": "Expérience",
+      "transparency": "Transparence",
+      "commitment": "Engagement",
+      "professionalism": "Professionnalisme"
+    },
     "strengths": {
       "title": "Nos points forts",
-      "european": { "title": "Couverture européenne", "description": "Nous opérons dans plus de 15 pays européens avec un réseau établi de contacts et fournisseurs." },
-      "integral": { "title": "Gestion intégrale", "description": "Nous prenons en charge tout le processus : recherche, documentation, logistique et livraison finale." },
-      "documentation": { "title": "Documentation complète", "description": "Nous traitons toute la documentation nationale et internationale avec une sécurité juridique totale." },
-      "network": { "title": "Réseau européen", "description": "Vaste réseau d'acheteurs, vendeurs et opérateurs logistiques dans toute l'Europe." }
+      "european": {
+        "title": "Couverture européenne",
+        "description": "Nous opérons dans plus de 15 pays européens avec un réseau établi de contacts et fournisseurs."
+      },
+      "integral": {
+        "title": "Gestion intégrale",
+        "description": "Nous prenons en charge tout le processus : recherche, documentation, logistique et livraison finale."
+      },
+      "documentation": {
+        "title": "Documentation complète",
+        "description": "Nous traitons toute la documentation nationale et internationale avec une sécurité juridique totale."
+      },
+      "network": {
+        "title": "Réseau européen",
+        "description": "Vaste réseau d'acheteurs, vendeurs et opérateurs logistiques dans toute l'Europe."
+      }
     },
     "positioning": {
       "badge": "Notre mission",
@@ -158,12 +258,29 @@
     }
   },
   "validation": {
-    "name": { "min": "Le nom doit comporter au moins 2 caractères", "max": "Le nom ne peut pas dépasser 100 caractères", "invalid": "Le nom ne peut contenir que des lettres et des espaces" },
-    "email": { "invalid": "Veuillez saisir une adresse e-mail valide" },
-    "phone": { "min": "Le téléphone doit comporter au moins 7 chiffres", "max": "Le téléphone ne peut pas dépasser 20 caractères", "invalid": "Veuillez saisir un numéro de téléphone valide" },
-    "company": { "max": "Le nom de l'entreprise ne peut pas dépasser 150 caractères" },
-    "message": { "min": "Le message doit comporter au moins 10 caractères", "max": "Le message ne peut pas dépasser 2000 caractères" },
-    "consent": { "required": "Vous devez accepter la politique de confidentialité" }
+    "name": {
+      "min": "Le nom doit comporter au moins 2 caractères",
+      "max": "Le nom ne peut pas dépasser 100 caractères",
+      "invalid": "Le nom ne peut contenir que des lettres et des espaces"
+    },
+    "email": {
+      "invalid": "Veuillez saisir une adresse e-mail valide"
+    },
+    "phone": {
+      "min": "Le téléphone doit comporter au moins 7 chiffres",
+      "max": "Le téléphone ne peut pas dépasser 20 caractères",
+      "invalid": "Veuillez saisir un numéro de téléphone valide"
+    },
+    "company": {
+      "max": "Le nom de l'entreprise ne peut pas dépasser 150 caractères"
+    },
+    "message": {
+      "min": "Le message doit comporter au moins 10 caractères",
+      "max": "Le message ne peut pas dépasser 2000 caractères"
+    },
+    "consent": {
+      "required": "Vous devez accepter la politique de confidentialité"
+    }
   },
   "common": {
     "learnMore": "En savoir plus",
@@ -187,7 +304,10 @@
     "changeLanguage": "Changer de langue",
     "selectLanguage": "Sélectionner la langue",
     "facebook": "Facebook",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "toggleTheme": "Changer le thème",
+    "themeDark": "Thème sombre",
+    "themeLight": "Thème clair"
   },
   "privacy": {
     "title": "Politique de Confidentialité",

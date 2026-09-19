@@ -1,16 +1,21 @@
 import type { Metadata } from 'next'
-import { Sora, Space_Grotesk, Inter, Manrope, IBM_Plex_Mono } from 'next/font/google'
+import { Archivo, IBM_Plex_Mono } from 'next/font/google'
 import { siteConfig } from '@/config/site'
+import { MouseGlow } from '@/components/animations/MouseGlow'
 import './globals.css'
 
-const sora = Sora({ subsets: ['latin'], variable: '--font-sora', display: 'swap' })
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk', display: 'swap' })
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' })
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' })
-const ibmPlexMono = IBM_Plex_Mono({
+// Archivo carries a width axis — display type runs expanded (see --display-stretch).
+const archivo = Archivo({
+  subsets: ['latin'],
+  axes: ['wdth'],
+  variable: '--font-archivo',
+  display: 'swap',
+})
+
+const plexMono = IBM_Plex_Mono({
   subsets: ['latin'],
   weight: ['400', '500', '600'],
-  variable: '--font-ibm-plex-mono',
+  variable: '--font-plex-mono',
   display: 'swap',
 })
 
@@ -28,17 +33,18 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export const viewport = {
+  themeColor: '#FFFFFF',
+  colorScheme: 'light',
+}
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="es"
-      className={`${sora.variable} ${spaceGrotesk.variable} ${inter.variable} ${manrope.variable} ${ibmPlexMono.variable}`}
-    >
-      <body>{children}</body>
+    <html lang="es" className={`${archivo.variable} ${plexMono.variable}`}>
+      <body>
+        <MouseGlow />
+        {children}
+      </body>
     </html>
   )
 }

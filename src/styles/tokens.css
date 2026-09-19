@@ -1,46 +1,100 @@
+/*
+  TrucksLeón design tokens — SINGLE LIGHT THEME.
+  There is no dark mode: no data-theme attribute, no prefers-color-scheme switch,
+  no runtime theme state. These values are the identity.
+
+  Colors are stored as RGB channels (space-separated) so Tailwind's
+  "rgb(var(--c-x) / <alpha-value>)" opacity modifier works everywhere:
+  bg-surface/80, text-steel/60, border-line/10 …
+
+  Surface scale (light → deep):
+    surface (#FFF, cards) < canvas (#F7F8FA, page) < mist (#EFF1F5, alternate band) ≈ raised (controls)
+
+  `line` is the single neutral used for hairlines, dividers and neutral tints.
+  Always use it with an alpha: border-line/10, bg-line/[0.03]. Never white/x —
+  white tints are invisible on a light page.
+*/
+
 :root {
-  /* Colors */
-  --color-carbon: #080A0D;
-  --color-graphite: #111827;
-  --color-steel: #6B7280;
-  --color-steel-light: #9CA3AF;
-  --color-off-white: #F8FAFC;
-  --color-white: #FFFFFF;
+  /* ─── SURFACES ─────────────────────────────────────────────────────── */
+  --c-surface:     255 255 255;   /* #FFFFFF  cards, header, popovers        */
+  --c-canvas:      247 248 250;   /* #F7F8FA  page background                */
+  --c-mist:        239 241 245;   /* #EFF1F5  alternate section band         */
+  --c-raised:      242 244 247;   /* #F2F4F7  inputs, chips, inset controls  */
+
+  /* ─── TEXT ─────────────────────────────────────────────────────────── */
+  --c-ink:          17  19  24;   /* #111318  headings + body (18.3:1)       */
+  --c-steel:        95 102 114;   /* #5F6672  secondary copy (5.8:1)         */
+
+  /* ─── HAIRLINES / NEUTRAL TINTS (always with alpha) ─────────────────── */
+  --c-line:         15  23  42;   /* slate-900 base for borders & tints      */
+
+  /* ─── BRAND RED ────────────────────────────────────────────────────── */
+  --c-red-accent:  215  25  32;   /* #D71920  corporate red (5.2:1 on white) */
+  --c-red-dark:    168  17  24;   /* #A81118  pressed / hover                */
+  --c-red-text:    179  20  26;   /* #B3141A  red for small text (6.9:1)     */
+
+  /* Dark technical panel — used ONLY for the Europe map graphic, which is
+     deliberately kept dark inside a white card for contrast. */
+  --c-panel:        14  18  26;   /* #0E121A                                 */
+
   --color-red-accent: #D71920;
-  --color-red-dark: #8B0F14;
-  --color-red-glow: rgba(215, 25, 32, 0.15);
+  --color-red-dark:   #A81118;
+  --color-border:     rgba(15, 23, 42, 0.08);
+  --color-border-strong: rgba(15, 23, 42, 0.14);
+  --color-muted:      rgba(15, 23, 42, 0.035);
+  --color-red-tint:   rgba(215, 25, 32, 0.05);
 
-  /* Typography */
-  --font-heading: var(--font-sora), var(--font-space-grotesk), system-ui, sans-serif;
-  --font-body: var(--font-inter), var(--font-manrope), system-ui, sans-serif;
-  --font-mono: var(--font-ibm-plex-mono), 'Courier New', monospace;
+  /* ─── ELEVATION — restrained, never heavy ──────────────────────────── */
+  --shadow-hairline: 0 0 0 1px rgb(15 23 42 / 0.06);
+  --shadow-card:  0 1px 2px rgb(15 23 42 / 0.04), 0 8px 24px -14px rgb(15 23 42 / 0.16);
+  --shadow-lift:  0 2px 4px rgb(15 23 42 / 0.04), 0 18px 40px -22px rgb(15 23 42 / 0.20);
+  --shadow-float: 0 2px 6px rgb(15 23 42 / 0.05), 0 28px 60px -32px rgb(15 23 42 / 0.26);
+  --shadow-red:   0 8px 22px -12px rgb(215 25 32 / 0.40);
+  --shadow-header: 0 1px 0 rgb(15 23 42 / 0.06), 0 10px 30px -22px rgb(15 23 42 / 0.28);
 
-  /* Spacing */
-  --spacing-section: clamp(4rem, 8vw, 8rem);
-  --spacing-container: clamp(1rem, 5vw, 2rem);
-  --max-width: 1440px;
+  /* ─── POINTER HIGHLIGHT (see MouseGlow) ────────────────────────────── */
+  --spot-size:     180px;
+  --spot-fill:     0.055;
 
-  /* Border radius */
-  --radius-sm: 4px;
-  --radius-md: 8px;
+  color-scheme: light;
+}
+
+/* ─── TYPOGRAPHY / SPACING / MOTION ─────────────────────────────────── */
+:root {
+  --font-display: var(--font-archivo), 'Archivo', system-ui, sans-serif;
+  --font-heading: var(--font-archivo), 'Archivo', system-ui, sans-serif;
+  --font-body:    var(--font-archivo), 'Archivo', system-ui, sans-serif;
+  --font-mono:    var(--font-plex-mono), ui-monospace, 'Courier New', monospace;
+
+  /* Width axis of Archivo: display type runs expanded, body stays normal */
+  --display-stretch: 112%;
+
+  --spacing-section:   clamp(4.5rem, 2.6rem + 6.4vw, 9.5rem);
+  --spacing-container: clamp(1rem, 0.35rem + 2.9vw, 3rem);
+  --gutter:            var(--spacing-container);
+  --max-width:         1440px;
+  --header-h:          4.25rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
   --radius-lg: 16px;
   --radius-xl: 24px;
 
-  /* Shadows */
-  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.4);
-  --shadow-red: 0 0 32px rgba(215, 25, 32, 0.2);
-  --shadow-glow: 0 0 60px rgba(215, 25, 32, 0.1);
-
-  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.77, 0, 0.18, 1);
   --transition-fast: 150ms ease-out;
   --transition-base: 300ms ease-out;
   --transition-slow: 500ms ease-out;
 
-  /* Z-index scale */
-  --z-base: 0;
+  --z-base:     0;
   --z-elevated: 10;
-  --z-overlay: 20;
-  --z-modal: 40;
-  --z-header: 100;
-  --z-toast: 1000;
+  --z-overlay:  20;
+  --z-modal:    40;
+  --z-header:   100;
+  --z-toast:    1000;
+}
+
+@media (min-width: 1024px) {
+  :root { --header-h: 5rem; }
 }

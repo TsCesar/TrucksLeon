@@ -22,7 +22,7 @@ export default async function ProcesoPage({ params }: Props) {
   const t = await getTranslations({ locale })
 
   return (
-    <div className="pt-20 min-h-screen bg-carbon">
+    <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
       <PageHero
         badge={t('process.pageBadge')}
         title={t('process.title')}
@@ -30,7 +30,7 @@ export default async function ProcesoPage({ params }: Props) {
       />
 
       {/* Overview banner */}
-      <section className="py-10 bg-graphite border-b border-white/5">
+      <section className="py-10 bg-surface border-b border-line/[0.07]">
         <Container>
           <Reveal>
             <p className="text-steel text-lg leading-relaxed max-w-2xl text-center mx-auto">
@@ -44,11 +44,11 @@ export default async function ProcesoPage({ params }: Props) {
       <ProcessPreview showHeader={false} />
 
       {/* CTA */}
-      <section className="py-16 md:py-20 bg-graphite border-t border-white/5">
+      <section className="py-16 md:py-20 bg-surface border-t border-line/[0.07]">
         <Container narrow>
           <Reveal>
             <div className="text-center">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-off-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-ink mb-4 tracking-tight">
                 {t('trust.availability.title')}
               </h2>
               <p className="text-steel mb-8 max-w-md mx-auto leading-relaxed">

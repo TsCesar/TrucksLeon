@@ -10,7 +10,7 @@ type StaggerProps = {
   once?: boolean
 }
 
-export function Stagger({ children, staggerDelay = 0.08, className, once = true }: StaggerProps) {
+export function Stagger({ children, staggerDelay = 0.07, className, once = true }: StaggerProps) {
   const prefersReducedMotion = useReducedMotion()
 
   if (prefersReducedMotion) {
@@ -43,8 +43,14 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 24 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] } },
+        hidden: { opacity: 0, y: 24, filter: 'blur(8px)', scale: 0.97 },
+        visible: {
+          opacity: 1,
+          y: 0,
+          filter: 'blur(0px)',
+          scale: 1,
+          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+        },
       }}
       className={className}
     >

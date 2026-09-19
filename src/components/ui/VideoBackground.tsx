@@ -14,7 +14,7 @@ export function VideoBackground({
   src,
   poster,
   className = '',
-  overlayClassName = 'bg-carbon/70',
+  overlayClassName = 'bg-canvas/70',
   children,
 }: VideoBackgroundProps) {
   const reduced = useReducedMotion()

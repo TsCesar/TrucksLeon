@@ -14,7 +14,7 @@ export function buildMetadata({ title, description, locale = 'es', path = '' }: 
   const url = `${siteConfig.url}/${locale}${path}`
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description: fullDescription,
     metadataBase: new URL(siteConfig.url),
     alternates: {

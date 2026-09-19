@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
+import { SmoothScroll } from '@/components/layout/SmoothScroll'
 import { locales, type Locale } from '@/config/locales'
 
 type Props = {
@@ -20,7 +21,8 @@ export default async function LocaleLayout({ children, params }: Props) {
   const messages = await getMessages()
 
   return (
-    <NextIntlClientProvider messages={messages}>
+    <NextIntlClientProvider locale={locale} messages={messages}>
+      <SmoothScroll />
       <Header />
       <main id="main-content">{children}</main>
       <Footer />

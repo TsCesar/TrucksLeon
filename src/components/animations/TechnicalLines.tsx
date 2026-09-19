@@ -25,8 +25,8 @@ export function TechnicalLines({
 
   const resolvedBase = baseColor ?? (
     intensity === 'subtle'
-      ? 'rgba(255,255,255,0.03)'
-      : 'rgba(255,255,255,0.06)'
+      ? 'rgb(15 23 42 / 0.055)'
+      : 'rgb(15 23 42 / 0.09)'
   )
   const cornerOpacity = intensity === 'subtle' ? '0.35' : '0.7'
 

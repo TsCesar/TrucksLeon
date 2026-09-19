@@ -24,18 +24,39 @@ export default async function VehiculosEntregadosPage({ params }: Props) {
   const t = await getTranslations({ locale })
 
   return (
-    <div className="pt-20 min-h-screen bg-carbon">
+    <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
       <PageHero
         badge={t('nav.delivered')}
         title={t('delivered.title')}
         subtitle={t('delivered.subtitle')}
       />
 
-      <section className="py-16 md:py-24 bg-carbon">
+      {/* Stats strip */}
+      <div className="bg-surface border-b border-line/[0.07]">
+        <Container>
+          <div className="py-6 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              { value: deliveredVehicles.length.toString(), label: t('delivered.statsCount') },
+              { value: '+15', label: t('delivered.statsCountries') },
+              { value: '100%', label: t('delivered.statsDoc') },
+              { value: '24/7', label: t('delivered.statsSupport') },
+            ].map(({ value, label }) => (
+              <div key={label} className="text-center py-2 sm:border-r sm:border-line/[0.07] sm:last:border-r-0">
+                <div className="text-2xl sm:text-3xl font-heading font-bold text-red-accent font-mono tracking-tight">
+                  {value}
+                </div>
+                <div className="text-xs text-steel uppercase tracking-wider mt-1">{label}</div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </div>
+
+      <section className="py-16 md:py-24 bg-mist">
         <Container>
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
             {deliveredVehicles.map((vehicle) => (
-              <StaggerItem key={vehicle.id}>
+              <StaggerItem key={vehicle.id} className="h-full">
                 <DeliveredVehicleCard vehicle={vehicle} />
               </StaggerItem>
             ))}

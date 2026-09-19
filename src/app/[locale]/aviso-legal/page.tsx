@@ -17,14 +17,17 @@ export default async function AvisoLegalPage({ params }: Props) {
   const t = await getTranslations({ locale })
 
   return (
-    <div className="pt-20 min-h-screen bg-carbon">
-      <div className="py-20 md:py-28 bg-graphite border-b border-white/8">
-        <Container>
+    <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <div className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-surface via-surface to-canvas border-b border-line/[0.07]">
+        <div className="absolute inset-0 tech-grid opacity-70" aria-hidden />
+        <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-transparent via-red-accent/70 to-transparent" aria-hidden />
+        <Container className="relative">
           <Reveal>
-            <span className="inline-block text-red-accent font-mono text-xs font-semibold tracking-widest uppercase mb-4">
+            <span className="inline-flex items-center gap-2 text-red-text font-mono text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+              <span className="w-5 h-px bg-red-accent/60" aria-hidden />
               {t('legal.badge')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-heading font-bold text-off-white mb-6">
+            <h1 className="text-4xl md:text-6xl font-heading font-bold text-ink mb-6 tracking-tight text-balance">
               {t('legal.title')}
             </h1>
           </Reveal>

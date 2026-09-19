@@ -6,9 +6,9 @@ type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
 }
 
 const variantClasses = {
-  red: 'bg-red-accent/10 text-red-accent border border-red-accent/20',
-  steel: 'bg-white/5 text-steel border border-white/10',
-  outline: 'bg-transparent text-off-white border border-white/20',
+  red:     'bg-red-accent/[0.07] text-red-text border border-red-accent/20',
+  steel:   'bg-line/[0.04] text-steel border border-line/10',
+  outline: 'bg-surface/70 text-ink border border-line/14 backdrop-blur-sm',
 }
 
 export function Badge({ variant = 'red', className, children, ...props }: BadgeProps) {

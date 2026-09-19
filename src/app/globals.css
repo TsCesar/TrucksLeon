@@ -13,11 +13,16 @@
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
+    /* Directional scroll-reveals start translated on the X axis, which would
+       otherwise widen the document on narrow viewports. `clip` contains that
+       without creating a scroll container (so sticky/smooth scroll still work);
+       body's overflow-x: hidden is the fallback for older Safari. */
+    overflow-x: clip;
   }
 
   body {
-    background-color: var(--color-carbon);
-    color: var(--color-off-white);
+    background-color: rgb(var(--c-canvas));
+    color: rgb(var(--c-ink));
     font-family: var(--font-body);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -44,9 +49,11 @@
 
   button {
     cursor: pointer;
-    border: none;
     background: none;
     font-family: inherit;
+    /* Do NOT use `border: none` here — it sets border-style:none, which makes
+       Tailwind's `border` utilities (width only) invisible on buttons.
+       Preflight already zeroes the width and keeps the style solid. */
   }
 
   input, textarea, select {
@@ -61,33 +68,60 @@
 
   ::selection {
     background-color: var(--color-red-accent);
-    color: var(--color-white);
+    color: #fff;
   }
 
-  /* Scrollbar */
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--color-graphite); }
-  ::-webkit-scrollbar-thumb { background: var(--color-steel); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--color-red-accent); }
+  /* Scrollbar — light, understated */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--c-mist)); }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-line) / 0.18);
+    border-radius: 6px;
+    border: 3px solid rgb(var(--c-mist));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--c-red-accent) / 0.55); }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
+
   .container-site {
     width: 100%;
     max-width: var(--max-width);
     margin-inline: auto;
     padding-inline: var(--spacing-container);
   }
-  .section-padding {
-    padding-block: var(--spacing-section);
+
+  .section-padding { padding-block: var(--spacing-section); }
+
+  /* ─── TECHNICAL MICROTEXTURES ────────────────────────────────────────
+     Discreet engineering grids. Alpha stays extremely low so they read as
+     paper texture, never as a visible table. */
+  .tech-grid {
+    background-image:
+      linear-gradient(rgb(var(--c-line) / 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-line) / 0.055) 1px, transparent 1px);
+    background-size: 72px 72px;
   }
-  .gradient-text {
-    background: linear-gradient(135deg, #F8FAFC 0%, #D71920 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+
+  .tech-grid-sm {
+    background-image:
+      linear-gradient(rgb(var(--c-line) / 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--c-line) / 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
   }
+
+  /* Fine diagonal hatch — used sparingly behind red technical bands */
+  .tech-hatch {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgb(var(--c-red-accent) / 0.035) 0px,
+      rgb(var(--c-red-accent) / 0.035) 1px,
+      transparent 1px,
+      transparent 9px
+    );
+  }
+
   .red-line {
     display: block;
     width: 48px;
@@ -95,15 +129,59 @@
     background: var(--color-red-accent);
     border-radius: 2px;
   }
+
+  /* Frosted white panel — header, dropdowns, floating chrome */
   .glass-card {
-    background: rgba(17, 24, 39, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: rgb(var(--c-surface) / 0.78);
+    backdrop-filter: blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+    border: 1px solid var(--color-border);
+  }
+
+  /* Hairline that fades out at both ends — section dividers, rules */
+  .rule-fade {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgb(var(--c-line) / 0.14) 18%,
+      rgb(var(--c-line) / 0.14) 82%,
+      transparent
+    );
   }
 }
 
-/* Reduced motion */
+/* ─── BUTTON RIPPLE ─────────────────────────────────────────────────── */
+@keyframes btn-ripple {
+  0%   { transform: scale(0); opacity: 0.55; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* ─── EUROPE MAP ────────────────────────────────────────────────────────
+   The map is deliberately the one dark element on the site: a technical
+   navy panel sitting inside a white card, so the red routes read at full
+   strength. The source PNG is already dark navy on white — we invert the
+   white ground to the panel colour with a screen-safe filter chain. */
+.europe-map-panel {
+  background:
+    radial-gradient(ellipse 70% 60% at 22% 78%, rgb(215 25 32 / 0.10) 0%, transparent 70%),
+    linear-gradient(160deg, #141a26 0%, #0E121A 55%, #0b0f16 100%);
+}
+
+.europe-map-img {
+  /* Source is dark navy landmass on an opaque white ground.
+     grayscale+invert turns the white ground black and the landmass light;
+     `screen` then drops the black ground and paints the landmass onto the panel. */
+  filter: grayscale(1) invert(1) contrast(1.08);
+  mix-blend-mode: screen;
+  opacity: 0.5;
+}
+
+/* Hide dense map labels on narrow viewports */
+@media (max-width: 639px) {
+  .europe-label-dense { display: none; }
+}
+
+/* ─── REDUCED MOTION ────────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

@@ -22,7 +22,7 @@ export default async function EuropaPage({ params }: Props) {
   const t = await getTranslations({ locale })
 
   return (
-    <div className="pt-20 min-h-screen bg-carbon">
+    <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
       <PageHero
         badge={t('europe.badge')}
         title={t('europe.title')}
@@ -30,24 +30,33 @@ export default async function EuropaPage({ params }: Props) {
       />
 
       {/* Map + content */}
-      <section className="py-16 md:py-24 bg-carbon">
+      <section className="py-16 md:py-24 bg-surface">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <Reveal direction="left">
               <p className="text-steel text-lg leading-relaxed mb-8">
                 {t('europe.description')}
               </p>
-              <div className="inline-flex items-center gap-4 px-5 py-4 rounded-xl bg-graphite/60 border border-white/5 mb-8">
+              <div className="inline-flex items-center gap-4 px-5 py-4 rounded-xl bg-surface border border-line/[0.09] shadow-card mb-8">
                 <span className="font-mono text-3xl font-bold text-red-accent leading-none">+15</span>
                 <span className="text-sm text-steel leading-tight">{t('hero.stats.countries')}</span>
               </div>
-              <p className="text-steel/70 text-sm leading-relaxed">
+              <p className="text-steel text-sm leading-relaxed">
                 {t('europe.coverage')}
               </p>
             </Reveal>
             <Reveal direction="right" delay={0.2}>
-              <div className="p-6 rounded-2xl bg-graphite/40 border border-white/5">
+              <div className="p-3 sm:p-4 rounded-2xl bg-surface border border-line/[0.09] shadow-float">
                 <EuropeRouteMap />
+                <div className="flex items-center justify-between gap-3 px-2 pt-3 pb-1">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel/80">
+                    {t('europe.badge')}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-red-text">
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-accent" aria-hidden />
+                    +15
+                  </span>
+                </div>
               </div>
             </Reveal>
           </div>
@@ -55,11 +64,11 @@ export default async function EuropaPage({ params }: Props) {
       </section>
 
       {/* Services link */}
-      <section className="py-16 md:py-20 bg-graphite border-t border-white/5">
+      <section className="py-16 md:py-20 bg-mist border-t border-line/[0.07]">
         <Container narrow>
           <Reveal>
             <div className="text-center">
-              <h2 className="text-2xl md:text-3xl font-heading font-bold text-off-white mb-4">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold text-ink mb-4 tracking-tight">
                 {t('trust.network.title')}
               </h2>
               <p className="text-steel mb-8 max-w-lg mx-auto leading-relaxed">

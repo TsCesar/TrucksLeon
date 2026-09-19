@@ -26,18 +26,54 @@
   "services": {
     "title": "Our Services",
     "subtitle": "Comprehensive management for all types of industrial vehicle operations in Europe",
-    "advisory": { "title": "Advisory", "description": "Specialised guidance on buying, selling and importing industrial vehicles in the European market." },
-    "management": { "title": "Management", "description": "Complete management of all operations related to industrial vehicles, from sourcing to delivery." },
-    "documentation": { "title": "Documentation", "description": "Processing and management of all necessary documentation for national and international operations." },
-    "buySell": { "title": "Buy & Sell", "description": "Professional brokerage in the buying and selling of all types of industrial vehicles in Europe." },
-    "import": { "title": "Import", "description": "Complete management of vehicle import processes from any European country." },
-    "export": { "title": "Export", "description": "Export of industrial vehicles to any European destination with all documentation in order." },
-    "customs": { "title": "Customs Procedures", "description": "Expert management of all customs procedures for international operations." },
-    "transport": { "title": "Transport", "description": "Specialised transport solutions for moving industrial vehicles across Europe." },
-    "logistics": { "title": "Logistics", "description": "Complete logistics planning and management for vehicle distribution in Europe." },
-    "homologation": { "title": "Homologation", "description": "Processing of vehicle homologations and legalizations to circulate in Spain and Europe." },
-    "certificates": { "title": "Certificates", "description": "Obtaining and managing technical certificates required for industrial vehicle operations." },
-    "appraisal": { "title": "Appraisals & Valuations", "description": "Technical reports, appraisals and professional valuations of industrial vehicles." }
+    "advisory": {
+      "title": "Advisory",
+      "description": "Specialised guidance on buying, selling and importing industrial vehicles in the European market."
+    },
+    "management": {
+      "title": "Management",
+      "description": "Complete management of all operations related to industrial vehicles, from sourcing to delivery."
+    },
+    "documentation": {
+      "title": "Documentation",
+      "description": "Processing and management of all necessary documentation for national and international operations."
+    },
+    "buySell": {
+      "title": "Buy & Sell",
+      "description": "Professional brokerage in the buying and selling of all types of industrial vehicles in Europe."
+    },
+    "import": {
+      "title": "Import",
+      "description": "Complete management of vehicle import processes from any European country."
+    },
+    "export": {
+      "title": "Export",
+      "description": "Export of industrial vehicles to any European destination with all documentation in order."
+    },
+    "customs": {
+      "title": "Customs Procedures",
+      "description": "Expert management of all customs procedures for international operations."
+    },
+    "transport": {
+      "title": "Transport",
+      "description": "Specialised transport solutions for moving industrial vehicles across Europe."
+    },
+    "logistics": {
+      "title": "Logistics",
+      "description": "Complete logistics planning and management for vehicle distribution in Europe."
+    },
+    "homologation": {
+      "title": "Homologation",
+      "description": "Processing of vehicle homologations and legalizations to circulate in Spain and Europe."
+    },
+    "certificates": {
+      "title": "Certificates",
+      "description": "Obtaining and managing technical certificates required for industrial vehicle operations."
+    },
+    "appraisal": {
+      "title": "Appraisals & Valuations",
+      "description": "Technical reports, appraisals and professional valuations of industrial vehicles."
+    }
   },
   "categories": {
     "title": "Vehicle Categories",
@@ -52,13 +88,18 @@
     "refrigerated": "Refrigerated Trucks",
     "carCarriers": "Car Carriers",
     "extendableTrailers": "Extendable Trailers",
-    "livestockTrailers": "Livestock Trailers"
+    "livestockTrailers": "Livestock Trailers",
+    "cars": "Cars on request"
   },
   "delivered": {
     "title": "Delivered Vehicles",
     "subtitle": "A selection of successfully completed operations across Europe",
     "cta": "View all delivered",
-    "badge": "Delivered"
+    "badge": "Delivered",
+    "statsCount": "vehicles delivered",
+    "statsCountries": "European countries",
+    "statsDoc": "documentation compliant",
+    "statsSupport": "availability"
   },
   "europe": {
     "badge": "Europe",
@@ -73,10 +114,26 @@
     "pageBadge": "How we work",
     "overview": "A process designed so you only need to choose the vehicle. We handle everything else.",
     "steps": {
-      "contact": { "number": "01", "title": "Initial Contact", "description": "You explain your need and we analyse the best solution for your operation together." },
-      "search": { "number": "02", "title": "Search & Selection", "description": "We locate the ideal vehicle or buyer in our European network of contacts." },
-      "management": { "number": "03", "title": "Full Management", "description": "We take care of all documentation, procedures and logistics of the operation." },
-      "delivery": { "number": "04", "title": "Guaranteed Delivery", "description": "The vehicle arrives at its destination with all documentation in order and in perfect condition." }
+      "contact": {
+        "number": "01",
+        "title": "Initial Contact",
+        "description": "You explain your need and we analyse the best solution for your operation together."
+      },
+      "search": {
+        "number": "02",
+        "title": "Search & Selection",
+        "description": "We locate the ideal vehicle or buyer in our European network of contacts."
+      },
+      "management": {
+        "number": "03",
+        "title": "Full Management",
+        "description": "We take care of all documentation, procedures and logistics of the operation."
+      },
+      "delivery": {
+        "number": "04",
+        "title": "Guaranteed Delivery",
+        "description": "The vehicle arrives at its destination with all documentation in order and in perfect condition."
+      }
     }
   },
   "contact": {
@@ -109,10 +166,22 @@
   },
   "trust": {
     "title": "Why choose us?",
-    "experience": { "title": "European experience", "description": "Years of experience operating in the European industrial vehicle market." },
-    "transparency": { "title": "Total transparency", "description": "Clear and honest information at every stage of the operation." },
-    "availability": { "title": "24/7 availability", "description": "Team available every day of the year to meet your needs." },
-    "network": { "title": "European network", "description": "Extensive network of contacts and suppliers across Europe." }
+    "experience": {
+      "title": "European experience",
+      "description": "Years of experience operating in the European industrial vehicle market."
+    },
+    "transparency": {
+      "title": "Total transparency",
+      "description": "Clear and honest information at every stage of the operation."
+    },
+    "availability": {
+      "title": "24/7 availability",
+      "description": "Team available every day of the year to meet your needs."
+    },
+    "network": {
+      "title": "European network",
+      "description": "Extensive network of contacts and suppliers across Europe."
+    }
   },
   "footer": {
     "description": "Specialists in comprehensive industrial vehicle management in the European market.",
@@ -128,13 +197,30 @@
     "title": "About Us",
     "subtitle": "Industrial vehicle specialists with a presence throughout Europe",
     "description": "TrucksLeón International is a company specialising in comprehensive industrial vehicle management in the European market. We offer advisory, buying, selling, import, export, documentation and logistics for industry professionals.",
-    "values": { "experience": "Experience", "transparency": "Transparency", "commitment": "Commitment", "professionalism": "Professionalism" },
+    "values": {
+      "experience": "Experience",
+      "transparency": "Transparency",
+      "commitment": "Commitment",
+      "professionalism": "Professionalism"
+    },
     "strengths": {
       "title": "Our strengths",
-      "european": { "title": "European coverage", "description": "We operate in more than 15 European countries with an established network of contacts and suppliers." },
-      "integral": { "title": "End-to-end management", "description": "We handle the entire process: sourcing, documentation, logistics and final delivery." },
-      "documentation": { "title": "Full documentation", "description": "We process all national and international documentation with complete legal certainty." },
-      "network": { "title": "European network", "description": "Extensive network of buyers, sellers and logistics operators throughout Europe." }
+      "european": {
+        "title": "European coverage",
+        "description": "We operate in more than 15 European countries with an established network of contacts and suppliers."
+      },
+      "integral": {
+        "title": "End-to-end management",
+        "description": "We handle the entire process: sourcing, documentation, logistics and final delivery."
+      },
+      "documentation": {
+        "title": "Full documentation",
+        "description": "We process all national and international documentation with complete legal certainty."
+      },
+      "network": {
+        "title": "European network",
+        "description": "Extensive network of buyers, sellers and logistics operators throughout Europe."
+      }
     },
     "positioning": {
       "badge": "Our mission",
@@ -172,12 +258,29 @@
     }
   },
   "validation": {
-    "name": { "min": "Name must have at least 2 characters", "max": "Name cannot exceed 100 characters", "invalid": "Name can only contain letters and spaces" },
-    "email": { "invalid": "Please enter a valid email" },
-    "phone": { "min": "Phone must have at least 7 digits", "max": "Phone cannot exceed 20 characters", "invalid": "Please enter a valid phone number" },
-    "company": { "max": "Company name cannot exceed 150 characters" },
-    "message": { "min": "Message must have at least 10 characters", "max": "Message cannot exceed 2000 characters" },
-    "consent": { "required": "You must accept the privacy policy" }
+    "name": {
+      "min": "Name must have at least 2 characters",
+      "max": "Name cannot exceed 100 characters",
+      "invalid": "Name can only contain letters and spaces"
+    },
+    "email": {
+      "invalid": "Please enter a valid email"
+    },
+    "phone": {
+      "min": "Phone must have at least 7 digits",
+      "max": "Phone cannot exceed 20 characters",
+      "invalid": "Please enter a valid phone number"
+    },
+    "company": {
+      "max": "Company name cannot exceed 150 characters"
+    },
+    "message": {
+      "min": "Message must have at least 10 characters",
+      "max": "Message cannot exceed 2000 characters"
+    },
+    "consent": {
+      "required": "You must accept the privacy policy"
+    }
   },
   "common": {
     "learnMore": "Learn more",
@@ -201,7 +304,10 @@
     "changeLanguage": "Change language",
     "selectLanguage": "Select language",
     "facebook": "Facebook",
-    "whatsapp": "WhatsApp"
+    "whatsapp": "WhatsApp",
+    "toggleTheme": "Switch theme",
+    "themeDark": "Dark theme",
+    "themeLight": "Light theme"
   },
   "privacy": {
     "title": "Privacy Policy",

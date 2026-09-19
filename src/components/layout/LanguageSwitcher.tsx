@@ -17,6 +17,11 @@ export function LanguageSwitcher() {
   const ref = useRef<HTMLDivElement>(null)
   const prefersReducedMotion = useReducedMotion()
 
+  // Derive active locale from URL path — updates immediately on client navigation
+  // before NextIntlClientProvider re-renders with the new locale value
+  const pathSegment = pathname.split('/')[1]
+  const activeLocale: Locale = locales.includes(pathSegment as Locale) ? (pathSegment as Locale) : locale
+
   useEffect(() => {
     function handleClickOutside(e: MouseEvent) {
       if (ref.current && !ref.current.contains(e.target as Node)) {
@@ -28,19 +33,21 @@ export function LanguageSwitcher() {
   }, [])
 
   function switchLocale(newLocale: Locale) {
-    if (newLocale === locale) { setOpen(false); return }
+    if (newLocale === activeLocale) { setOpen(false); return }
     const segments = pathname.split('/')
     // segments[0] is always '' (before leading slash)
     if (locales.includes(segments[1] as Locale)) {
       segments[1] = newLocale
     } else if (segments[1] === '') {
-      // root path "/"
       segments.splice(1, 0, newLocale)
     } else {
       segments.splice(1, 0, newLocale)
     }
     const newPath = segments.join('/') || '/'
     const query = typeof window !== 'undefined' ? window.location.search : ''
+    // Do NOT call router.refresh() here — it races against router.push() and
+    // re-fetches the old locale's RSC payload before the navigation resolves,
+    // causing the header to stay in the previous language.
     router.push(newPath + query)
     setOpen(false)
   }
@@ -49,22 +56,22 @@ export function LanguageSwitcher() {
     <div ref={ref} className="relative">
       <button
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm hover:bg-white/5 transition-colors focus-visible:ring-2 focus-visible:ring-red-accent"
+        className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-sm min-h-[38px] text-steel hover:text-ink hover:bg-line/[0.05] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-accent"
         aria-haspopup="listbox"
         aria-expanded={open}
         aria-label={t('changeLanguage')}
       >
         {/* Code badge */}
-        <span className="font-mono text-[11px] font-bold tracking-widest text-off-white bg-white/[0.08] px-1.5 py-0.5 rounded">
-          {locale.toUpperCase()}
+        <span className="font-mono text-[11px] font-bold tracking-widest text-ink bg-line/[0.06] border border-line/10 px-1.5 py-0.5 rounded">
+          {activeLocale.toUpperCase()}
         </span>
         {/* Full name — hidden on small screens */}
-        <span className="hidden sm:block text-xs text-steel leading-none">
-          {localeNames[locale]}
+        <span className="hidden sm:block text-xs leading-none">
+          {localeNames[activeLocale]}
         </span>
         <ChevronDown
           size={12}
-          className={cn('transition-transform duration-200 text-steel/60 flex-shrink-0', open && 'rotate-180')}
+          className={cn('transition-transform duration-200 text-steel/70 flex-shrink-0', open && 'rotate-180')}
           aria-hidden
         />
       </button>
@@ -78,10 +85,10 @@ export function LanguageSwitcher() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={prefersReducedMotion ? {} : { opacity: 0, y: -6, scale: 0.97 }}
             transition={{ duration: 0.15 }}
-            className="absolute right-0 top-full mt-2 w-48 bg-graphite border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50"
+            className="absolute right-0 top-full mt-2 w-48 bg-surface rounded-xl overflow-hidden border border-line/10 shadow-float z-50"
           >
             {locales.map((loc) => {
-              const isActive = loc === locale
+              const isActive = loc === activeLocale
               return (
                 <li key={loc}>
                   <button
@@ -89,10 +96,10 @@ export function LanguageSwitcher() {
                     aria-selected={isActive}
                     onClick={() => switchLocale(loc)}
                     className={cn(
-                      'w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors',
+                      'w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors border-l-2',
                       isActive
-                        ? 'text-red-accent bg-red-accent/10 border-l-2 border-red-accent'
-                        : 'text-steel hover:text-off-white hover:bg-white/5 border-l-2 border-transparent'
+                        ? 'text-red-text bg-red-accent/[0.06] border-red-accent'
+                        : 'text-steel border-transparent hover:text-ink hover:bg-line/[0.04]'
                     )}
                   >
                     <span className="text-base leading-none flex-shrink-0" aria-hidden>

@@ -53,8 +53,8 @@ export function ContactForm() {
   if (status === 'success') {
     return (
       <div className="flex flex-col items-center justify-center gap-4 py-12 text-center">
-        <CheckCircle size={48} className="text-green-500" aria-hidden />
-        <p className="text-off-white font-heading font-semibold text-lg">{t('contact.form.success')}</p>
+        <CheckCircle size={48} className="text-[#15803D]" aria-hidden />
+        <p className="text-ink font-heading font-semibold text-lg">{t('contact.form.success')}</p>
         <Button variant="ghost" onClick={() => setStatus('idle')} size="sm">
           {t('common.back')}
         </Button>
@@ -124,7 +124,7 @@ export function ContactForm() {
         <input
           type="checkbox"
           id="consent"
-          className="mt-1 w-4 h-4 rounded border-white/20 bg-white/5 accent-red-accent cursor-pointer flex-shrink-0"
+          className="mt-0.5 w-[18px] h-[18px] rounded border border-line/25 bg-surface accent-red-accent cursor-pointer flex-shrink-0"
           {...register('consent')}
         />
         <label htmlFor="consent" className="text-xs text-steel cursor-pointer leading-relaxed">
@@ -132,13 +132,13 @@ export function ContactForm() {
         </label>
       </div>
       {errors.consent && (
-        <p role="alert" className="text-xs text-red-400 -mt-3">
+        <p role="alert" className="text-xs text-red-text font-medium -mt-3">
           {getError('consent')}
         </p>
       )}
 
       {status === 'error' && (
-        <div className="flex items-center gap-2 p-4 rounded-lg bg-red-accent/10 border border-red-accent/20 text-red-400 text-sm">
+        <div className="flex items-center gap-2 p-4 rounded-lg bg-red-accent/[0.06] border border-red-accent/25 text-red-text text-sm">
           <AlertCircle size={16} aria-hidden />
           {t('contact.form.error')}
         </div>

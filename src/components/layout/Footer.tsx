@@ -11,12 +11,13 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="bg-carbon border-t border-white/8">
-      {/* Red top line */}
+    <footer className="relative bg-mist border-t border-line/[0.08] overflow-hidden">
+      {/* Red rule across the top — the same accent that opens the header */}
       <div className="h-px bg-gradient-to-r from-transparent via-red-accent to-transparent" aria-hidden />
+      <div className="absolute inset-0 tech-grid opacity-60 pointer-events-none" aria-hidden />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
 
           {/* Brand */}
           <div className="lg:col-span-2">
@@ -37,7 +38,7 @@ export function Footer() {
                 href={siteConfig.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-white/5 text-steel hover:text-off-white hover:bg-white/10 transition-colors"
+                className="p-3 rounded-lg bg-surface border border-line/10 text-steel shadow-card hover:text-red-text hover:border-red-accent/30 hover:-translate-y-0.5 hover:shadow-lift transition-all duration-300"
                 aria-label={t('aria.facebook')}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -48,7 +49,7 @@ export function Footer() {
                 href={siteConfig.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2.5 rounded-lg bg-white/5 text-steel hover:text-off-white hover:bg-white/10 transition-colors"
+                className="p-3 rounded-lg bg-surface border border-line/10 text-steel shadow-card hover:text-[#1DA851] hover:border-[#25D366]/40 hover:-translate-y-0.5 hover:shadow-lift transition-all duration-300"
                 aria-label={t('aria.whatsapp')}
               >
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -60,15 +61,15 @@ export function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-off-white font-heading font-semibold text-sm uppercase tracking-wider mb-5">
+            <h3 className="text-ink font-heading font-semibold text-sm uppercase tracking-wider mb-5">
               {t('footer.links')}
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {navItems.slice(0, 6).map((item) => (
                 <li key={item.href}>
                   <Link
                     href={`/${locale}${item.href === '/' ? '' : item.href}`}
-                    className="text-steel hover:text-off-white text-sm transition-colors"
+                    className="inline-flex items-center py-1.5 min-h-[28px] text-steel hover:text-red-text text-sm transition-colors"
                   >
                     {t(item.labelKey)}
                   </Link>
@@ -79,37 +80,37 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-off-white font-heading font-semibold text-sm uppercase tracking-wider mb-5">
+            <h3 className="text-ink font-heading font-semibold text-sm uppercase tracking-wider mb-5">
               {t('footer.contact')}
             </h3>
             <ul className="space-y-4">
               <li>
                 <a
                   href={`tel:${siteConfig.contact.phone}`}
-                  className="flex items-start gap-3 text-steel hover:text-off-white text-sm transition-colors group"
+                  className="flex items-start gap-3 py-0.5 text-steel hover:text-red-text text-sm transition-colors group"
                 >
-                  <Phone size={15} className="mt-0.5 flex-shrink-0 group-hover:text-red-accent transition-colors" aria-hidden />
+                  <Phone size={15} className="mt-0.5 flex-shrink-0 text-red-accent/70 group-hover:text-red-accent transition-colors" aria-hidden />
                   <span className="font-mono">{siteConfig.contact.phoneDisplay}</span>
                 </a>
               </li>
               <li>
                 <a
                   href={`mailto:${siteConfig.contact.email}`}
-                  className="flex items-start gap-3 text-steel hover:text-off-white text-sm transition-colors group"
+                  className="flex items-start gap-3 py-0.5 text-steel hover:text-red-text text-sm transition-colors group break-all"
                 >
-                  <Mail size={15} className="mt-0.5 flex-shrink-0 group-hover:text-red-accent transition-colors" aria-hidden />
+                  <Mail size={15} className="mt-0.5 flex-shrink-0 text-red-accent/70 group-hover:text-red-accent transition-colors" aria-hidden />
                   <span>{siteConfig.contact.email}</span>
                 </a>
               </li>
               <li>
                 <div className="flex items-start gap-3 text-steel text-sm">
-                  <MapPin size={15} className="mt-0.5 flex-shrink-0" aria-hidden />
+                  <MapPin size={15} className="mt-0.5 flex-shrink-0 text-red-accent/70" aria-hidden />
                   <span>{siteConfig.contact.address}, {siteConfig.contact.city}</span>
                 </div>
               </li>
               <li>
                 <div className="flex items-start gap-3 text-steel text-sm">
-                  <Clock size={15} className="mt-0.5 flex-shrink-0" aria-hidden />
+                  <Clock size={15} className="mt-0.5 flex-shrink-0 text-red-accent/70" aria-hidden />
                   <span>{siteConfig.contact.hours}</span>
                 </div>
               </li>
@@ -118,15 +119,15 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-steel text-xs">
+        <div className="mt-12 pt-8 border-t border-line/[0.08] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-steel text-xs text-center sm:text-left">
             © {year} {siteConfig.legalName}. {t('footer.copyright')}
           </p>
-          <div className="flex gap-4">
-            <Link href={`/${locale}/privacidad`} className="text-steel hover:text-off-white text-xs transition-colors">
+          <div className="flex gap-5">
+            <Link href={`/${locale}/privacidad`} className="inline-flex items-center min-h-[28px] text-steel hover:text-red-text text-xs transition-colors">
               {t('footer.privacy')}
             </Link>
-            <Link href={`/${locale}/aviso-legal`} className="text-steel hover:text-off-white text-xs transition-colors">
+            <Link href={`/${locale}/aviso-legal`} className="inline-flex items-center min-h-[28px] text-steel hover:text-red-text text-xs transition-colors">
               {t('footer.terms')}
             </Link>
           </div>

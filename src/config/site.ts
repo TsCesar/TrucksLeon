@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: 'TrucksLeón International',
+  name: 'TrucksLeón',
   legalName: 'TRUCKS LEON INTERNATIONAL, S.L.',
   tagline: 'Gestión integral de vehículos industriales en Europa',
   description:

@@ -17,4 +17,5 @@ export const vehicleCategories: VehicleCategory[] = [
   { id: 'car-carriers', slug: 'portacoches', titleKey: 'categories.carCarriers', image: '/images/vehicles/category-portacoches.jpg' },
   { id: 'extendable-trailers', slug: 'semirremolques-extensibles', titleKey: 'categories.extendableTrailers', image: '/images/vehicles/category-extensibles.jpg' },
   { id: 'livestock-trailers', slug: 'semirremolques-ganaderos', titleKey: 'categories.livestockTrailers', image: '/images/vehicles/category-ganaderos-trailers.jpg' },
+  { id: 'cars', slug: 'coches', titleKey: 'categories.cars' },
 ]
