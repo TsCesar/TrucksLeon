@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import { NextIntlClientProvider } from 'next-intl'
-import { getMessages } from 'next-intl/server'
+import { getMessages, setRequestLocale } from 'next-intl/server'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { SmoothScroll } from '@/components/layout/SmoothScroll'
@@ -17,6 +17,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!locales.includes(locale as Locale)) {
     notFound()
   }
+
+  // Opts this subtree into static rendering — without it next-intl falls back to
+  // headers(), which a static export cannot provide.
+  setRequestLocale(locale)
 
   const messages = await getMessages()
 

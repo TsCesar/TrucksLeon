@@ -161,7 +161,10 @@
       "submit": "Enviar mensaje",
       "sending": "Enviando...",
       "success": "Mensaje enviado correctamente. Nos pondremos en contacto contigo pronto.",
-      "error": "Ha ocurrido un error. Por favor, inténtalo de nuevo o contáctanos directamente."
+      "error": "Ha ocurrido un error. Por favor, inténtalo de nuevo o contáctanos directamente.",
+      "staticNotice": "Tu mensaje se abrirá en WhatsApp para que lo envíes directamente.",
+      "submitWhatsapp": "Enviar por WhatsApp",
+      "submitEmail": "Enviar por email"
     }
   },
   "trust": {

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -21,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function VehiculosEntregadosPage({ params }: Props) {
   const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations({ locale })
 
   return (

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { setRequestLocale } from 'next-intl/server'
 import { HeroBase } from '@/components/sections/HeroBase'
 import { ServicesPreview } from '@/components/sections/ServicesPreview'
 import { VehicleCategoriesPreview } from '@/components/sections/VehicleCategoriesPreview'
@@ -16,7 +17,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return buildMetadata({ locale })
 }
 
-export default function HomePage() {
+export default async function HomePage({ params }: Props) {
+  const { locale } = await params
+  setRequestLocale(locale)
+
   return (
     <>
       <HeroBase />

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import Link from 'next/link'
 import { Globe, Settings, FileText, Network, ArrowRight } from 'lucide-react'
 import { Container } from '@/components/ui/Container'
@@ -26,6 +26,7 @@ const strengthKeys = [
 
 export default async function QuienesSomosPage({ params }: Props) {
   const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations({ locale })
 
   return (

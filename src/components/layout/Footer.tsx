@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Image from 'next/image'
+import { Image } from '@/components/ui/Image'
 import { useTranslations, useLocale } from 'next-intl'
 import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import { siteConfig } from '@/config/site'

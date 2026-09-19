@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Archivo, IBM_Plex_Mono } from 'next/font/google'
 import { siteConfig } from '@/config/site'
 import { MouseGlow } from '@/components/animations/MouseGlow'
+import { assetPath } from '@/lib/paths'
 import './globals.css'
 
 // Archivo carries a width axis — display type runs expanded (see --display-stretch).
@@ -26,10 +27,11 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   metadataBase: new URL(siteConfig.url),
+  // Metadata icon hrefs are emitted verbatim — basePath is not applied here.
   icons: {
-    icon: '/images/brand/logo-trucksleon.png',
-    shortcut: '/images/brand/logo-trucksleon.png',
-    apple: '/images/brand/logo-trucksleon.png',
+    icon: assetPath('/images/brand/logo-trucksleon.png'),
+    shortcut: assetPath('/images/brand/logo-trucksleon.png'),
+    apple: assetPath('/images/brand/logo-trucksleon.png'),
   },
 }
 

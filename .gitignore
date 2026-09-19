@@ -31,3 +31,5 @@ next-env.d.ts
 .mcp.json
 .claude/
 .code-review-graph/
+
+.tmp-cal/

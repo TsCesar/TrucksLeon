@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import { Image } from '@/components/ui/Image'
 import type { Vehicle } from '@/data/vehicles'
 
 export function VehicleCard({ vehicle }: { vehicle: Vehicle }) {

@@ -161,7 +161,10 @@
       "submit": "Send message",
       "sending": "Sending...",
       "success": "Message sent successfully. We will contact you shortly.",
-      "error": "An error occurred. Please try again or contact us directly."
+      "error": "An error occurred. Please try again or contact us directly.",
+      "staticNotice": "Your message will open in WhatsApp so you can send it directly.",
+      "submitWhatsapp": "Send via WhatsApp",
+      "submitEmail": "Send via email"
     }
   },
   "trust": {

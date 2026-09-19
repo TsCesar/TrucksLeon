@@ -161,7 +161,10 @@
       "submit": "Bericht versturen",
       "sending": "Verzenden...",
       "success": "Bericht succesvol verzonden. Wij nemen binnenkort contact met u op.",
-      "error": "Er is een fout opgetreden. Probeer het opnieuw of neem direct contact met ons op."
+      "error": "Er is een fout opgetreden. Probeer het opnieuw of neem direct contact met ons op.",
+      "staticNotice": "Je bericht wordt in WhatsApp geopend zodat je het direct kunt versturen.",
+      "submitWhatsapp": "Verzenden via WhatsApp",
+      "submitEmail": "Verzenden via e-mail"
     }
   },
   "trust": {

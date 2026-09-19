@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import Image from 'next/image'
+import { Image } from '@/components/ui/Image'
 import { useTranslations } from 'next-intl'
 import { motion, useMotionValue, useTransform, useSpring, useReducedMotion } from 'motion/react'
 import { Badge } from '@/components/ui/Badge'

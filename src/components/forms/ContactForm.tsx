@@ -9,6 +9,28 @@ import { contactSchema, type ContactFormData } from '@/lib/validations'
 import { Input } from '@/components/ui/Input'
 import { Textarea } from '@/components/ui/Textarea'
 import { Button } from '@/components/ui/Button'
+import { siteConfig } from '@/config/site'
+
+// Read inline (not via a re-exported const) so Next can fold the literal and the
+// minifier drops the unused branch — the Pages bundle ships no /api/contact call.
+const isGitHubPages = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true'
+
+/**
+ * Flattens the form into the plain-text body used by the WhatsApp and mailto
+ * hand-offs. Only reached in the GitHub Pages build, which has no /api/contact.
+ */
+function composeMessage(d: ContactFormData): string {
+  return [
+    `${d.name}`,
+    `Email: ${d.email}`,
+    `Tel: ${d.phone}`,
+    d.company ? `Empresa: ${d.company}` : null,
+    '',
+    d.message,
+  ]
+    .filter((line) => line !== null)
+    .join('\n')
+}
 
 export function ContactForm() {
   const t = useTranslations()
@@ -25,8 +47,28 @@ export function ContactForm() {
     defaultValues: { honeypot: '', locale },
   })
 
+  /** Static hosting has no backend: hand the validated message to WhatsApp or mail. */
+  function handOff(data: ContactFormData, via: 'whatsapp' | 'email') {
+    const body = composeMessage(data)
+    const url =
+      via === 'whatsapp'
+        ? `https://wa.me/${siteConfig.contact.whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(body)}`
+        : `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent(
+            `${siteConfig.name} — ${data.name}`
+          )}&body=${encodeURIComponent(body)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setStatus('success')
+    reset()
+  }
+
   async function onSubmit(data: ContactFormData) {
     setStatus('idle')
+
+    if (isGitHubPages) {
+      handOff(data, 'whatsapp')
+      return
+    }
+
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -144,9 +186,25 @@ export function ContactForm() {
         </div>
       )}
 
-      <Button type="submit" loading={isSubmitting} size="lg" className="w-full">
-        {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
-      </Button>
+      {isGitHubPages ? (
+        <div className="space-y-3">
+          <p className="text-xs text-steel leading-relaxed">{t('contact.form.staticNotice')}</p>
+          <Button type="submit" loading={isSubmitting} size="lg" className="w-full">
+            {t('contact.form.submitWhatsapp')}
+          </Button>
+          <button
+            type="button"
+            onClick={handleSubmit((data) => handOff(data, 'email'))}
+            className="w-full text-xs font-medium text-steel hover:text-red-text underline underline-offset-4 decoration-line/25 hover:decoration-red-accent/40 transition-colors"
+          >
+            {t('contact.form.submitEmail')}
+          </button>
+        </div>
+      ) : (
+        <Button type="submit" loading={isSubmitting} size="lg" className="w-full">
+          {isSubmitting ? t('contact.form.sending') : t('contact.form.submit')}
+        </Button>
+      )}
     </form>
   )
 }

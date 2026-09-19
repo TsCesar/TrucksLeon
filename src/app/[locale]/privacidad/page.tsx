@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getTranslations } from 'next-intl/server'
+import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { Container } from '@/components/ui/Container'
 import { Reveal } from '@/components/animations/Reveal'
 import { buildMetadata } from '@/lib/seo'
@@ -14,6 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function PrivacidadPage({ params }: Props) {
   const { locale } = await params
+  setRequestLocale(locale)
   const t = await getTranslations({ locale })
 
   return (

@@ -161,7 +161,10 @@
       "submit": "Nachricht senden",
       "sending": "Wird gesendet...",
       "success": "Nachricht erfolgreich gesendet. Wir werden uns bald bei Ihnen melden.",
-      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt."
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.",
+      "staticNotice": "Ihre Nachricht wird in WhatsApp geöffnet, damit Sie sie direkt senden können.",
+      "submitWhatsapp": "Per WhatsApp senden",
+      "submitEmail": "Per E-Mail senden"
     }
   },
   "trust": {
