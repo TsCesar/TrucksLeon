@@ -167,9 +167,9 @@
   will-change: transform;
 }
 /* Small, purely cosmetic stagger — every step is still visible from frame 1. */
-.hero-rise-1 { animation-delay: 0ms; }
-.hero-rise-2 { animation-delay: 20ms; }
-.hero-rise-3 { animation-delay: 40ms; }
+.hero-rise-1 { animation-delay: 60ms; }
+.hero-rise-2 { animation-delay: 120ms; }
+.hero-rise-3 { animation-delay: 180ms; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero-rise { animation: none; }
