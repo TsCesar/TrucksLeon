@@ -43,13 +43,14 @@ export function StaggerItem({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 24, filter: 'blur(8px)', scale: 0.97 },
+        // transform + opacity only — no filter, so each item stays on the
+        // compositor instead of triggering a repaint per frame.
+        hidden: { opacity: 0, y: 24, scale: 0.98 },
         visible: {
           opacity: 1,
           y: 0,
-          filter: 'blur(0px)',
           scale: 1,
-          transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] },
+          transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
         },
       }}
       className={className}

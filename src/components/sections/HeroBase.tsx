@@ -34,12 +34,6 @@ export function HeroBase() {
 
   const ease = [0.16, 1, 0.3, 1] as const
 
-  const fadeBlurUp = (delay: number) => ({
-    initial: prefersReducedMotion ? {} : { opacity: 0, y: 28, filter: 'blur(8px)' },
-    animate: { opacity: 1, y: 0, filter: 'blur(0px)' },
-    transition: { duration: 0.95, delay, ease },
-  })
-
   const stats = [
     { value: '+15', labelKey: 'hero.stats.countries' },
     { value: '24/7', labelKey: 'hero.stats.availability' },
@@ -63,11 +57,20 @@ export function HeroBase() {
         }}
       />
 
-      {/* Soft red blooms — barely there, just enough to warm the whites */}
-      <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden>
-        <div className="absolute left-[-20%] top-[4%] w-[640px] h-[640px] max-w-[100vw] rounded-full bg-red-accent/[0.032] blur-[160px]" />
-        <div className="absolute right-[-8%] bottom-[14%] w-[420px] h-[420px] max-w-[90vw] rounded-full bg-red-accent/[0.028] blur-[120px]" />
-      </div>
+      {/* Soft red blooms. Painted as radial gradients rather than blur-[160px]:
+          a blur filter that size forces a full-layer repaint every frame the
+          hero moves, which is expensive on mobile GPUs. The falloff is
+          visually equivalent and costs nothing. */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        aria-hidden
+        style={{
+          backgroundImage: [
+            'radial-gradient(circle 520px at 8% 20%, rgb(215 25 32 / 0.055) 0%, rgb(215 25 32 / 0.022) 42%, transparent 72%)',
+            'radial-gradient(circle 360px at 94% 78%, rgb(215 25 32 / 0.05) 0%, rgb(215 25 32 / 0.018) 45%, transparent 74%)',
+          ].join(', '),
+        }}
+      />
 
       {/* Tractor unit — parallax, on its own light "studio floor" */}
       <div className="absolute inset-y-0 right-0 w-full md:w-[62%] lg:w-[58%] z-[1] pointer-events-none overflow-hidden" aria-hidden>
@@ -88,9 +91,10 @@ export function HeroBase() {
             transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute inset-0 flex items-center justify-end pr-[2%] md:pr-[4%]"
           >
-            <div className="relative w-[92%] max-w-[640px] aspect-[640/501] opacity-[0.32] sm:opacity-[0.45] md:opacity-90">
+            <div className="relative w-[92%] max-w-[640px] aspect-[550/461] opacity-[0.32] sm:opacity-[0.45] md:opacity-90">
+              {/* The hero LCP image — the only asset on the page that keeps priority. */}
               <Image
-                src="/images/hero/hero-truck-main.png"
+                src="/images/hero/hero-truck-main.webp"
                 alt=""
                 fill
                 priority
@@ -158,34 +162,25 @@ export function HeroBase() {
         className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 pb-[11.5rem] sm:pb-[14rem] lg:pb-[17.5rem] will-change-transform"
         style={prefersReducedMotion ? {} : { opacity: contentOpacity, y: contentY }}
       >
+        {/* Critical copy: rendered opaque in the SSR HTML and animated by CSS only.
+            No Motion, no hydration gate — it paints with the first frame. */}
         <div className="max-w-[34rem] lg:max-w-3xl">
-          <motion.div {...fadeBlurUp(0.1)}>
+          <div className="hero-rise">
             <Badge variant="outline" className="mb-6 gap-2 shadow-card">
-              <motion.span
-                className="w-1.5 h-1.5 rounded-full bg-red-accent block flex-shrink-0"
-                animate={prefersReducedMotion ? {} : { opacity: [1, 0.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                aria-hidden
-              />
+              <span className="w-1.5 h-1.5 rounded-full bg-red-accent block flex-shrink-0" aria-hidden />
               {t('hero.badge')}
             </Badge>
-          </motion.div>
+          </div>
 
-          <motion.h1
-            {...fadeBlurUp(0.22)}
-            className="text-[2.4rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3.9rem] xl:text-[4.4rem] font-heading font-bold text-ink leading-[1.03] tracking-[-0.03em] mb-5 text-balance"
-          >
+          <h1 className="hero-rise hero-rise-1 text-[2.4rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3.9rem] xl:text-[4.4rem] font-heading font-bold text-ink leading-[1.03] tracking-[-0.03em] mb-5 text-balance">
             {t('hero.claim')}
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            {...fadeBlurUp(0.38)}
-            className="text-base md:text-lg lg:text-xl text-steel leading-relaxed mb-8 max-w-xl"
-          >
+          <p className="hero-rise hero-rise-2 text-base md:text-lg lg:text-xl text-steel leading-relaxed mb-8 max-w-xl">
             {t('hero.subclaim')}
-          </motion.p>
+          </p>
 
-          <motion.div {...fadeBlurUp(0.52)} className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="hero-rise hero-rise-3 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link href={`/${locale}/contacto`}>
               <Button size="lg" className="group w-full sm:w-auto">
                 {t('hero.ctaPrimary')}
@@ -198,18 +193,16 @@ export function HeroBase() {
                 <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />
               </Button>
             </Link>
-          </motion.div>
+          </div>
 
           {/* Stats */}
           <div className="mt-9 sm:mt-11">
             <div className="grid grid-cols-3 sm:hidden gap-2">
               {stats.map((stat, i) => (
-                <motion.div
+                <div
                   key={stat.labelKey}
-                  className="text-center"
-                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 18, scale: 0.86 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.75 + i * 0.14, ease }}
+                  className="text-center hero-rise"
+                  style={{ animationDelay: `${240 + i * 70}ms` }}
                 >
                   <div className="text-2xl font-heading font-bold text-red-accent font-mono tracking-tight leading-none">
                     {stat.value}
@@ -217,17 +210,15 @@ export function HeroBase() {
                   <div className="text-[10px] text-steel uppercase tracking-wide mt-1.5 leading-tight">
                     {t(stat.labelKey)}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
             <div className="hidden sm:flex items-start divide-x divide-line/12">
               {stats.map((stat, i) => (
-                <motion.div
+                <div
                   key={stat.labelKey}
-                  className={i === 0 ? 'pr-8' : 'px-8'}
-                  initial={prefersReducedMotion ? {} : { opacity: 0, y: 18, scale: 0.86 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.75 + i * 0.14, ease }}
+                  className={`hero-rise ${i === 0 ? 'pr-8' : 'px-8'}`}
+                  style={{ animationDelay: `${240 + i * 70}ms` }}
                 >
                   <div className="text-3xl font-heading font-bold text-red-accent font-mono tracking-tight leading-none">
                     {stat.value}
@@ -235,7 +226,7 @@ export function HeroBase() {
                   <div className="text-xs text-steel uppercase tracking-wider mt-2">
                     {t(stat.labelKey)}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>

@@ -46,19 +46,19 @@ export function ContactPreview() {
             <div className="absolute inset-0 bg-gradient-to-br from-surface via-surface to-canvas" aria-hidden />
             <div className="absolute inset-0 tech-grid opacity-70" aria-hidden />
 
-            {/* Slow red blooms — warmth, not colour blocking */}
+            {/* Red blooms — warmth, not colour blocking. Static gradients: the
+                previous pair animated two 400px blur-filter layers forever,
+                which kept the compositor busy even off-screen. */}
             {!prefersReducedMotion && (
               <>
-                <motion.div
-                  className="absolute -top-40 -left-40 w-[400px] h-[400px] rounded-full bg-red-accent/[0.07] blur-[110px] pointer-events-none"
-                  animate={{ x: [0, 30, 0], y: [0, -18, 0] }}
-                  transition={{ duration: 9, repeat: Infinity, ease: 'easeInOut' }}
-                  aria-hidden
-                />
-                <motion.div
-                  className="absolute -bottom-40 -right-40 w-[400px] h-[400px] rounded-full bg-red-accent/[0.06] blur-[130px] pointer-events-none"
-                  animate={{ x: [0, -30, 0], y: [0, 18, 0] }}
-                  transition={{ duration: 11, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    backgroundImage: [
+                      'radial-gradient(circle 340px at 4% 6%, rgb(215 25 32 / 0.085) 0%, rgb(215 25 32 / 0.03) 45%, transparent 74%)',
+                      'radial-gradient(circle 340px at 96% 94%, rgb(215 25 32 / 0.075) 0%, rgb(215 25 32 / 0.026) 45%, transparent 74%)',
+                    ].join(', '),
+                  }}
                   aria-hidden
                 />
               </>

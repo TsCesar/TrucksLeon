@@ -1,10 +1,12 @@
 'use client'
 
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Image } from '@/components/ui/Image'
 import { useTranslations } from 'next-intl'
 import { motion, useMotionValue, useTransform, useSpring, useReducedMotion } from 'motion/react'
+import { Images } from 'lucide-react'
 import { Badge } from '@/components/ui/Badge'
+import { VehicleGallery } from '@/components/vehicles/VehicleGallery'
 import type { DeliveredVehicle } from '@/data/deliveredVehicles'
 
 /* Placeholder line-art for records without a photograph. Drawn as thin red
@@ -68,7 +70,7 @@ function CarPlaceholderSVG() {
   )
 }
 
-type Props = { vehicle: DeliveredVehicle }
+type Props = { vehicle: DeliveredVehicle; priority?: boolean }
 
 function isCarType(vehicle: DeliveredVehicle) {
   const name = vehicle.name.toLowerCase()
@@ -80,11 +82,13 @@ function isCarType(vehicle: DeliveredVehicle) {
  * neutral plate, white body, red brand line, grey technical data, a hairline
  * border that turns red on hover with a small lift.
  */
-export function DeliveredVehicleCard({ vehicle }: Props) {
+export function DeliveredVehicleCard({ vehicle, priority = false }: Props) {
   const t = useTranslations()
   const isCar = isCarType(vehicle)
   const cardRef = useRef<HTMLElement>(null)
   const prefersReducedMotion = useReducedMotion()
+  const [open, setOpen] = useState(false)
+  const shots = vehicle.images?.length ?? 0
 
   const mx = useMotionValue(0)
   const my = useMotionValue(0)
@@ -113,32 +117,42 @@ export function DeliveredVehicleCard({ vehicle }: Props) {
       ref={cardRef}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
+      onClick={() => shots > 0 && setOpen(true)}
       style={{
         rotateX: prefersReducedMotion ? 0 : springRX,
         rotateY: prefersReducedMotion ? 0 : springRY,
         transformPerspective: 1000,
       }}
-      className="group relative h-full flex flex-col rounded-xl overflow-hidden bg-surface border border-line/[0.09] shadow-card hover:border-red-accent/30 hover:shadow-[0_2px_6px_rgb(15_23_42_/_0.05),0_24px_50px_-26px_rgb(15_23_42_/_0.30)] transition-[border-color,box-shadow] duration-300"
+      className={`group relative h-full flex flex-col rounded-xl overflow-hidden bg-surface border border-line/[0.09] shadow-card hover:border-red-accent/30 hover:shadow-[0_2px_6px_rgb(15_23_42_/_0.05),0_24px_50px_-26px_rgb(15_23_42_/_0.30)] transition-[border-color,box-shadow] duration-300 ${
+        shots > 0 ? 'cursor-pointer' : ''
+      }`}
     >
-      {/* Photograph — the hero of the card. The source images are cut-outs on
-          transparency, so they sit contained on a neutral plate rather than
-          being cropped. */}
+      {/* Photograph — the hero of the card. These are real photographs from the
+          TrucksLeón catalogue, so they are cropped edge to edge like a
+          vehicle listing rather than floated on a plate. */}
       <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-b from-canvas to-mist">
         {vehicle.image ? (
           <>
-            <div className="absolute inset-0 tech-grid-sm opacity-60" aria-hidden />
-            <div
-              className="absolute inset-x-[12%] bottom-[10%] h-[14%] rounded-[50%] blur-xl"
-              style={{ background: 'rgb(15 23 42 / 0.10)' }}
-              aria-hidden
-            />
             <Image
               src={vehicle.image}
               alt={vehicle.name}
               fill
-              className="object-contain p-4 transition-transform duration-700 ease-out-expo group-hover:scale-[1.06]"
+              priority={priority}
+              loading={priority ? undefined : 'lazy'}
+              className="object-cover transition-transform duration-700 ease-out-expo group-hover:scale-[1.05]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
+            <div
+              className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ background: 'linear-gradient(to top, rgb(15 23 42 / 0.28), transparent 55%)' }}
+              aria-hidden
+            />
+            {shots > 1 && (
+              <span className="absolute bottom-3 right-3 z-[2] inline-flex items-center gap-1.5 px-2 py-1 rounded-md bg-surface/90 border border-line/10 text-steel font-mono text-[10px]">
+                <Images size={11} aria-hidden />
+                {shots}
+              </span>
+            )}
           </>
         ) : (
           <div className="w-full h-full flex flex-col items-center justify-center gap-3 relative overflow-hidden bg-canvas">
@@ -181,7 +195,23 @@ export function DeliveredVehicleCard({ vehicle }: Props) {
             <span className="text-steel/75 text-xs font-mono px-2 py-0.5 rounded bg-line/[0.05]">{vehicle.year}</span>
           )}
         </div>
+
+        {/* Keyboard/AT entry point — the card itself is only a pointer target. */}
+        {shots > 0 && (
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation()
+              setOpen(true)
+            }}
+            className="absolute inset-0 w-full h-full opacity-0 focus-visible:opacity-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-red-accent rounded-xl"
+          >
+            <span className="sr-only">{vehicle.name}</span>
+          </button>
+        )}
       </div>
+
+      {open && <VehicleGallery vehicle={vehicle} onClose={() => setOpen(false)} />}
     </motion.article>
   )
 }

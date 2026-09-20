@@ -1,6 +1,5 @@
 import type { ReactNode } from 'react'
 import { Container } from '@/components/ui/Container'
-import { Reveal } from '@/components/animations/Reveal'
 
 type PageHeroProps = {
   badge: string
@@ -18,9 +17,13 @@ export function PageHero({ badge, title, subtitle, children }: PageHeroProps) {
     <div className="relative py-20 md:py-28 overflow-hidden border-b border-line/[0.07] bg-gradient-to-b from-surface via-surface to-canvas">
       <div className="absolute inset-0 tech-grid opacity-70" aria-hidden />
 
+      {/* Bloom as a gradient, not a 130px blur filter — same falloff, no repaint cost */}
       <div
-        className="absolute -top-24 -left-24 w-[640px] h-[420px] rounded-full blur-[130px] pointer-events-none"
-        style={{ background: 'rgb(215 25 32 / 0.055)' }}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            'radial-gradient(ellipse 520px 330px at 6% 0%, rgb(215 25 32 / 0.075) 0%, rgb(215 25 32 / 0.03) 45%, transparent 75%)',
+        }}
         aria-hidden
       />
 
@@ -29,20 +32,24 @@ export function PageHero({ badge, title, subtitle, children }: PageHeroProps) {
         aria-hidden
       />
 
+      {/* This block is the LCP element on every interior page, so it uses the
+          same CSS-only entry as the home hero. Wrapping it in <Reveal> meant
+          shipping opacity:0 + blur(10px) in the HTML and waiting for Motion to
+          hydrate before any of it was readable. */}
       <Container className="relative">
-        <Reveal>
-          <span className="inline-flex items-center gap-2 text-red-text font-mono text-xs font-semibold tracking-[0.18em] uppercase mb-4">
-            <span className="w-5 h-px bg-red-accent/60" aria-hidden />
-            {badge}
-          </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-ink mb-4 leading-[1.06] tracking-tight max-w-3xl text-balance">
-            {title}
-          </h1>
-          {subtitle && (
-            <p className="text-steel text-lg md:text-xl max-w-2xl leading-relaxed">{subtitle}</p>
-          )}
-          {children}
-        </Reveal>
+        <span className="hero-rise inline-flex items-center gap-2 text-red-text font-mono text-xs font-semibold tracking-[0.18em] uppercase mb-4">
+          <span className="w-5 h-px bg-red-accent/60" aria-hidden />
+          {badge}
+        </span>
+        <h1 className="hero-rise hero-rise-1 text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-ink mb-4 leading-[1.06] tracking-tight max-w-3xl text-balance">
+          {title}
+        </h1>
+        {subtitle && (
+          <p className="hero-rise hero-rise-2 text-steel text-lg md:text-xl max-w-2xl leading-relaxed">
+            {subtitle}
+          </p>
+        )}
+        {children}
       </Container>
     </div>
   )

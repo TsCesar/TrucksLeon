@@ -47,6 +47,11 @@ const nextConfig: NextConfig = {
   ...(isGitHubPages
     ? {
         output: 'export' as const,
+        // Separate build directory. Both modes used to write to .next, so
+        // whichever ran last owned it — running `npm start` after
+        // `npm run build:pages` served the basePath build with no API routes.
+        // The static export still lands in out/, which is independent of this.
+        distDir: '.next-pages',
         // basePath makes Next rewrite Link hrefs, Image srcs and /_next/ assets.
         basePath,
         // Emits es/index.html rather than es.html, so /TrucksLeon/es/ resolves.

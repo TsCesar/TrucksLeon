@@ -13,11 +13,9 @@ import { deliveredVehicles } from '@/data/deliveredVehicles'
 export function DeliveredPreview() {
   const t = useTranslations()
   const locale = useLocale()
-  // Show up to 6; prefer those with images but include imageless ones to fill grid
-  const featured = [
-    ...deliveredVehicles.filter((v) => v.image),
-    ...deliveredVehicles.filter((v) => !v.image),
-  ].slice(0, 6)
+  // Six covers on the home page; the full set (and every gallery) lives on
+  // /vehiculos-entregados, so the landing page never pulls twelve galleries.
+  const featured = deliveredVehicles.slice(0, 6)
 
   return (
     <Section tone="surface" id="entregados" className="relative overflow-hidden">

@@ -150,6 +150,31 @@
   }
 }
 
+/* ─── HERO ENTRY — CSS ONLY ─────────────────────────────────────────────
+   The hero claim is the LCP element, so it must never wait for React to
+   hydrate or for Motion to run a delay. These keyframes start at opacity
+   0.88, so the text is legible on the very first paint, and the animation
+   is driven by the compositor before any JS has executed.
+   No blur(): a filter on the headline forces an expensive repaint and
+   makes the type unreadable for the whole ramp. */
+@keyframes hero-rise {
+  from { opacity: 0.88; transform: translate3d(0, 10px, 0); }
+  to   { opacity: 1;    transform: translate3d(0, 0, 0); }
+}
+
+.hero-rise {
+  animation: hero-rise 320ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  will-change: transform;
+}
+/* Small, purely cosmetic stagger — every step is still visible from frame 1. */
+.hero-rise-1 { animation-delay: 60ms; }
+.hero-rise-2 { animation-delay: 120ms; }
+.hero-rise-3 { animation-delay: 180ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-rise { animation: none; }
+}
+
 /* ─── BUTTON RIPPLE ─────────────────────────────────────────────────── */
 @keyframes btn-ripple {
   0%   { transform: scale(0); opacity: 0.55; }

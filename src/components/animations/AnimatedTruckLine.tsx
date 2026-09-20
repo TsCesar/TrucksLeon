@@ -6,8 +6,17 @@ import { motion, useReducedMotion } from 'motion/react'
 /**
  * The TrucksLeón trailer crossing the bottom band of the hero.
  * Enters from well off-screen left and exits off-screen right, on a light
- * technical road line. The artwork is red-and-white on transparency, so it
- * carries the brand at full strength against the light ground.
+ * technical road line.
+ *
+ * One asset for every breakpoint. There used to be three PNGs (mobile /
+ * square / wide, 1.2–1.6 MB each, all three marked `priority`) that were the
+ * same artwork on differently padded canvases — up to 86% transparent margin.
+ * Because the padding counted towards the box, a `height: 140px` on mobile
+ * drew the truck itself at roughly 23px tall, which is why it read as a
+ * speck. `truck-line.webp` is trimmed to the artwork (1400x381, 72 KB), so
+ * the rendered size is the truck's real size and it can be driven by width.
+ *
+ * Decorative, never the LCP element: no `priority`.
  */
 export function AnimatedTruckLine() {
   const prefersReducedMotion = useReducedMotion()
@@ -20,11 +29,11 @@ export function AnimatedTruckLine() {
 
   return (
     <div
-      className="absolute bottom-0 left-0 right-0 h-[140px] sm:h-[186px] lg:h-[248px] overflow-hidden pointer-events-none z-[5]"
+      className="absolute bottom-0 left-0 right-0 h-[132px] sm:h-[172px] lg:h-[218px] overflow-hidden pointer-events-none z-[5]"
       aria-hidden
       style={{
-        maskImage: 'linear-gradient(to bottom, transparent 0%, black 42%)',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 42%)',
+        maskImage: 'linear-gradient(to bottom, transparent 0%, black 38%)',
+        WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 38%)',
       }}
     >
       {/* Road surface */}
@@ -41,11 +50,11 @@ export function AnimatedTruckLine() {
 
       {/* Truck — enters from well off-screen left, exits off-screen right */}
       <motion.div
-        className="absolute bottom-0 left-0 flex items-end will-change-transform"
-        initial={{ x: '-110vw' }}
-        animate={{ x: '110vw' }}
+        className="absolute bottom-[6px] left-0 flex items-end will-change-transform"
+        initial={{ x: '-115vw' }}
+        animate={{ x: '115vw' }}
         transition={{
-          duration: 13,
+          duration: 15,
           repeat: Infinity,
           ease: 'linear',
           repeatDelay: 1.5,
@@ -53,46 +62,24 @@ export function AnimatedTruckLine() {
       >
         {/* Tail-light trail */}
         <div
-          className="self-end mb-[2px] flex-shrink-0"
+          className="self-end mb-[4px] flex-shrink-0 w-[60px] sm:w-[90px] lg:w-[120px]"
           style={{
-            width: 120,
             height: 1,
             background:
               'linear-gradient(to right, transparent, rgba(215,25,32,0.15), rgba(215,25,32,0.4))',
           }}
         />
 
-        {/* Mobile – portrait */}
+        {/* Sized by width so the truck keeps real presence on small screens:
+            ~78vw at 390px ≈ 304px wide, i.e. it genuinely crosses the hero. */}
         <Image
-          src="/images/vehicles/truck-hero-mobile-transparent.png"
+          src="/images/vehicles/truck-line.webp"
           alt=""
-          width={300}
-          height={400}
-          style={{ height: 140, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 12px 16px rgb(15 23 42 / 0.14))' }}
-          className="block sm:hidden max-w-none flex-shrink-0"
-          priority
-        />
-
-        {/* Tablet – square */}
-        <Image
-          src="/images/vehicles/truck-hero-square-transparent.png"
-          alt=""
-          width={400}
-          height={400}
-          style={{ height: 186, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 14px 20px rgb(15 23 42 / 0.14))' }}
-          className="hidden sm:block lg:hidden max-w-none flex-shrink-0"
-          priority
-        />
-
-        {/* Desktop – wide */}
-        <Image
-          src="/images/vehicles/truck-hero-wide-transparent.png"
-          alt=""
-          width={800}
-          height={300}
-          style={{ height: 248, width: 'auto', objectFit: 'contain', filter: 'drop-shadow(0 18px 26px rgb(15 23 42 / 0.14))' }}
-          className="hidden lg:block max-w-none flex-shrink-0"
-          priority
+          width={1400}
+          height={381}
+          sizes="(max-width: 639px) 78vw, (max-width: 1023px) 46vw, 640px"
+          className="block max-w-none flex-shrink-0 h-auto w-[78vw] sm:w-[46vw] lg:w-[560px] xl:w-[640px]"
+          style={{ filter: 'drop-shadow(0 14px 18px rgb(15 23 42 / 0.16))' }}
         />
       </motion.div>
     </div>

@@ -34,7 +34,9 @@ export default async function EuropaPage({ params }: Props) {
       <section className="py-16 md:py-24 bg-surface">
         <Container>
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <Reveal direction="left">
+            {/* First body block: sits inside the initial viewport on phones, so
+                it is the LCP candidate. CSS entry, not a hydration-gated Reveal. */}
+            <div className="hero-rise">
               <p className="text-steel text-lg leading-relaxed mb-8">
                 {t('europe.description')}
               </p>
@@ -45,7 +47,7 @@ export default async function EuropaPage({ params }: Props) {
               <p className="text-steel text-sm leading-relaxed">
                 {t('europe.coverage')}
               </p>
-            </Reveal>
+            </div>
             <Reveal direction="right" delay={0.2}>
               <div className="p-3 sm:p-4 rounded-2xl bg-surface border border-line/[0.09] shadow-float">
                 <EuropeRouteMap />

@@ -5,6 +5,11 @@
  *
  * Output: *-transparent.png variants alongside originals.
  * Run: node scripts/prepare-truck-transparent-assets.mjs
+ *
+ * Both sides live in assets-src/, outside public/: these are intermediate
+ * artwork, not shipped assets. scripts/optimize-images.mjs turns the wide
+ * transparent PNG into the public/images/vehicles/truck-line.webp the site
+ * actually loads.
  */
 
 import sharp from 'sharp'
@@ -12,16 +17,16 @@ import { existsSync } from 'fs'
 
 const PAIRS = [
   {
-    src: 'public/images/vehicles/truck-hero-wide.png',
-    dst: 'public/images/vehicles/truck-hero-wide-transparent.png',
+    src: 'assets-src/vehicles/truck-hero-wide.png',
+    dst: 'assets-src/vehicles/truck-hero-wide-transparent.png',
   },
   {
-    src: 'public/images/vehicles/truck-hero-square.png',
-    dst: 'public/images/vehicles/truck-hero-square-transparent.png',
+    src: 'assets-src/vehicles/truck-hero-square.png',
+    dst: 'assets-src/vehicles/truck-hero-square-transparent.png',
   },
   {
-    src: 'public/images/vehicles/truck-hero-mobile.png',
-    dst: 'public/images/vehicles/truck-hero-mobile-transparent.png',
+    src: 'assets-src/vehicles/truck-hero-mobile.png',
+    dst: 'assets-src/vehicles/truck-hero-mobile-transparent.png',
   },
 ]
 
