@@ -10,7 +10,7 @@ type StaggerProps = {
   once?: boolean
 }
 
-export function Stagger({ children, staggerDelay = 0.07, className, once = true }: StaggerProps) {
+export function Stagger({ children, staggerDelay = 0.055, className, once = true }: StaggerProps) {
   const prefersReducedMotion = useReducedMotion()
 
   if (prefersReducedMotion) {
@@ -50,7 +50,7 @@ export function StaggerItem({
           opacity: 1,
           y: 0,
           scale: 1,
-          transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] },
+          transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
         },
       }}
       className={className}

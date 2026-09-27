@@ -22,13 +22,17 @@ export function DeliveredPreview() {
       <VehicleStreaks />
       <Container className="relative">
         <RoomEntry tiltX={6} tiltY={-2}>
-          <div className="flex items-start justify-between gap-4 flex-wrap mb-2">
-            <SectionHeader
-              badge={t('nav.delivered')}
-              title={t('delivered.title')}
-              subtitle={t('delivered.subtitle')}
-            />
-            <span className="font-mono text-steel/70 text-xs self-end pb-1 shrink-0" aria-hidden>
+          {/* The header must stay a full-width centred block like every other
+              section on the page. It used to share a justify-between row with
+              the counter, which shrank it and left the centred badge and
+              subtitle floating off-axis from the title. */}
+          <SectionHeader
+            badge={t('nav.delivered')}
+            title={t('delivered.title')}
+            subtitle={t('delivered.subtitle')}
+          />
+          <div className="flex justify-end mb-3">
+            <span className="font-mono text-steel/70 text-xs" aria-hidden>
               {deliveredVehicles.length}&nbsp;{t('delivered.statsCount')}
             </span>
           </div>

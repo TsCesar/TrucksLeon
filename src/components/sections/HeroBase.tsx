@@ -120,7 +120,7 @@ export function HeroBase() {
           aria-hidden
           initial={prefersReducedMotion ? {} : { opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 1.0 + idx * 0.12 }}
+          transition={{ duration: 0.5, delay: 0.45 + idx * 0.08 }}
         >
           <path
             d={
@@ -153,13 +153,13 @@ export function HeroBase() {
         aria-hidden
         initial={prefersReducedMotion ? {} : { scaleY: 0, opacity: 0 }}
         animate={{ scaleY: 1, opacity: 1 }}
-        transition={{ duration: 1.8, delay: 0.1, ease }}
+        transition={{ duration: 0.9, delay: 0.1, ease }}
         style={{ originY: 0.5 }}
       />
 
       {/* Content — fades + rises as the hero scrolls away */}
       <motion.div
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 pb-[11.5rem] sm:pb-[14rem] lg:pb-[17.5rem] will-change-transform"
+        className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-28 pb-[10.5rem] sm:pb-[13rem] lg:pb-[15rem] will-change-transform"
         style={prefersReducedMotion ? {} : { opacity: contentOpacity, y: contentY }}
       >
         {/* Critical copy: rendered opaque in the SSR HTML and animated by CSS only.
@@ -172,15 +172,19 @@ export function HeroBase() {
             </Badge>
           </div>
 
-          <h1 className="hero-rise hero-rise-1 text-[2.4rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3.9rem] xl:text-[4.4rem] font-heading font-bold text-ink leading-[1.03] tracking-[-0.03em] mb-5 text-balance">
+          {/* The claim carries no entry animation at all — deliberately not
+              even hero-rise. It is the one element that must be complete on
+              the first frame: full opacity, no transform, nothing to wait for.
+              The badge, subclaim, CTAs and stats keep their micro-stagger. */}
+          <h1 className="text-[2.4rem] sm:text-[3rem] md:text-[3.5rem] lg:text-[3.9rem] xl:text-[4.4rem] font-heading font-bold text-ink leading-[1.03] tracking-[-0.03em] mb-5 text-balance">
             {t('hero.claim')}
           </h1>
 
-          <p className="hero-rise hero-rise-2 text-base md:text-lg lg:text-xl text-steel leading-relaxed mb-8 max-w-xl">
+          <p className="hero-rise hero-rise-1 text-base md:text-lg lg:text-xl text-steel leading-relaxed mb-8 max-w-xl">
             {t('hero.subclaim')}
           </p>
 
-          <div className="hero-rise hero-rise-3 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="hero-rise hero-rise-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <Link href={`/${locale}/contacto`}>
               <Button size="lg" className="group w-full sm:w-auto">
                 {t('hero.ctaPrimary')}
@@ -202,12 +206,15 @@ export function HeroBase() {
                 <div
                   key={stat.labelKey}
                   className="text-center hero-rise"
-                  style={{ animationDelay: `${240 + i * 70}ms` }}
+                  style={{ animationDelay: `${110 + i * 45}ms` }}
                 >
                   <div className="text-2xl font-heading font-bold text-red-accent font-mono tracking-tight leading-none">
                     {stat.value}
                   </div>
-                  <div className="text-[10px] text-steel uppercase tracking-wide mt-1.5 leading-tight">
+                  {/* break-words: German "Komplettmanagement" is one 18-character
+                      word with no break opportunity and overflowed this ~91px
+                      cell at 320-390px. */}
+                  <div className="text-[10px] text-steel uppercase tracking-wide mt-1.5 leading-tight break-words">
                     {t(stat.labelKey)}
                   </div>
                 </div>
@@ -218,12 +225,12 @@ export function HeroBase() {
                 <div
                   key={stat.labelKey}
                   className={`hero-rise ${i === 0 ? 'pr-8' : 'px-8'}`}
-                  style={{ animationDelay: `${240 + i * 70}ms` }}
+                  style={{ animationDelay: `${110 + i * 45}ms` }}
                 >
                   <div className="text-3xl font-heading font-bold text-red-accent font-mono tracking-tight leading-none">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-steel uppercase tracking-wider mt-2">
+                  <div className="text-xs text-steel uppercase tracking-wider mt-2 break-words">
                     {t(stat.labelKey)}
                   </div>
                 </div>
@@ -241,7 +248,7 @@ export function HeroBase() {
         aria-hidden
         initial={prefersReducedMotion ? {} : { opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 2, duration: 0.8 }}
+        transition={{ delay: 1.1, duration: 0.5 }}
         style={prefersReducedMotion ? {} : { opacity: contentOpacity }}
       >
         <div className="flex flex-col items-center gap-2 text-steel/60">

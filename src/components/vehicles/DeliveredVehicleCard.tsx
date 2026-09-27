@@ -102,6 +102,9 @@ export function DeliveredVehicleCard({ vehicle, priority = false }: Props) {
 
   function onMouseMove(e: React.MouseEvent<HTMLElement>) {
     if (!cardRef.current || prefersReducedMotion) return
+    // Touch browsers emit one synthetic mousemove on tap, which tilted the
+    // card as it was being pressed. The tilt is a pointer affordance only.
+    if (!window.matchMedia('(pointer: fine)').matches) return
     const rect = cardRef.current.getBoundingClientRect()
     mx.set((e.clientX - rect.left) / rect.width - 0.5)
     my.set((e.clientY - rect.top) / rect.height - 0.5)

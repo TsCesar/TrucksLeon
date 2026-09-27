@@ -144,6 +144,7 @@
     "email": "E-Mail",
     "address": "Standort",
     "hours": "Öffnungszeiten",
+    "hoursValue": "24 Stunden / 7 Tage die Woche",
     "whatsapp": "WhatsApp",
     "form": {
       "title": "Senden Sie uns eine Nachricht",
@@ -310,7 +311,8 @@
     "whatsapp": "WhatsApp",
     "toggleTheme": "Design wechseln",
     "themeDark": "Dunkles Design",
-    "themeLight": "Helles Design"
+    "themeLight": "Helles Design",
+    "skipToContent": "Zum Inhalt springen"
   },
   "privacy": {
     "title": "Datenschutzrichtlinie",

@@ -40,12 +40,12 @@ const NODES: MapNode[] = [
   // ── Western Europe ─────────────────────────────────────────────────────
   { id: 'FR', x: 443, y: 676, lx: -94, ly: 0 },
   { id: 'GB', x: 390, y: 470, lx: 36, ly: -30 },
-  { id: 'BE', x: 498, y: 577, lx: -80, ly: 24, hideLabelMobile: true },
-  { id: 'NL', x: 513, y: 544, lx: 36, ly: -28, hideLabelMobile: true },
+  { id: 'BE', x: 498, y: 577, lx: -60, ly: 8, hideLabelMobile: true },
+  { id: 'NL', x: 513, y: 544, lx: -66, ly: -24, hideLabelMobile: true },
   // ── Central Europe ─────────────────────────────────────────────────────
   { id: 'DE', x: 578, y: 578, lx: 36, ly: 0 },
-  { id: 'CH', x: 541, y: 710, lx: -86, ly: 16, hideLabelMobile: true },
-  { id: 'CZ', x: 647, y: 614, lx: 36, ly: -28, hideLabelMobile: true },
+  { id: 'CH', x: 541, y: 710, lx: -46, ly: 44, hideLabelMobile: true },
+  { id: 'CZ', x: 647, y: 614, lx: 34, ly: 34, hideLabelMobile: true },
   { id: 'AT', x: 665, y: 672, lx: 36, ly: 22, hideLabelMobile: true },
   // ── Southern Europe ────────────────────────────────────────────────────
   { id: 'IT', x: 588, y: 820, lx: 36, ly: 0 },
@@ -148,6 +148,8 @@ export function EuropeRouteMap() {
             stroke, and the visible path keeps its dash pattern throughout. */}
         {ROUTES.map((r, i) => {
           const d = routePath(r)
+          const a = nodeMap.get(r.from)!
+          const b = nodeMap.get(r.to)!
           const delay = 0.4 + i * 0.06
           return (
             <g key={r.id}>
@@ -165,6 +167,14 @@ export function EuropeRouteMap() {
                     reduced ? { duration: 0 } : { duration: 1.5, delay, ease: 'easeOut' }
                   }
                 />
+                {/* Black discs over both endpoints. A 26-unit dash starting at
+                    the node centre used to shoot ~7 units past the dot's edge,
+                    so a junction like DE — where four legs meet — rendered as
+                    a star rather than a node. Cutting the stroke here keeps the
+                    geometry untouched: the line still ends on the node, it is
+                    just not painted underneath it. */}
+                <circle cx={a.x} cy={a.y} r={a.hub ? 46 : 27} fill="#000" />
+                <circle cx={b.x} cy={b.y} r={b.hub ? 46 : 27} fill="#000" />
               </mask>
               <path
                 id={`route-${r.id}`}

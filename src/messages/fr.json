@@ -144,6 +144,7 @@
     "email": "E-mail",
     "address": "Localisation",
     "hours": "Horaires",
+    "hoursValue": "24 heures / 7 jours sur 7",
     "whatsapp": "WhatsApp",
     "form": {
       "title": "Envoyez-nous un message",
@@ -310,7 +311,8 @@
     "whatsapp": "WhatsApp",
     "toggleTheme": "Changer le thème",
     "themeDark": "Thème sombre",
-    "themeLight": "Thème clair"
+    "themeLight": "Thème clair",
+    "skipToContent": "Aller au contenu"
   },
   "privacy": {
     "title": "Politique de Confidentialité",

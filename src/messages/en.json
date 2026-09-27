@@ -144,6 +144,7 @@
     "email": "Email",
     "address": "Location",
     "hours": "Hours",
+    "hoursValue": "24 hours / 7 days a week",
     "whatsapp": "WhatsApp",
     "form": {
       "title": "Send us a message",
@@ -310,7 +311,8 @@
     "whatsapp": "WhatsApp",
     "toggleTheme": "Switch theme",
     "themeDark": "Dark theme",
-    "themeLight": "Light theme"
+    "themeLight": "Light theme",
+    "skipToContent": "Skip to content"
   },
   "privacy": {
     "title": "Privacy Policy",

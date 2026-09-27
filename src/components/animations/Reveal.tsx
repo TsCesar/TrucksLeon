@@ -42,7 +42,7 @@ export function Reveal({
   children,
   direction = 'up',
   delay = 0,
-  duration = 0.75,
+  duration = 0.5,
   className,
   once = true,
   blur = true,

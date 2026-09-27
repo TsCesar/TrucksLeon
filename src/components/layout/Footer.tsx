@@ -17,10 +17,13 @@ export function Footer() {
       <div className="absolute inset-0 tech-grid opacity-60 pointer-events-none" aria-hidden />
 
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
+        {/* Three real columns rather than a 4-up with a double-width brand
+            cell: the brand copy is only a few lines, so the old span left the
+            whole left half of the footer empty on desktop. */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.15fr] gap-10 lg:gap-14">
 
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div>
             <Link href={`/${locale}`} className="inline-block mb-6">
               <Image
                 src="/images/brand/logo-trucksleon.png"
@@ -30,7 +33,7 @@ export function Footer() {
                 className="h-12 w-auto object-contain"
               />
             </Link>
-            <p className="text-steel text-sm leading-relaxed max-w-xs mb-6">
+            <p className="text-steel text-sm leading-relaxed max-w-sm mb-6">
               {t('footer.description')}
             </p>
             <div className="flex gap-3">
@@ -111,7 +114,7 @@ export function Footer() {
               <li>
                 <div className="flex items-start gap-3 text-steel text-sm">
                   <Clock size={15} className="mt-0.5 flex-shrink-0 text-red-accent/70" aria-hidden />
-                  <span>{siteConfig.contact.hours}</span>
+                  <span>{t('contact.hoursValue')}</span>
                 </div>
               </li>
             </ul>

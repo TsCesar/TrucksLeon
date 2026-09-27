@@ -57,7 +57,7 @@ export function EuropePreview() {
                         target={target}
                         prefix={prefix}
                         suffix={suffix}
-                        duration={1800}
+                        duration={1100}
                       />
                     </div>
                     <div className="text-[10px] text-steel uppercase tracking-wider mt-1.5 leading-tight">

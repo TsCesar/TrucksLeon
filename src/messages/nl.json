@@ -144,6 +144,7 @@
     "email": "E-mail",
     "address": "Locatie",
     "hours": "Openingstijden",
+    "hoursValue": "24 uur / 7 dagen per week",
     "whatsapp": "WhatsApp",
     "form": {
       "title": "Stuur ons een bericht",
@@ -310,7 +311,8 @@
     "whatsapp": "WhatsApp",
     "toggleTheme": "Thema wisselen",
     "themeDark": "Donker thema",
-    "themeLight": "Licht thema"
+    "themeLight": "Licht thema",
+    "skipToContent": "Ga naar de inhoud"
   },
   "privacy": {
     "title": "Privacybeleid",

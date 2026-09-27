@@ -7,6 +7,7 @@ import { PageHero } from '@/components/ui/PageHero'
 import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/animations/Reveal'
 import { EuropeRouteMap } from '@/components/animations/EuropeRouteMap'
+import { europeanCountries } from '@/data/countries'
 import { buildMetadata } from '@/lib/seo'
 
 type Props = { params: Promise<{ locale: string }> }
@@ -33,22 +34,46 @@ export default async function EuropaPage({ params }: Props) {
       {/* Map + content */}
       <section className="py-16 md:py-24 bg-surface">
         <Container>
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* The copy column used to be a paragraph, a chip and one line next
+              to a map roughly twice its height, which read as an empty half.
+              The balance is fixed by composition, not by padding out the text:
+              the countries the map already plots are listed as a code grid —
+              the same ISO codes the map labels use, so it stays correct in
+              every locale. */}
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
             {/* First body block: sits inside the initial viewport on phones, so
                 it is the LCP candidate. CSS entry, not a hydration-gated Reveal. */}
-            <div className="hero-rise">
+            <div className="hero-rise flex h-full flex-col">
               <p className="text-steel text-lg leading-relaxed mb-8">
                 {t('europe.description')}
               </p>
-              <div className="inline-flex items-center gap-4 px-5 py-4 rounded-xl bg-surface border border-line/[0.09] shadow-card mb-8">
+              <div className="inline-flex self-start items-center gap-4 px-5 py-4 rounded-xl bg-surface border border-line/[0.09] shadow-card mb-8">
                 <span className="font-mono text-3xl font-bold text-red-accent leading-none">+15</span>
                 <span className="text-sm text-steel leading-tight">{t('hero.stats.countries')}</span>
               </div>
-              <p className="text-steel text-sm leading-relaxed">
+              <p className="text-steel text-sm leading-relaxed mb-6">
                 {t('europe.coverage')}
               </p>
+
+              <ul className="mt-auto grid grid-cols-3 sm:grid-cols-5 gap-2">
+                {europeanCountries.map((country) => (
+                  <li
+                    key={country.code}
+                    className="flex items-center justify-center gap-2 rounded-lg border border-line/[0.09] bg-surface px-2 py-2.5 shadow-card"
+                  >
+                    {/* Code only, no flag emoji: Windows ships no regional-
+                        indicator glyphs, so a flag renders there as its two
+                        letters — "🇪🇸 ES" would read "ES ES". The ISO code is
+                        also what the map itself labels, and needs no locale. */}
+                    <span className="w-1.5 h-1.5 rounded-full bg-red-accent/70 flex-shrink-0" aria-hidden />
+                    <span className="font-mono text-[11px] font-bold tracking-wider text-steel">
+                      {country.code}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <Reveal direction="right" delay={0.2}>
+            <Reveal direction="right" delay={0.2} className="h-full">
               <div className="p-3 sm:p-4 rounded-2xl bg-surface border border-line/[0.09] shadow-float">
                 <EuropeRouteMap />
                 <div className="flex items-center justify-between gap-3 px-2 pt-3 pb-1">

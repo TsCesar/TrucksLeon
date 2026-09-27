@@ -5,7 +5,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, Check } from 'lucide-react'
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
-import { locales, localeNames, localeFlags, type Locale } from '@/config/locales'
+import { locales, localeNames, type Locale } from '@/config/locales'
 import { cn } from '@/lib/utils'
 
 export function LanguageSwitcher() {
@@ -102,10 +102,18 @@ export function LanguageSwitcher() {
                         : 'text-steel border-transparent hover:text-ink hover:bg-line/[0.04]'
                     )}
                   >
-                    <span className="text-base leading-none flex-shrink-0" aria-hidden>
-                      {localeFlags[loc]}
-                    </span>
-                    <span className="font-mono text-[11px] font-bold tracking-wide flex-shrink-0">
+                    {/* No flag glyph: Windows ships no regional-indicator
+                        emoji, so every flag falls back to its two letters and
+                        the row read "GB EN English" / "ES ES Español". The
+                        code badge alone is unambiguous in every locale. */}
+                    <span
+                      className={cn(
+                        'font-mono text-[11px] font-bold tracking-wide flex-shrink-0 rounded px-1.5 py-0.5 border',
+                        isActive
+                          ? 'text-red-text border-red-accent/30 bg-red-accent/[0.06]'
+                          : 'text-ink border-line/10 bg-line/[0.05]'
+                      )}
+                    >
                       {loc.toUpperCase()}
                     </span>
                     <span className="text-xs flex-1 text-left">{localeNames[loc]}</span>

@@ -29,7 +29,7 @@ export function AnimatedTruckLine() {
 
   return (
     <div
-      className="absolute bottom-0 left-0 right-0 h-[132px] sm:h-[172px] lg:h-[218px] overflow-hidden pointer-events-none z-[5]"
+      className="absolute bottom-0 left-0 right-0 h-[128px] sm:h-[168px] lg:h-[210px] overflow-hidden pointer-events-none z-[5]"
       aria-hidden
       style={{
         maskImage: 'linear-gradient(to bottom, transparent 0%, black 38%)',

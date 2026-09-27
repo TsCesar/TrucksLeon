@@ -52,7 +52,15 @@ export function VehicleGallery({ vehicle, onClose }: Props) {
       role="dialog"
       aria-modal="true"
       aria-label={vehicle.name}
-      onClick={onClose}
+      /* stopPropagation is required, not defensive. A React portal still
+         bubbles its events through the REACT tree, and this dialog is rendered
+         from inside DeliveredVehicleCard's clickable <article>. Without it the
+         backdrop click closed the gallery and the very same click then hit the
+         card's open handler, so the dialog never appeared to close. */
+      onClick={(e) => {
+        e.stopPropagation()
+        onClose()
+      }}
     >
       <div
         className="relative w-full max-w-5xl max-h-full overflow-y-auto rounded-xl bg-surface shadow-float"
