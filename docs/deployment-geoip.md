@@ -39,24 +39,20 @@ Sweden, Belgium, Switzerland, United Kingdom, Denmark, Czechia.
 
 ## Where it will live
 
-The natural home is the Next.js middleware, which already exists for locale
-prefixing:
+`src/middleware.ts`, which already handles locale prefixing.
 
-- `middleware.ts` — currently at the repository root.
-
-> **Note for whoever implements this — verified 2026-09-26.** With a `src/`
-> directory, Next.js resolves middleware from `src/middleware.ts`. The file at
-> the repository root is **not** being picked up, so the `next-intl` middleware
-> it exports is inert today. Confirmed against the production server: `/`
-> returns 307 (that comes from `src/app/page.tsx`'s `redirect()`, not from
-> middleware) while `/contacto` and `/servicios` return **404** instead of
-> redirecting to `/es/contacto` and `/es/servicios` as the middleware would.
-> Move the file to `src/middleware.ts` before adding any Geo-IP logic, or the
-> logic will silently never run. Moving it also switches on next-intl's locale
-> negotiation for unprefixed paths, which changes routing site-wide — so it is
-> a change to make and test deliberately, not a side effect.
-> `scripts/build-pages.mjs` stashes `middleware.ts` from the root during the
-> static export, so that path also needs updating at the same time.
+> **Resolved in Fase 4.** The middleware used to sit at the repository root,
+> where Next.js never loaded it (with a `src/` directory it resolves middleware
+> from `src/middleware.ts`), so `/contacto` answered 404 instead of redirecting.
+> It now lives at `src/middleware.ts`, the manifest registers it, and unprefixed
+> paths redirect to the default locale. `scripts/build-pages.mjs` stashes the
+> file from its real location for the static export.
+>
+> It is deliberately configured with **`localeDetection: false`**. next-intl
+> would otherwise choose the locale from the `Accept-Language` header, which is
+> automatic language selection — the very thing this document defers to Fase 5.
+> Turning Geo-IP on therefore means changing one flag and adding the country
+> lookup, not rewiring the routing.
 
 The country code comes from the platform, not from a third-party API call:
 

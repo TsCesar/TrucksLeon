@@ -6,13 +6,13 @@ import { ContactForm } from '@/components/forms/ContactForm'
 import { Reveal } from '@/components/animations/Reveal'
 import { siteConfig } from '@/config/site'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'contact' })
-  return buildMetadata({ title: t('title'), locale, path: '/contacto' })
+  return buildMetadata({ locale, page: 'contact' })
 }
 
 export default async function ContactoPage({ params }: Props) {
@@ -29,6 +29,7 @@ export default async function ContactoPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="contact" />
       {/* Hero */}
       <div className="relative py-20 md:py-28 overflow-hidden bg-gradient-to-b from-surface via-surface to-canvas border-b border-line/[0.07]">
         <div className="absolute inset-0 tech-grid opacity-70" aria-hidden />
@@ -102,7 +103,7 @@ export default async function ContactoPage({ params }: Props) {
                 href={siteConfig.social.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#25D366]/[0.08] border border-[#25D366]/35 text-[#128C4B] shadow-card hover:bg-[#25D366]/[0.14] hover:border-[#25D366]/55 hover:-translate-y-0.5 hover:shadow-lift transition-all duration-300 font-semibold"
+                className="mt-4 inline-flex items-center justify-center gap-3 px-6 py-4 rounded-xl bg-[#25D366]/[0.08] border border-[#25D366]/35 text-[#0B6B38] shadow-card hover:bg-[#25D366]/[0.14] hover:border-[#25D366]/55 hover:-translate-y-0.5 hover:shadow-lift transition-all duration-300 font-semibold"
               >
                 <MessageCircle size={20} aria-hidden />
                 {t('contact.whatsapp')}

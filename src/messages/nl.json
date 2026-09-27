@@ -309,10 +309,9 @@
     "selectLanguage": "Taal selecteren",
     "facebook": "Facebook",
     "whatsapp": "WhatsApp",
-    "toggleTheme": "Thema wisselen",
-    "themeDark": "Donker thema",
-    "themeLight": "Licht thema",
-    "skipToContent": "Ga naar de inhoud"
+    "skipToContent": "Ga naar de inhoud",
+    "servicesList": "Overzicht van diensten",
+    "deliveredList": "Overzicht van geleverde voertuigen"
   },
   "privacy": {
     "title": "Privacybeleid",
@@ -323,5 +322,63 @@
     "title": "Juridische Kennisgeving",
     "badge": "Juridisch",
     "placeholder": "Dit document is in voorbereiding. Voor juridische vragen kunt u contact met ons opnemen via info@trucksleon.com."
+  },
+  "notFound": {
+    "title": "Pagina niet gevonden",
+    "description": "De pagina die u zoekt bestaat niet of is verplaatst.",
+    "cta": "Terug naar home"
+  },
+  "seo": {
+    "home": {
+      "title": "Integraal beheer van bedrijfsvoertuigen in Europa",
+      "description": "Aan- en verkoop, import, export, documentatie en transport van bedrijfsvoertuigen in heel Europa. Gespecialiseerd advies vanuit León, Spanje."
+    },
+    "about": {
+      "title": "Over ons",
+      "description": "Specialisten in het integrale beheer van bedrijfsvoertuigen voor de Europese markt, gevestigd in León en actief in meer dan 15 landen."
+    },
+    "services": {
+      "title": "Diensten",
+      "description": "Advies, afhandeling, documentatie, aan- en verkoop, import, export, douaneformaliteiten en transport van bedrijfsvoertuigen."
+    },
+    "vehicles": {
+      "title": "Voertuigen",
+      "description": "Trekkers, bakwagens, bestelwagens, opleggers, autotransporters en speciale voertuigen voor operaties in heel Europa."
+    },
+    "delivered": {
+      "title": "Geleverde voertuigen",
+      "description": "Daadwerkelijk uitgevoerde opdrachten van TrucksLeón: vrachtwagens en opleggers geleverd aan klanten in Spanje en heel Europa."
+    },
+    "process": {
+      "title": "Onze werkwijze",
+      "description": "Hoe wij werken: eerste contact, zoeken en selecteren, volledige afhandeling van de documenten en gegarandeerde levering."
+    },
+    "europe": {
+      "title": "Europese aanwezigheid",
+      "description": "Wij zijn actief in meer dan 15 Europese landen met een eigen netwerk voor inkoop, verkoop, import en export."
+    },
+    "news": {
+      "title": "Nieuws",
+      "description": "Nieuws van TRUCKS LEON INTERNATIONAL: nieuwe opdrachten, diensten en dekking in de Europese markt voor bedrijfsvoertuigen."
+    },
+    "contact": {
+      "title": "Contact",
+      "description": "Spreek met een adviseur van TRUCKS LEON INTERNATIONAL. Gran Vía de San Marcos 30, León, Spanje. Telefoon +34 601 108 885, 24/7 bereikbaar."
+    },
+    "privacy": {
+      "title": "Privacybeleid",
+      "description": "Informatie over de verwerking van persoonsgegevens bij TRUCKS LEON INTERNATIONAL, S.L."
+    },
+    "legal": {
+      "title": "Juridische kennisgeving",
+      "description": "Gebruiksvoorwaarden en juridische informatie van TRUCKS LEON INTERNATIONAL, S.L."
+    }
+  },
+  "gallery": {
+    "close": "Galerij sluiten",
+    "previous": "Vorige afbeelding",
+    "next": "Volgende afbeelding",
+    "thumb": "Afbeelding {n} bekijken",
+    "counter": "Afbeelding {n} van {total}"
   }
 }

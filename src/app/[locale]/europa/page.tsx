@@ -9,13 +9,13 @@ import { Reveal } from '@/components/animations/Reveal'
 import { EuropeRouteMap } from '@/components/animations/EuropeRouteMap'
 import { europeanCountries } from '@/data/countries'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'europe' })
-  return buildMetadata({ title: t('title'), locale, path: '/europa' })
+  return buildMetadata({ locale, page: 'europe' })
 }
 
 export default async function EuropaPage({ params }: Props) {
@@ -25,6 +25,7 @@ export default async function EuropaPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="europe" />
       <PageHero
         badge={t('europe.badge')}
         title={t('europe.title')}
@@ -77,7 +78,7 @@ export default async function EuropaPage({ params }: Props) {
               <div className="p-3 sm:p-4 rounded-2xl bg-surface border border-line/[0.09] shadow-float">
                 <EuropeRouteMap />
                 <div className="flex items-center justify-between gap-3 px-2 pt-3 pb-1">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel/80">
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel">
                     {t('europe.badge')}
                   </span>
                   <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-red-text">
@@ -103,13 +104,13 @@ export default async function EuropaPage({ params }: Props) {
                 {t('trust.network.description')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link href={`/${locale}/contacto`}>
+                <Link className="inline-flex" href={`/${locale}/contacto`}>
                   <Button size="lg" className="group">
                     {t('nav.contactCta')}
                     <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />
                   </Button>
                 </Link>
-                <Link href={`/${locale}/servicios`}>
+                <Link className="inline-flex" href={`/${locale}/servicios`}>
                   <Button variant="outline" size="lg" className="group">
                     {t('nav.services')}
                     <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

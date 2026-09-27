@@ -10,13 +10,13 @@ import { Stagger, StaggerItem } from '@/components/animations/Stagger'
 import { vehicleCategories } from '@/data/vehicleCategories'
 import { siteConfig } from '@/config/site'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'categories' })
-  return buildMetadata({ title: t('title'), locale, path: '/vehiculos' })
+  return buildMetadata({ locale, page: 'vehicles' })
 }
 
 export default async function VehiculosPage({ params }: Props) {
@@ -26,6 +26,7 @@ export default async function VehiculosPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="vehicles" />
       <PageHero
         badge={t('nav.vehicles')}
         title={t('categories.title')}
@@ -106,7 +107,7 @@ export default async function VehiculosPage({ params }: Props) {
                   {t('vehicles.consultDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Link href={`/${locale}/contacto`}>
+                  <Link className="inline-flex w-full sm:w-auto" href={`/${locale}/contacto`}>
                     <Button size="lg" className="group w-full sm:w-auto">
                       {t('common.consultAvailability')}
                       <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />
@@ -116,7 +117,7 @@ export default async function VehiculosPage({ params }: Props) {
                     href={siteConfig.social.whatsapp}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[46px] rounded-lg bg-[#25D366]/[0.08] border border-[#25D366]/35 text-[#128C4B] shadow-card hover:bg-[#25D366]/[0.14] hover:border-[#25D366]/55 hover:-translate-y-px hover:shadow-lift transition-all duration-300 font-semibold text-sm"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[46px] rounded-lg bg-[#25D366]/[0.08] border border-[#25D366]/35 text-[#0B6B38] shadow-card hover:bg-[#25D366]/[0.14] hover:border-[#25D366]/55 hover:-translate-y-px hover:shadow-lift transition-all duration-300 font-semibold text-sm"
                   >
                     <MessageCircle size={18} aria-hidden />
                     WhatsApp

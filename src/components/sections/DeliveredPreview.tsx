@@ -44,7 +44,7 @@ export function DeliveredPreview() {
             ))}
           </Stagger>
           <div className="flex justify-center">
-            <Link href={`/${locale}/vehiculos-entregados`} className="w-full sm:w-auto">
+            <Link href={`/${locale}/vehiculos-entregados`} className="inline-flex w-full sm:w-auto">
               <Button variant="outline" size="lg" className="group w-full sm:w-auto">
                 {t('delivered.cta')}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

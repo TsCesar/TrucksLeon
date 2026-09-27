@@ -185,13 +185,13 @@ export function HeroBase() {
           </p>
 
           <div className="hero-rise hero-rise-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
-            <Link href={`/${locale}/contacto`}>
+            <Link className="inline-flex w-full sm:w-auto" href={`/${locale}/contacto`}>
               <Button size="lg" className="group w-full sm:w-auto">
                 {t('hero.ctaPrimary')}
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />
               </Button>
             </Link>
-            <Link href={`/${locale}/vehiculos-entregados`}>
+            <Link className="inline-flex w-full sm:w-auto" href={`/${locale}/vehiculos-entregados`}>
               <Button variant="secondary" size="lg" className="group w-full sm:w-auto">
                 {t('hero.ctaSecondary')}
                 <ChevronRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

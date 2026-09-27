@@ -195,7 +195,7 @@ export function DeliveredVehicleCard({ vehicle, priority = false }: Props) {
             <span className="text-steel text-xs font-mono">{vehicle.specs}</span>
           )}
           {vehicle.year && (
-            <span className="text-steel/75 text-xs font-mono px-2 py-0.5 rounded bg-line/[0.05]">{vehicle.year}</span>
+            <span className="text-steel text-xs font-mono px-2 py-0.5 rounded bg-line/[0.05]">{vehicle.year}</span>
           )}
         </div>
 

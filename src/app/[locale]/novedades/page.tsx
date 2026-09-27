@@ -8,13 +8,13 @@ import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/animations/Reveal'
 import { Stagger, StaggerItem } from '@/components/animations/Stagger'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'nav' })
-  return buildMetadata({ title: t('news'), locale, path: '/novedades' })
+  return buildMetadata({ locale, page: 'news' })
 }
 
 const cards = [
@@ -42,6 +42,7 @@ export default async function NovedadesPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="news" />
       <PageHero
         badge={t('nav.news')}
         title={t('news.title')}
@@ -110,7 +111,7 @@ export default async function NovedadesPage({ params }: Props) {
               <p className="text-steel mb-8 max-w-md mx-auto text-sm leading-relaxed">
                 {t('trust.availability.description')}
               </p>
-              <Link href={`/${locale}/contacto`}>
+              <Link className="inline-flex" href={`/${locale}/contacto`}>
                 <Button size="lg" className="group">
                   {t('nav.contactCta')}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

@@ -13,13 +13,13 @@ import { Reveal } from '@/components/animations/Reveal'
 import { Stagger, StaggerItem } from '@/components/animations/Stagger'
 import { services } from '@/data/services'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'services' })
-  return buildMetadata({ title: t('title'), locale, path: '/servicios' })
+  return buildMetadata({ locale, page: 'services' })
 }
 
 const iconMap: Record<string, React.ElementType> = {
@@ -34,6 +34,7 @@ export default async function ServiciosPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="services" />
       <PageHero
         badge={t('nav.services')}
         title={t('services.title')}
@@ -43,6 +44,9 @@ export default async function ServiciosPage({ params }: Props) {
       {/* Services grid */}
       <section className="py-16 md:py-24 bg-mist">
         <Container>
+          {/* Names the grid for screen readers and keeps the heading outline
+              contiguous: the cards below are <h3>. */}
+          <h2 className="sr-only">{t('aria.servicesList')}</h2>
           <Stagger className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {services.map((service, index) => {
               const Icon = iconMap[service.icon] ?? Truck
@@ -110,7 +114,7 @@ export default async function ServiciosPage({ params }: Props) {
               <p className="text-steel mb-8 max-w-md mx-auto leading-relaxed">
                 {t('contact.description')}
               </p>
-              <Link href={`/${locale}/contacto`}>
+              <Link className="inline-flex" href={`/${locale}/contacto`}>
                 <Button size="lg" className="group">
                   {t('nav.contactCta')}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

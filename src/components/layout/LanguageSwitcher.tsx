@@ -59,7 +59,10 @@ export function LanguageSwitcher() {
         className="flex items-center gap-1.5 px-2.5 py-2 rounded-lg text-sm min-h-[38px] text-steel hover:text-ink hover:bg-line/[0.05] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-accent"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label={t('changeLanguage')}
+        /* WCAG 2.5.3 Label in Name: the accessible name has to contain the
+           visible text. A bare "Cambiar idioma" replaced "ES Español" outright,
+           so anyone using voice control could not say what they could see. */
+        aria-label={`${activeLocale.toUpperCase()} ${localeNames[activeLocale]} — ${t('changeLanguage')}`}
       >
         {/* Code badge */}
         <span className="font-mono text-[11px] font-bold tracking-widest text-ink bg-line/[0.06] border border-line/10 px-1.5 py-0.5 rounded">

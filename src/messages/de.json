@@ -309,10 +309,9 @@
     "selectLanguage": "Sprache auswählen",
     "facebook": "Facebook",
     "whatsapp": "WhatsApp",
-    "toggleTheme": "Design wechseln",
-    "themeDark": "Dunkles Design",
-    "themeLight": "Helles Design",
-    "skipToContent": "Zum Inhalt springen"
+    "skipToContent": "Zum Inhalt springen",
+    "servicesList": "Übersicht der Leistungen",
+    "deliveredList": "Übersicht der gelieferten Fahrzeuge"
   },
   "privacy": {
     "title": "Datenschutzrichtlinie",
@@ -323,5 +322,63 @@
     "title": "Rechtlicher Hinweis",
     "badge": "Rechtliches",
     "placeholder": "Dieses Dokument ist in Vorbereitung. Bei rechtlichen Anfragen kontaktieren Sie uns bitte unter info@trucksleon.com."
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "cta": "Zurück zur Startseite"
+  },
+  "seo": {
+    "home": {
+      "title": "Umfassendes Management von Industriefahrzeugen in Europa",
+      "description": "Kauf, Verkauf, Import, Export, Dokumentation und Transport von Industriefahrzeugen in ganz Europa. Fachkundige Beratung aus León, Spanien."
+    },
+    "about": {
+      "title": "Über uns",
+      "description": "Spezialisten für das umfassende Management von Industriefahrzeugen im europäischen Markt, mit Sitz in León und Tätigkeit in über 15 Ländern."
+    },
+    "services": {
+      "title": "Leistungen",
+      "description": "Beratung, Abwicklung, Dokumentation, An- und Verkauf, Import, Export, Zollformalitäten und Transport von Industriefahrzeugen."
+    },
+    "vehicles": {
+      "title": "Fahrzeuge",
+      "description": "Sattelzugmaschinen, Motorwagen, Transporter, Auflieger, Autotransporter und Sonderfahrzeuge für Einsätze in ganz Europa."
+    },
+    "delivered": {
+      "title": "Gelieferte Fahrzeuge",
+      "description": "Tatsächlich abgewickelte Aufträge von TrucksLeón: Lkw und Auflieger, geliefert an Kunden in Spanien und ganz Europa."
+    },
+    "process": {
+      "title": "Arbeitsablauf",
+      "description": "Unser Ablauf: Erstkontakt, Suche und Auswahl, vollständige Abwicklung der Unterlagen und garantierte Lieferung."
+    },
+    "europe": {
+      "title": "Europäische Präsenz",
+      "description": "Wir sind in über 15 europäischen Ländern tätig, mit einem eigenen Netzwerk für Einkauf, Verkauf, Import und Export."
+    },
+    "news": {
+      "title": "Neuigkeiten",
+      "description": "Aktuelles von TRUCKS LEON INTERNATIONAL: neue Aufträge, Leistungen und Abdeckung im europäischen Markt für Industriefahrzeuge."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Sprechen Sie mit einem Berater von TRUCKS LEON INTERNATIONAL. Gran Vía de San Marcos 30, León, Spanien. Telefon +34 601 108 885, rund um die Uhr."
+    },
+    "privacy": {
+      "title": "Datenschutzrichtlinie",
+      "description": "Informationen zur Verarbeitung personenbezogener Daten bei TRUCKS LEON INTERNATIONAL, S.L."
+    },
+    "legal": {
+      "title": "Rechtlicher Hinweis",
+      "description": "Nutzungsbedingungen und rechtliche Angaben zu TRUCKS LEON INTERNATIONAL, S.L."
+    }
+  },
+  "gallery": {
+    "close": "Galerie schließen",
+    "previous": "Vorheriges Bild",
+    "next": "Nächstes Bild",
+    "thumb": "Bild {n} ansehen",
+    "counter": "Bild {n} von {total}"
   }
 }

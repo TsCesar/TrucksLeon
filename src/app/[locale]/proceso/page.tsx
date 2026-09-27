@@ -8,13 +8,13 @@ import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/animations/Reveal'
 import { ProcessPreview } from '@/components/sections/ProcessPreview'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'process' })
-  return buildMetadata({ title: t('title'), locale, path: '/proceso' })
+  return buildMetadata({ locale, page: 'process' })
 }
 
 export default async function ProcesoPage({ params }: Props) {
@@ -24,6 +24,7 @@ export default async function ProcesoPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="process" />
       <PageHero
         badge={t('process.pageBadge')}
         title={t('process.title')}
@@ -55,7 +56,7 @@ export default async function ProcesoPage({ params }: Props) {
               <p className="text-steel mb-8 max-w-md mx-auto leading-relaxed">
                 {t('trust.availability.description')}
               </p>
-              <Link href={`/${locale}/contacto`}>
+              <Link className="inline-flex" href={`/${locale}/contacto`}>
                 <Button size="lg" className="group">
                   {t('nav.contactCta')}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

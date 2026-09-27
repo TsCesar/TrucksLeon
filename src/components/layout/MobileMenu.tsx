@@ -94,7 +94,7 @@ export function MobileMenu({ open, onClose, locale }: MobileMenuProps) {
             </ul>
 
             <div className="p-6 border-t border-line/[0.08] bg-canvas">
-              <Link href={`/${locale}/contacto`} onClick={onClose}>
+              <Link className="inline-flex w-full" href={`/${locale}/contacto`} onClick={onClose}>
                 <Button className="w-full">{t('nav.contactCta')}</Button>
               </Link>
             </div>

@@ -8,13 +8,13 @@ import { Button } from '@/components/ui/Button'
 import { Reveal } from '@/components/animations/Reveal'
 import { Stagger, StaggerItem } from '@/components/animations/Stagger'
 import { buildMetadata } from '@/lib/seo'
+import { JsonLd } from '@/components/seo/JsonLd'
 
 type Props = { params: Promise<{ locale: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params
-  const t = await getTranslations({ locale, namespace: 'about' })
-  return buildMetadata({ title: t('title'), locale, path: '/quienes-somos' })
+  return buildMetadata({ locale, page: 'about' })
 }
 
 const strengthKeys = [
@@ -31,6 +31,7 @@ export default async function QuienesSomosPage({ params }: Props) {
 
   return (
     <div className="pt-16 lg:pt-20 min-h-screen bg-canvas">
+      <JsonLd locale={locale} page="about" />
       <PageHero
         badge={t('nav.about')}
         title={t('about.title')}
@@ -55,7 +56,7 @@ export default async function QuienesSomosPage({ params }: Props) {
               <p className="text-steel leading-relaxed mb-8">
                 {t('about.positioning.description')}
               </p>
-              <Link href={`/${locale}/contacto`}>
+              <Link className="inline-flex" href={`/${locale}/contacto`}>
                 <Button className="group">
                   {t('about.positioning.cta')}
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" aria-hidden />
@@ -158,7 +159,7 @@ export default async function QuienesSomosPage({ params }: Props) {
               <p className="text-steel mb-8 max-w-md mx-auto">
                 {t('trust.availability.description')}
               </p>
-              <Link href={`/${locale}/contacto`}>
+              <Link className="inline-flex" href={`/${locale}/contacto`}>
                 <Button size="lg" className="group">
                   {t('nav.contactCta')}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />

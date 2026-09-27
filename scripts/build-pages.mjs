@@ -10,7 +10,7 @@
  *
  *   - the normal .next build is temporarily moved aside
  *   - src/app/api is temporarily moved aside
- *   - middleware.ts is temporarily moved aside
+ *   - src/middleware.ts is temporarily moved aside
  *   - GitHub Pages is built with GITHUB_PAGES=true
  *   - the static export is produced in .next-pages
  *   - .next-pages is moved to out/
@@ -47,12 +47,29 @@ const SERVER_ONLY = [
     to: join(stash, 'api'),
   },
   {
-    from: join(root, 'middleware.ts'),
+    // This project keeps its source under src/, so Next resolves middleware
+    // from src/middleware.ts — NOT from the repository root. Stashing the root
+    // path (as this list used to) moved nothing, which happened to be harmless
+    // only because the root file was never loaded in the first place.
+    from: join(root, 'src', 'middleware.ts'),
     to: join(stash, 'middleware.ts'),
+  },
+  {
+    // The localized 404 catch-all. `output: 'export'` refuses a dynamic route
+    // that prerenders nothing, and there is nothing for it to prerender: a
+    // static host cannot know the locale of a URL that matches no page, so
+    // GitHub Pages answers with the generated 404.html instead.
+    from: join(root, 'src', 'app', '[locale]', '[...rest]'),
+    to: join(stash, 'locale-catch-all'),
   },
 ]
 
 const moved = []
+
+/** Path relative to the repository root, for readable log lines. */
+function rel(p) {
+  return p.slice(root.length + 1)
+}
 
 /**
  * Protect the existing normal Next.js build.
@@ -105,17 +122,18 @@ function stashServerOnly() {
 
   for (const entry of SERVER_ONLY) {
     if (!existsSync(entry.from)) {
+      // A path that is expected to exist but does not means this list has
+      // drifted from the source tree, and the export would silently ship
+      // server-only code. That is exactly how the root middleware.ts entry
+      // went unnoticed for so long.
+      console.warn(`[build:pages] WARNING: nothing to stash at ${rel(entry.from)}`)
       continue
     }
 
     renameSync(entry.from, entry.to)
     moved.push(entry)
 
-    console.log(
-      `[build:pages] stashed ${entry.from
-        .replace(root + '\\', '')
-        .replace(root + '/', '')}`
-    )
+    console.log(`[build:pages] stashed ${rel(entry.from)}`)
   }
 }
 
@@ -190,6 +208,13 @@ try {
       // Inlined into client-side bundles.
       NEXT_PUBLIC_GITHUB_PAGES: 'true',
       NEXT_PUBLIC_BASE_PATH: '/TrucksLeon',
+
+      // Canonical/hreflang/OG/sitemap origin for THIS environment. It already
+      // contains the base path, so nothing downstream may prepend it again —
+      // that is how you end up with /TrucksLeon/TrucksLeon/. An override from
+      // the surrounding environment wins, so CI can point staging elsewhere.
+      NEXT_PUBLIC_SITE_URL:
+        process.env.NEXT_PUBLIC_SITE_URL ?? 'https://tscesar.github.io/TrucksLeon',
     },
   })
 

@@ -74,7 +74,7 @@ export function EuropePreview() {
             <div className="relative p-3 sm:p-4 rounded-2xl bg-surface border border-line/[0.09] shadow-float">
               <EuropeRouteMap />
               <div className="flex items-center justify-between gap-3 px-2 pt-3 pb-1">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel/80">
+                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-steel">
                   {t('europe.badge')}
                 </span>
                 <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-red-text">

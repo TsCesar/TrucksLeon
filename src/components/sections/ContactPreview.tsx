@@ -109,7 +109,7 @@ export function ContactPreview() {
                 ))}
               </div>
 
-              <Link href={`/${locale}/contacto`}>
+              <Link className="inline-flex" href={`/${locale}/contacto`}>
                 <Button size="lg" className="group">
                   {t('nav.contactCta')}
                   <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" aria-hidden />
