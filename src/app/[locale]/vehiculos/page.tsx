@@ -11,6 +11,7 @@ import { vehicleCategories } from '@/data/vehicleCategories'
 import { siteConfig } from '@/config/site'
 import { buildMetadata } from '@/lib/seo'
 import { JsonLd } from '@/components/seo/JsonLd'
+import { CategoryHighlight } from '@/components/vehicles/CategoryHighlight'
 
 type Props = { params: Promise<{ locale: string }> }
 
@@ -59,7 +60,8 @@ export default async function VehiculosPage({ params }: Props) {
                 <StaggerItem key={cat.id}>
                   <Link
                     href={`/${locale}/contacto`}
-                    className="group relative flex items-center gap-3 p-4 rounded-xl bg-surface border border-line/[0.09] shadow-card hover:border-red-accent/35 hover:bg-red-accent/[0.025] hover:-translate-y-1 hover:shadow-[0_2px_4px_rgb(15_23_42_/_0.04),0_16px_34px_-20px_rgb(215_25_32_/_0.30)] transition-all duration-300 ease-out-expo min-h-[84px] overflow-hidden"
+                    data-category-slug={cat.slug}
+                    className="group relative flex items-center gap-3 p-4 rounded-xl bg-surface border border-line/[0.09] shadow-card hover:border-red-accent/35 hover:bg-red-accent/[0.025] hover:-translate-y-1 hover:shadow-[0_2px_4px_rgb(15_23_42_/_0.04),0_16px_34px_-20px_rgb(215_25_32_/_0.30)] data-[selected=true]:border-red-accent/50 data-[selected=true]:bg-red-accent/[0.04] data-[selected=true]:ring-2 data-[selected=true]:ring-red-accent/20 transition-all duration-300 ease-out-expo min-h-[84px] overflow-hidden"
                     title={t(cat.titleKey)}
                   >
                     <span
@@ -88,6 +90,7 @@ export default async function VehiculosPage({ params }: Props) {
               )
             })}
           </Stagger>
+          <CategoryHighlight />
         </Container>
       </section>
 

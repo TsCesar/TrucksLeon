@@ -1,8 +1,13 @@
 /**
  * SEO regression check.
  *
- *   node scripts/check-seo.mjs http://localhost:3000        # server build
+ *   node scripts/check-seo.mjs http://localhost:3000 --expect-index
+ *   node scripts/check-seo.mjs http://localhost:3000 --expect-noindex
  *   node scripts/check-seo.mjs --export out                 # static export
+ *
+ * Indexing is opt-in (`ALLOW_INDEXING=true`), so the expectation has to be
+ * stated: a build without the flag is SUPPOSED to say noindex. Defaults to
+ * noindex, which is what an unconfigured deployment should produce.
  *
  * Fails (exit 1) on the mistakes that are easy to ship and expensive to notice:
  *
@@ -38,7 +43,12 @@ const PATHS = [
 
 const args = process.argv.slice(2)
 const exportMode = args[0] === '--export'
-const target = exportMode ? args[1] ?? 'out' : args[0] ?? 'http://localhost:3000'
+const positional = args.filter((a) => !a.startsWith('--'))
+const target = exportMode ? positional[0] ?? 'out' : positional[0] ?? 'http://localhost:3000'
+
+// The static export is never indexable. Otherwise say which you expect;
+// noindex is the safe default, matching a deployment without ALLOW_INDEXING.
+const expectIndex = !exportMode && args.includes('--expect-index')
 
 const problems = []
 const fail = (where, msg) => problems.push(`${where}: ${msg}`)
@@ -132,8 +142,8 @@ for (const locale of LOCALES) {
     if (!langs.includes('x-default')) fail(where, 'hreflang missing x-default')
 
     const noindex = /noindex/i.test(d.robots)
-    if (exportMode && !noindex) fail(where, `staging must be noindex, robots="${d.robots}"`)
-    if (!exportMode && noindex) fail(where, `production must be indexable, robots="${d.robots}"`)
+    if (expectIndex && noindex) fail(where, `expected indexable, robots="${d.robots}"`)
+    if (!expectIndex && !noindex) fail(where, `expected noindex, robots="${d.robots}"`)
 
     if (!d.ogUrl) fail(where, 'no og:url')
     if (!d.ogImage) fail(where, 'no og:image')
@@ -162,8 +172,9 @@ else {
     // Staging is excluded by meta robots, which a blocked crawler never reads.
     fail('robots.txt', 'must not disallow everything — the noindex has to be readable')
   }
-  if (exportMode && /Sitemap:/i.test(robotsTxt)) fail('robots.txt', 'staging must not publish a sitemap')
-  if (!exportMode && !/Sitemap:/i.test(robotsTxt)) fail('robots.txt', 'production should link the sitemap')
+  const hasSitemap = /Sitemap:/i.test(robotsTxt)
+  if (!expectIndex && hasSitemap) fail('robots.txt', 'a non-indexable deployment must not publish a sitemap')
+  if (expectIndex && !hasSitemap) fail('robots.txt', 'an indexable deployment should link the sitemap')
 }
 
 // sitemap.xml
@@ -179,7 +190,9 @@ else {
   }
 }
 
-const mode = exportMode ? `static export (${target})` : `server (${target})`
+const mode =
+  (exportMode ? `static export (${target})` : `server (${target})`) +
+  ` · expecting ${expectIndex ? 'index' : 'noindex'}`
 if (problems.length) {
   console.error(`SEO CHECK FAILED — ${mode}\n`)
   for (const p of problems) console.error('  ✖ ' + p)

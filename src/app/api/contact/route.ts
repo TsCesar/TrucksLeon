@@ -3,7 +3,14 @@ import { contactSchema } from '@/lib/validations'
 import { sendContactEmail } from '@/lib/email'
 import { rateLimit } from '@/lib/rate-limit'
 
-function getIp(req: NextRequest): string {
+/**
+ * A throttling key for this caller.
+ *
+ * Used only to count requests inside the current minute and never stored,
+ * logged or attached to the email. `rateLimit` holds it in memory until the
+ * window expires and then drops it.
+ */
+function throttleKey(req: NextRequest): string {
   return (
     req.headers.get('x-forwarded-for')?.split(',')[0].trim() ??
     req.headers.get('x-real-ip') ??
@@ -12,8 +19,14 @@ function getIp(req: NextRequest): string {
 }
 
 export async function POST(req: NextRequest) {
-  const ip = getIp(req)
-  const { allowed } = rateLimit(ip)
+  // Only accept what the form actually sends. A cross-origin form post arrives
+  // as form-encoded or text/plain; requiring JSON rejects those outright.
+  const contentType = req.headers.get('content-type') ?? ''
+  if (!contentType.includes('application/json')) {
+    return NextResponse.json({ error: 'Unsupported content type.' }, { status: 415 })
+  }
+
+  const { allowed } = rateLimit(throttleKey(req))
   if (!allowed) {
     return NextResponse.json(
       { error: 'Too many requests. Please wait a minute and try again.' },

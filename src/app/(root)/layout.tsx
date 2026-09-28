@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { archivo, plexMono } from '@/lib/fonts'
 import { defaultLocale } from '@/config/locales'
-import { isStaging } from '@/config/site'
+import { allowIndexing } from '@/lib/indexing'
 import '../globals.css'
 
 /**
@@ -13,9 +13,9 @@ import '../globals.css'
  * so the link through to the locale home is still traversed.
  */
 export const metadata: Metadata = {
-  robots: isStaging
-    ? { index: false, follow: false, noarchive: true, googleBot: { index: false, follow: false, noarchive: true } }
-    : { index: false, follow: true },
+  robots: allowIndexing
+    ? { index: false, follow: true }
+    : { index: false, follow: false, noarchive: true, googleBot: { index: false, follow: false, noarchive: true } },
 }
 
 /**

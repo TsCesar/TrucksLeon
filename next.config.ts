@@ -1,5 +1,6 @@
 import type { NextConfig } from 'next'
 import createNextIntlPlugin from 'next-intl/plugin'
+import { LEGACY_REDIRECTS } from './src/config/legacy-redirects'
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
 
@@ -17,6 +18,25 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts')
  */
 const isGitHubPages = process.env.GITHUB_PAGES === 'true'
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? ''
+
+/**
+ * Mirrors `src/lib/indexing.ts`. Read from the environment directly because a
+ * config file cannot rely on the `@/` path alias. Kept in sync by the SEO check
+ * in `scripts/check-seo.mjs`, which compares the header with the meta tag.
+ */
+const allowIndexing = !isGitHubPages && process.env.ALLOW_INDEXING === 'true'
+
+/**
+ * Belt and braces for a deployment that must not be indexed.
+ *
+ * The meta tag in the document head covers HTML. This header covers everything
+ * else a crawler can reach — sitemap.xml, images, the OG card — and is read
+ * even when the response is never parsed as a document.
+ */
+const noIndexHeader = {
+  key: 'X-Robots-Tag',
+  value: 'noindex, nofollow, noarchive',
+}
 
 const securityHeaders = [
   { key: 'X-Frame-Options', value: 'DENY' },
@@ -59,7 +79,32 @@ const nextConfig: NextConfig = {
       }
     : {
         async headers() {
-          return [{ source: '/(.*)', headers: securityHeaders }]
+          return [
+            {
+              source: '/(.*)',
+              headers: allowIndexing ? securityHeaders : [...securityHeaders, noIndexHeader],
+            },
+          ]
+        },
+        /**
+         * Permanent redirects from the previous website.
+         *
+         * Declared here rather than in the middleware on purpose. Next
+         * evaluates `redirects()` before middleware runs, so an old URL lands
+         * on its final destination in a single hop instead of chaining through
+         * the locale middleware. They are also static, identical for everyone
+         * and cacheable — none of which is true of the root language redirect,
+         * which stays in the middleware.
+         *
+         * Omitted from the static export: GitHub Pages cannot serve redirects,
+         * and staging is not what search engines hold links to.
+         */
+        async redirects() {
+          return LEGACY_REDIRECTS.map(({ from, to }) => ({
+            source: from,
+            destination: to,
+            permanent: true,
+          }))
         },
       }),
 }

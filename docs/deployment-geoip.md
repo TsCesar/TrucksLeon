@@ -1,10 +1,14 @@
-# Geo-IP locale routing — pending requirement (Fase 5)
+# Geo-IP locale routing
 
-**Status: NOT IMPLEMENTED. Documented only.**
+**Status: IMPLEMENTED, disabled by default.**
 
-This is a deployment-time requirement for the final hosting/edge platform. It is
-deliberately out of scope for Fase 3 (visual polish) and must not be built on
-GitHub Pages, which is a static host with no request-time edge logic.
+The logic lives in `src/lib/geo.ts` and is wired into `src/middleware.ts`.
+It activates only when the hosting platform supplies a country header and that
+header is named in `GEO_COUNTRY_HEADER`. With the variable unset — the default —
+`/` resolves to `/en` for new visitors and everything else behaves normally.
+
+Not available on GitHub Pages, which is a static host with no request-time
+logic; the export keeps its client-side bounce to `/es`.
 
 ## Requirement
 
@@ -37,9 +41,33 @@ Sweden, Belgium, Switzerland, United Kingdom, Denmark, Czechia.
 4. **Do not store the IP address.** Only the derived country code may be used,
    and only for the duration of the request. No logging of the address.
 
-## Where it will live
+## Where it lives
 
-`src/middleware.ts`, which already handles locale prefixing.
+`src/lib/geo.ts` holds the policy (country map, cookie parsing, precedence) so
+it can be tested on its own. `src/middleware.ts` applies it to `/` and nothing
+else.
+
+### Provider independence
+
+No provider is hard-coded. One header name is read, and only the one named in
+the server-side `GEO_COUNTRY_HEADER`:
+
+```
+GEO_COUNTRY_HEADER=cf-ipcountry          # Cloudflare
+GEO_COUNTRY_HEADER=x-vercel-ip-country   # Vercel
+GEO_COUNTRY_HEADER=x-geoip-country       # reverse proxy / GeoIP module
+```
+
+A list of plausible header names is deliberately NOT scanned. Any client can
+send `x-country: FR`; only a header the platform overwrites on every request
+means anything. With the variable unset, a request carrying
+`x-vercel-ip-country: ES` is ignored outright — verified.
+
+### Verification
+
+`npm run check:geo` runs the full matrix against a running server, injecting the
+configured header. 78 assertions covering the country map, fallbacks, cookie
+precedence, corrupt cookies, untouched explicit locales and the cache headers.
 
 > **Resolved in Fase 4.** The middleware used to sit at the repository root,
 > where Next.js never loaded it (with a `src/` directory it resolves middleware

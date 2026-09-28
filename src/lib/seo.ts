@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
-import { siteConfig, siteUrl, isStaging, usesTrailingSlash, ogLocales } from '@/config/site'
+import { siteConfig, siteUrl, usesTrailingSlash, ogLocales } from '@/config/site'
+import { allowIndexing } from '@/lib/indexing'
 import { locales, type Locale } from '@/config/locales'
 import { assetPath } from '@/lib/paths'
 import { pages, type PageKey } from '@/config/routes'
@@ -45,23 +46,24 @@ function languageAlternates(path: string): Record<string, string> {
 /**
  * Indexing policy.
  *
- * GitHub Pages is a public demo. If it were indexed it would compete with
- * trucksleon.com for the same content in five languages.
+ * Opt-in: unless `ALLOW_INDEXING=true` is set on this deployment, every page
+ * says `noindex`. That covers GitHub Pages, any preview or staging copy, and a
+ * production host that has not been signed off yet.
  *
  * The exclusion lives HERE, in the head of every page, and not in robots.txt.
  * A `Disallow` only stops the fetch: the crawler never sees the directive it
- * would need to drop the URL, so staging's robots.txt allows crawling
- * precisely so that this tag is read. Removing it would leave the demo
+ * would need to drop the URL, so a non-indexable deployment's robots.txt allows
+ * crawling precisely so that this tag is read. Removing it would leave the copy
  * indexable.
  */
-const robots: Metadata['robots'] = isStaging
-  ? {
+const robots: Metadata['robots'] = allowIndexing
+  ? { index: true, follow: true }
+  : {
       index: false,
       follow: false,
       noarchive: true,
       googleBot: { index: false, follow: false, noarchive: true },
     }
-  : { index: true, follow: true }
 
 type BuildArgs = {
   locale: string

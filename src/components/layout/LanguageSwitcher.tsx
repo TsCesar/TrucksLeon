@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react'
 import { ChevronDown, Check } from 'lucide-react'
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react'
 import { locales, localeNames, type Locale } from '@/config/locales'
+import { LOCALE_COOKIE, localeCookieAttributes } from '@/lib/geo'
 import { cn } from '@/lib/utils'
 
 export function LanguageSwitcher() {
@@ -32,8 +33,23 @@ export function LanguageSwitcher() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  /**
+   * Remember the choice so `/` honours it on the next visit.
+   *
+   * Written from the client rather than by the server: this is a plain
+   * client-side navigation, there is no request to attach a Set-Cookie to.
+   * Only the locale is stored — never a country, never anything identifying.
+   * `Secure` is added on HTTPS only, so it still works on http://localhost.
+   */
+  function rememberLocale(newLocale: Locale) {
+    if (typeof document === 'undefined') return
+    const isSecure = window.location.protocol === 'https:'
+    document.cookie = `${LOCALE_COOKIE}=${newLocale}; ${localeCookieAttributes(isSecure)}`
+  }
+
   function switchLocale(newLocale: Locale) {
     if (newLocale === activeLocale) { setOpen(false); return }
+    rememberLocale(newLocale)
     const segments = pathname.split('/')
     // segments[0] is always '' (before leading slash)
     if (locales.includes(segments[1] as Locale)) {
